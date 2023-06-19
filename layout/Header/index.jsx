@@ -1,19 +1,37 @@
-import React from 'react'
+import React from "react";
+import { AiOutlineBell } from "react-icons/ai";
+import { BsMoon } from "react-icons/bs";
 
 const Header = () => {
   return (
     <div className="sticky top-0 z-50 w-full bg-white py-3 shadow ">
-        <div className="relative mx-auto flex w-full items-center justify-between">
-        <div className="px-2 lg:px-8">
-          search box
-        </div>
-        <div className="px-2 lg:px-10">
-          {/* <UserInfo client={client} /> */}
-          user info
+      <div className="relative mx-auto flex w-full items-center justify-end">
+        <div className="flex items-center gap-2 px-2 lg:px-10">
+          <BsMoon className="w-5 h-5 text-gray-600" />
+          <AiOutlineBell className="w-6 h-6 text-gray-600" />
+          <div className="flex items-center gap-x-3">
+            <div className="relative w-12 h-12">
+              <span className="absolute -bottom-0.5 right-1 w-3 h-3 rounded-full border border-white bg-green-500"></span>
+              <img
+                src="https://randomuser.me/api/portraits/men/86.jpg"
+                className="w-full h-full rounded-full"
+              />
+            </div>
+            <div>
+              <span className="block text-gray-700 text-sm font-medium">
+                John doe
+              </span>
+              <a
+                href="javascript:void(0)"
+                className="block text-indigo-600 hover:text-indigo-500 text-xs">
+                View profile
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
