@@ -1,8 +1,9 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import Items from "./Items";
 import Logo from "./Logo";
 
-const Sidebar = ({ active, setActive }) => {
+const Sidebar = ({ active, setActive, items }) => {
   return (
     <div
       className={`${
@@ -16,6 +17,7 @@ const Sidebar = ({ active, setActive }) => {
         </div>
       )}
       <Logo active={active} />
+      <Items items={items} active={active} />
     </div>
   );
 };

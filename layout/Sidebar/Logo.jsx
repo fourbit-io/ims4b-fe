@@ -2,13 +2,14 @@ import React from 'react'
 
 const Logo = ({active}) => {
   return (
-    <div className="w-full text-center">
+    <div className="w-full text-center px-2">
       <h1
         className={`${
           active ? 'block' : 'lg:block hidden'
-        } text-2xl cursor-pointer font-bold `}
+        } text-2xl cursor-pointer font-extrabold py-2 border-2 border-blue-400 rounded-md bg-blue-400 text-white`}
       >
-        Dashboard
+        Inventory
+        {/* <img src='./images/home-logo.png'/> */}
       </h1>
 
       <h1
@@ -16,7 +17,7 @@ const Logo = ({active}) => {
           active ? 'hidden' : 'lg:hidden block'
         } text-2xl cursor-pointer font-bold `}
       >
-        D
+        I
       </h1>
     </div>
   )
