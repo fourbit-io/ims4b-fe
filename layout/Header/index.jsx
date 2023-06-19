@@ -1,11 +1,15 @@
 import React from "react";
 import { AiOutlineBell } from "react-icons/ai";
 import { BsMoon } from "react-icons/bs";
+import MenuBar from "./MenuBar";
 
-const Header = () => {
+const Header = ({active, setActive}) => {
   return (
     <div className="sticky top-0 z-50 w-full bg-white py-3 shadow ">
-      <div className="relative mx-auto flex w-full items-center justify-end">
+      <div className="relative mx-auto flex w-full items-center justify-between">
+      <div className="lg:px-10">
+        <MenuBar active={active} setActive={setActive} />
+      </div>
         <div className="flex items-center gap-2 px-2 lg:px-10">
           <BsMoon className="w-5 h-5 text-gray-600" />
           <AiOutlineBell className="w-6 h-6 text-gray-600" />
