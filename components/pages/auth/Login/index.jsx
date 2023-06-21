@@ -1,8 +1,9 @@
 import React from 'react'
+import { title } from '../../../../contents/bengali/login'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>{title}</div>
   )
 }
 
