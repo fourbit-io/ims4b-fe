@@ -12,7 +12,7 @@ const Item = ({ item }) => {
     <div
       className={` ${
         query?.pathname === item?.url
-          ? 'border-r-4 border-blue-400  text-blue-400'
+          ? 'border-r-4 border-primary  text-primary'
           : ''
       } cursor-pointer ${
         query?.pathname === item?.url ? 'pl-3 lg:pl-7' : 'pl-4 lg:pl-8'
