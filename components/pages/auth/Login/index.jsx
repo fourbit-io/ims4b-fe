@@ -1,5 +1,5 @@
 import React from 'react'
-import { title } from '../../../../contents/bengali/login'
+import { title } from '@/contents/bengali/login'
 
 const Login = () => {
   return (
