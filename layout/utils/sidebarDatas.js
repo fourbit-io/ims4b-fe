@@ -5,25 +5,25 @@ import { RxDashboard } from "react-icons/rx";
 
 export const sidebarDatas = [
   {
-    name: "Dashboard",
+    name: "ড্যাসবোর্ড",
     url: "/",
     subDatas: [],
     icon: <RxDashboard className="text-[20px]" />,
   },
   {
-    name: "Requisition",
+    name: "রিকুইজিশন",
     url: "/requisition",
     subDatas: [],
     icon: <BsHexagon className="text-[20px]" />,
   },
+  // {
+  //   name: "Settings",
+  //   url: "/settings",
+  //   subDatas: [],
+  //   icon: <FiSettings className="text-[20px]" />,
+  // },
   {
-    name: "Settings",
-    url: "/settings",
-    subDatas: [],
-    icon: <FiSettings className="text-[20px]" />,
-  },
-  {
-    name: "Logout",
+    name: "লগ আউট",
     url: "/logout",
     subDatas: [],
     icon: <MdLogout className="text-[20px]" />,
