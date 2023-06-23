@@ -14,13 +14,15 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: "#22d3ee",
+      primary: colors.emerald,
       transparent: "transparent",
       current: "currentColor",
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
       green: colors.green,
+      blue: colors.blue,
+      orange: colors.orange,
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
