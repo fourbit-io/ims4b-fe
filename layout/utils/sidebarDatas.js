@@ -12,7 +12,7 @@ export const sidebarDatas = [
   },
   {
     name: "রিকুইজিশন",
-    url: "/requisition",
+    url: "/requisitions",
     subDatas: [],
     icon: <BsHexagon className="text-[20px]" />,
   },

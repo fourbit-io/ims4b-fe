@@ -31,7 +31,7 @@ export default function Home() {
     <>
       {accessToken !== null ? (
         <Layout>
-          <h1 className="text-4xl font-bold text-center my-12">Dashboard</h1>
+          <h1 className="text-4xl font-bold text-center my-12">ড্যাসবোর্ড</h1>
           <div className="mt-12 mx-32">
             <ul className="flex justify-between px-8">
               {stats.map((item, idx) => (

@@ -8,7 +8,7 @@ const Item = ({ item }) => {
 
   const logout = () => {
     localStorage.removeItem("access-token");
-    window.location.reload();
+    window.location.replace("/");
   };
 
   return (
@@ -23,7 +23,11 @@ const Item = ({ item }) => {
       <div
         onClick={() => {
           setDropdown(!dropdown);
-          logout();
+          if (item?.url == "/logout") {
+            logout();
+          } else {
+            router.push(item?.url);
+          }
         }}
         className="flex items-center justify-between ">
         <div className="flex items-center space-x-4 lg:space-x-5">
