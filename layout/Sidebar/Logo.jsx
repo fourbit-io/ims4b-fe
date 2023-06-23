@@ -6,10 +6,9 @@ const Logo = ({active}) => {
       <h1
         className={`${
           active ? 'block' : 'lg:block hidden'
-        } text-2xl cursor-pointer font-extrabold py-2 border-2 border-blue-400 rounded-md bg-blue-400 text-white`}
+        } w-[150px] mx-auto`}
       >
-        Inventory
-        {/* <img src='./images/home-logo.png'/> */}
+        <img src='./images/fourbit-logo.png'/>
       </h1>
 
       <h1
