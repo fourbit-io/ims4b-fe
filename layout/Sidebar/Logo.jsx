@@ -8,7 +8,7 @@ const Logo = ({active}) => {
           active ? 'block' : 'lg:block hidden'
         } w-[150px] mx-auto`}
       >
-        <img src='./images/fourbit-logo.png'/>
+        <img src='../images/fourbit-logo.png'/>
       </h1>
 
       <h1
