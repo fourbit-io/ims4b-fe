@@ -16,7 +16,7 @@ const NewRequisition = () => {
         <title>{newRequisition?.pageTitle}</title>
     </Head>
         <BreadCrumb previousPages={previousPages} currentPage={newRequisition?.pageTitle}/>
-        <div className="mt-5 px-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="mt-5 px-4 py-2 grid grid-cols-1 md:grid-cols-2 gap-2">
             <ProductList/>
             <SelectedProduct/>
         </div>

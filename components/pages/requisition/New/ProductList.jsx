@@ -33,6 +33,7 @@ const ProductList = () => {
       </div>
       {/* search field */}
 
+      {/* product list  */}
       <div>
         <ul className="space-y-2">
           {products?.map((item, id) => (
@@ -46,10 +47,12 @@ const ProductList = () => {
                 <h4 className="text-gray-700">Prodduct name</h4>
                 <span className="text-sm text-gray-400">#000code</span>
               </div>
+              <button className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">+ Add this</button>
             </li>
           ))}
         </ul>
       </div>
+      {/* product list */}
       <div>
         <Pagination />
       </div>
