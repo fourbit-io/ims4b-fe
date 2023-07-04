@@ -1,5 +1,5 @@
 import { FiSettings } from "react-icons/fi";
-import { BsHexagon } from "react-icons/bs";
+import { BsHexagon, BsPaperclip } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 
@@ -11,17 +11,17 @@ export const sidebarDatas = [
     icon: <RxDashboard className="text-[20px]" />,
   },
   {
+    name: "প্রোডাক্ট",
+    url: "/products",
+    subDatas: [],
+    icon: <BsPaperclip className="text-[20px]" />,
+  },
+  {
     name: "রিকুইজিশন",
     url: "/requisitions",
     subDatas: [],
     icon: <BsHexagon className="text-[20px]" />,
   },
-  // {
-  //   name: "Settings",
-  //   url: "/settings",
-  //   subDatas: [],
-  //   icon: <FiSettings className="text-[20px]" />,
-  // },
   {
     name: "লগ আউট",
     url: "/logout",
