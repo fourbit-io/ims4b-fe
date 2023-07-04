@@ -2,13 +2,11 @@ import TableRow from "./TableRow";
 import TableHeader from "./TableHeader";
 import { dummyData } from "./dummy";
 
-
 const Table = () => {
   return (
-    <section className="mt-10 rounded-md">
-      <div className="w-full">
-        <TableHeader />
-
+    <section className="mt-10">
+      <TableHeader />
+      <div className="w-full h-[70vh] overflow-scroll">
         {/* Product List Data */}
         {dummyData?.length > 0 ? (
           dummyData?.map((product, index) => {
