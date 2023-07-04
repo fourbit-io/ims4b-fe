@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 const List = () => {
+  const router = useRouter();
   const tableItems = [
     {
       name: "Solo learn app",
@@ -47,11 +49,11 @@ const List = () => {
           </h3>
         </div>
         <div className="mt-3 md:mt-0">
-          <a
-            href="javascript:void(0)"
+          <button
+          onClick={() => router.push("/requisitions/new")}
             className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
             New requisition
-          </a>
+          </button>
         </div>
       </div>
       <div className="mt-12 relative h-max overflow-auto">
