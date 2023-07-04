@@ -4,5 +4,6 @@ export const login = {
     emailPlaceholder: "ইউজার নাম",
     passPlaceholder: "পাসওয়ার্ড",
     forgotPass: "পাসওয়ার্ড ভুলে গেছেন?",
-    button: "লগইন করুন"
+    button: "লগইন করুন",
+    buttonLoading: "অপেক্ষা করুন..."
 }

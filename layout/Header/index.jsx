@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineBell } from "react-icons/ai";
 import { BsMoon } from "react-icons/bs";
 import MenuBar from "./MenuBar";
 
 const Header = ({ active, setActive }) => {
+
+  const [userInfo, setUserInfo] = useState(null);
+  useEffect(() => {
+    setUserInfo(JSON.parse(sessionStorage.getItem("info")));
+  }, []);
+
   return (
     <div className="sticky top-0 z-50 w-full bg-white py-3 shadow ">
       <div className="relative mx-auto flex w-full items-center justify-between">
@@ -21,12 +27,12 @@ const Header = ({ active, setActive }) => {
                 className="w-full h-full rounded-full"
               /> */}
               <p className="w-full h-full flex justify-center items-center font-bold text-gray-400 text-4xl uppercase border-2 border-gray-400 rounded-full bg-secondary-main">
-              ম
+                {userInfo?.userName[0] ?? "N"}
               </p>
             </div>
             <div>
               <span className="block text-gray-700 text-sm font-medium">
-              মেহেদী হাসান 
+                {userInfo?.userName ?? "N/A"}
               </span>
               {/* <a
                 href="javascript:void(0)"
