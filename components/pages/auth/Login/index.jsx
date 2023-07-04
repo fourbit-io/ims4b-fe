@@ -12,14 +12,8 @@ const Login = () => {
   const { mutate, isLoading, isError, error } = useSignInUserData();
 
   const onSubmit = (data) => {
-    console.log({ data });
     mutate(data);
     reset();
-  };
-
-  const login = () => {
-    localStorage.setItem("access-token", "authenticated");
-    window.location.replace("/");
   };
 
   return (
@@ -60,9 +54,9 @@ const Login = () => {
             {isLoading ? buttonLoading : button}
           </button>
           <div className="text-center">
-            {/* <a href="javascript:void(0)" className="hover:text-primary-600">
+            <a href="#" className="hover:text-primary-600">
               {forgotPass}
-            </a> */}
+            </a>
           </div>
         </form>
       </div>
