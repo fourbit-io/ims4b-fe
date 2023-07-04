@@ -6,7 +6,11 @@ import { useNewProductData } from "./useNewProduct";
 const Form = () => {
   const {
     formTitle,
+    date,
     productName,
+    productUnit,
+    productUnit1,
+    productUnit2,
     productQty,
     productDetails,
     submitBtn,
@@ -34,7 +38,7 @@ const Form = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
           <div>
-            <label className="font-medium">{productName}</label>
+            <label className="font-medium">{productName} *</label>
             <input
               type="text"
               placeholder={productName}
@@ -44,12 +48,30 @@ const Form = () => {
             />
           </div>
           <div>
+            <label className="font-medium">{productUnit} *</label>
+            <select
+              {...register("unite", {required: true })}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
+              <option value="unite" selected>{productUnit1}</option>
+              <option value="piece">{productUnit2}</option>
+            </select>
+          </div>
+          <div>
             <label className="font-medium">{productQty}</label>
             <input
               type="number"
               placeholder={productQty}
               {...register("quantity", { required: true })}
               required
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{date}</label>
+            <input
+              type="date"
+              placeholder={date}
+              {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
