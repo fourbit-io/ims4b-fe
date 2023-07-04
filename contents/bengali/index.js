@@ -1,5 +1,5 @@
 import { dashboard } from "./dashboard";
 import { login } from "./login";
-import { headerContent } from "./tableHeader";
+import { requisitionTableHeader } from "./requisition";
 
-export {login, dashboard, headerContent};
+export {login, dashboard, requisitionTableHeader};

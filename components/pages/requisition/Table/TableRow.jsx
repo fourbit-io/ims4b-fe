@@ -8,8 +8,8 @@ const TableRow = ({ requisitionId, note, totalQuantity, totalItem, requestDate, 
     <div className="">
       <section className="flex">
         <div
-          className={`w-full grid grid-cols-6 p-4 justify-between cursor-pointer  hover:bg-primary-400 hover:text-gray-600 text-gray-400  duration-300 ${
-            isIdODD ? "bg-gray-100" : " bg-white"
+          className={`w-full grid grid-cols-9 p-4 justify-between cursor-pointer  hover:bg-primary-400 hover:text-gray-600 text-gray-400  duration-300 ${
+            isIdODD ? "bg-gray-100 bg-opacity-50" : " bg-white"
           }  `}
         >
           <p className={`${styles.table_row} col-span-1`}>{requisitionId}</p>
@@ -17,7 +17,32 @@ const TableRow = ({ requisitionId, note, totalQuantity, totalItem, requestDate, 
           <p className={`${styles.table_row} col-span-1`}>{totalItem}</p>
           <p className={`${styles.table_row} col-span-1`}>{requestDate}</p>
           <p className={`${styles.table_row} col-span-1`}>{receivedDate}</p>
-          <p className={`${styles.table_row} col-span-1`}>{status}</p>
+          <div className={`${styles.table_row} col-span-1`}>
+            <p
+              className={`w-fit px-2 py-1 mx-auto rounded-md ${
+                status === "New"
+                  ? "text-blue-500 bg-blue-400 bg-opacity-50"
+                  : status === "Recieved"
+                  ? "text-primary-500 bg-green-400 bg-opacity-50"
+                  : status === "Pending"
+                  ? "text-yellow-500 bg-yellow-400 bg-opacity-50"
+                  : "text-red-500 bg-red-400 bg-opacity-50"
+              }`}
+            >
+              {status}
+            </p>
+          </div>
+          <div className={`${styles.table_row} col-span-1`}>
+            <button className="bg-primary-500 text-white px-2 py-1 rounded-md">Action 1</button>
+          </div>
+
+          <div className={`${styles.table_row} col-span-1`}>
+            <button className="bg-primary-500 text-white px-2 py-1 rounded-md">Action 2</button>
+          </div>
+
+          <div className={`${styles.table_row} col-span-1`}>
+            <button className="bg-primary-500 text-white px-2 py-1 rounded-md">Action 3</button>
+          </div>
         </div>
       </section>
     </div>
