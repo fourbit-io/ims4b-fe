@@ -8,8 +8,9 @@ const Item = ({ item }) => {
 
 
   const logout = () => {
-    localStorage.removeItem("access-token");
-    window.location.replace("/");
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("info");
+    window.location.replace("/login");
   };
 
   return (

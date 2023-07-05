@@ -5,7 +5,7 @@ import LoginPage from "./login";
 export default function Home() {
   const [accessToken, setAccessToken] = useState(null);
   useEffect(() => {
-    setAccessToken(localStorage.getItem("access-token"));
+    setAccessToken(sessionStorage.getItem("access_token"));
   }, []);
 
   const stats = [
