@@ -47,7 +47,7 @@ const Form = () => {
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
-          <div>
+          {/* <div>
             <label className="font-medium">{productUnit} *</label>
             <select
               {...register("unite", {required: true })}
@@ -55,18 +55,19 @@ const Form = () => {
               <option value="unite" selected>{productUnit1}</option>
               <option value="piece">{productUnit2}</option>
             </select>
-          </div>
+          </div> */}
           <div>
             <label className="font-medium">{productQty}</label>
             <input
               type="number"
               placeholder={productQty}
-              {...register("quantity", { required: true })}
+              {...register("quantity", { required: true, valueAsNumber:true })}
+              defaultValue={0}
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
-          <div>
+          {/* <div>
             <label className="font-medium">{date}</label>
             <input
               type="date"
@@ -74,7 +75,7 @@ const Form = () => {
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
-          </div>
+          </div> */}
           <div>
             <label className="font-medium">{productDetails}</label>
             <textarea

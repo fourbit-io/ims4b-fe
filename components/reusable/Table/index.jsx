@@ -1,4 +1,7 @@
+import { tableText } from "@/contents/bengali";
+
 const Table = ({ tableHeaders, tableItems, tableColumns, getActions }) => {
+  const {footer} = tableText;
   return (
     <div className="mt-12 relative h-max overflow-auto">
       <table className="w-full table-auto text-sm text-left">
@@ -29,6 +32,11 @@ const Table = ({ tableHeaders, tableItems, tableColumns, getActions }) => {
           ))}
         </tbody>
       </table>
+      {tableItems?.length === 0 && (
+        <div className="w-full h-[350px] flex justify-center items-center">
+          <h1 className="text-xl text-secondary-main">{footer}</h1>
+        </div>
+      )}
     </div>
   );
 };

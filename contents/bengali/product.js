@@ -13,7 +13,11 @@ export const newProduct = {
 }
 
 export const productsTable = {
-    pageTitle: "প্রোডাক্টের তালিকা"
+    pageTitle: "প্রোডাক্টের তালিকা",
+}
+
+export const productModal = {
+    deleteModalContent: "আপনি কি এই প্রোডাক্ট টি লিস্ট থেকে মুছে ফেলতে চান?",
 }
 
 export const productTableHeader = [
