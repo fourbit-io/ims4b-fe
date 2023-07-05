@@ -4,8 +4,7 @@ const StatusHandler = ({ isLoading, error, children }) => {
     if (isLoading) {
       return (
         <Loader
-          className="w-full h-full flex justify-center items-center"
-          svgStyle="w-14 h-14 fill-primary-main"
+          className="w-full h-[400px] flex justify-center items-center"
         />
       );
     }

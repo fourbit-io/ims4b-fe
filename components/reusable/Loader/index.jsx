@@ -1,12 +1,12 @@
-import { ReactComponent as LoaderIcon } from '../../../public/svg/loader.svg';
+import { HashLoader } from "react-spinners";
 
-const Loader = ({ className, svgStyle }) => {
-    return (
-      <div className={`${className}`}>
-        {/* <LoaderIcon className={`animate-spin ${svgStyle}`} /> */}
-        Loading....
-      </div>
-    );
-  };
-  
-  export default Loader;
+const Loader = ({ className }) => {
+  return (
+    <div
+      className={`${className}`}>
+      <HashLoader color="#11b981" />
+    </div>
+  );
+};
+
+export default Loader;
