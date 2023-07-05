@@ -1,0 +1,3 @@
+.table_row{
+    @apply w-full text-center truncate;
+}
