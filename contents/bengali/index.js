@@ -3,6 +3,7 @@ import { login } from "./login";
 import { requisitionTableHeader, newRequisition } from "./requisition";
 import {
   newProduct,
+  editProduct,
   productsTable,
   productModal,
   productTableHeader,
@@ -16,6 +17,7 @@ export {
   newRequisition,
   requisitionTableHeader,
   newProduct,
+  editProduct,
   productsTable,
   productModal,
   productTableHeader,

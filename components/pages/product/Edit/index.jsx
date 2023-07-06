@@ -1,9 +1,34 @@
-import React from 'react'
+import { useRouter } from "next/router";
+import { sidebarDatas } from "@/layout/utils/sidebarDatas";
+import BreadCrumb from "@/components/reusable/Breadcrumb";
+import { editProduct } from "@/contents/bengali";
+import Head from "next/head";
+import Form from "./Form";
+import { useProduct } from "./useEditProduct";
+import { useEffect, useState } from "react";
+import StatusHandler from "@/components/reusable/StatusHandler"
 
-const EditProduct = ({id}) => {
+const EditProduct = ({ id }) => {
+  const router = useRouter();
+  const pathname = "/" + router?.pathname.split("/")[1];
+  const previousPages = sidebarDatas?.filter((item) => item?.url === pathname);
+
+  const { data, isLoading, error } = useProduct(id);
+
   return (
-    <div>{id}</div>
-  )
-}
+    <>
+      <Head>
+        <title>{editProduct?.pageTitle}</title>
+      </Head>
+      <StatusHandler isLoading={isLoading} error={error}>
+      <BreadCrumb
+        previousPages={previousPages}
+        currentPage={editProduct?.pageTitle}
+      />
+      <Form productData={data?.data?.data} id={id} />
+      </StatusHandler>
+    </>
+  );
+};
 
-export default EditProduct
+export default EditProduct;
