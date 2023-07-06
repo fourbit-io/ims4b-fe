@@ -5,6 +5,7 @@ import { useProducts } from "./useProduct";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { products } from "./utils/products";
 import Modal from "@/components/reusable/Modal";
+import Pagination from "../../../reusable/Pagination";
 
 const List = () => {
   const {
@@ -21,17 +22,37 @@ const List = () => {
     deleteModalContent,
     deleteAction,
     dltIsLoading,
+    pages,
+    setPages,
+    currentPage,
+    setCurrentPage,
   } = products();
 
-  const { data, isLoading, error } = useProducts();
+  const { data, isLoading, error } = useProducts(currentPage);
 
   useEffect(() => {
     setProductLists(data?.data?.data);
-  }, [data]);
+    let totalPages = Math.ceil(
+      data?.data?.meta?.total / data?.data?.meta?.limit
+    );
+    let tempArr = [];
+    for (let i = 1; i <= totalPages; i++) {
+      tempArr.push(i);
+    }
+    setPages(tempArr);
+  }, [data, currentPage]);
 
   return (
     <>
-    {deleteModal && <Modal state={deleteModal} setState={setDeleteModal} content={deleteModalContent} action={deleteAction} id={productItem?.id}/>}
+      {deleteModal && (
+        <Modal
+          state={deleteModal}
+          setState={setDeleteModal}
+          content={deleteModalContent}
+          action={deleteAction}
+          id={productItem?.id}
+        />
+      )}
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -53,6 +74,12 @@ const List = () => {
             tableItems={productLists}
             tableColumns={tableColumns}
             getActions={renderActions}
+          />
+          <Pagination
+            pages={pages}
+            setPages={setPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </StatusHandler>
       </div>
