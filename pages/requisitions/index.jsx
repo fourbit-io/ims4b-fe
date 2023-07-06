@@ -5,9 +5,7 @@ import Table from "../../components/pages/requisition/Table"
 
 const RequistionPage = () => {
   return (
-    <Layout>
       <Table />
-    </Layout>
   );
 };
 

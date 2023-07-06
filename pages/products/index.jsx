@@ -4,9 +4,7 @@ import Layout from "@/layout";
 
 const ProductPage = () => {
   return (
-    <Layout>
-      <List />
-    </Layout>
+    <List />
   );
 };
 

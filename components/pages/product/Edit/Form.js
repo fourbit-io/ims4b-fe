@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { newProduct } from "@/contents/bengali/product";
-import { useNewProductData } from "./useNewProduct";
+import { editProduct } from "@/contents/bengali/product";
+import { useEditProductData } from "./useEditProduct";
 
-const Form = () => {
+const Form = ({ productData, id }) => {
   const {
     formTitle,
     date,
@@ -15,15 +15,21 @@ const Form = () => {
     productDetails,
     submitBtn,
     loadingSubmitBtn,
-  } = newProduct;
-  const { register, handleSubmit, reset } = useForm();
+  } = editProduct;
 
-  const { mutate, isLoading, isError, error } = useNewProductData();
+  useEffect(() => {
+    setValue("name", productData?.name);
+    setValue("quantity", productData?.quantity);
+    setValue("details", productData?.details);
+  }, [productData]);
+
+  const { register, handleSubmit, reset, setValue } = useForm();
+
+  const { mutate, isLoading, isError, error } = useEditProductData();
 
   const onSubmit = (data) => {
-    mutate(data);
-    // reset();
-    console.log({ data });
+    mutate({...data, id});
+    reset();
   };
 
   return (
@@ -42,8 +48,7 @@ const Form = () => {
             <input
               type="text"
               placeholder={productName}
-              {...register("name", { required: true })}
-              required
+              {...register("name", { required: false })}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
@@ -61,9 +66,10 @@ const Form = () => {
             <input
               type="number"
               placeholder={productQty}
-              {...register("quantity", { required: true, valueAsNumber:true })}
-              defaultValue={0}
-              required
+              {...register("quantity", {
+                required: false,
+                valueAsNumber: true,
+              })}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>

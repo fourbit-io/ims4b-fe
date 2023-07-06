@@ -4,9 +4,7 @@ import NewProduct from "@/components/pages/product/New";
 
 const New = () => {
   return (
-    <Layout>
       <NewProduct />
-    </Layout>
   );
 };
 
