@@ -28,7 +28,6 @@ const Pagination = ({ pages, setPages, currentPage, setCurrentPage }) => {
                 <span className="px-4 py-3 border border-l-0">{item}</span>
               ) : (
                 <a
-                  href="javascript:void(0)"
                   aria-current={currentPage == item ? "page" : false}
                   className={`px-4 py-3 border border-l-0 duration-150 hover:text-primary-600 hover:bg-primary-50 ${
                     currentPage == item

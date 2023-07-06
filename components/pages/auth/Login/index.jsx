@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   return (
-    <main className="w-full h-screen flex flex-col items-center justify-center px-4 md:bg-[rgba(0,0,0,0.5)]">
+    <main className="w-screen h-screen z-20 flex flex-col items-center justify-center px-4 md:bg-[rgba(0,0,0,0.5)]">
       <div className="max-w-full md:max-w-md w-full text-gray-600 px-4 md:p-8 rounded-md md:shadow-lg bg-white md:border-2">
         <div className="text-center">
           <img

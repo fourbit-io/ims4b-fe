@@ -25,11 +25,15 @@ export const products = () => {
 
   const { mutate: deleteProduct, isLoading: dltIsLoading } = useDeleteProduct();
 
+  const redirectEditPage = (id) => {
+    router.push(`/products/${id}/edit`)
+  }
+
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
       <HiPencilAlt
         className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
-        onClick={() => console.log({ row })}
+        onClick={() => redirectEditPage(row?.id)}
       />
       <BiShow
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"

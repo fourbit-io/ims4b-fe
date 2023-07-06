@@ -3,11 +3,14 @@ import { Router } from "next/router";
 import { useEffect, useState } from "react";
 import Loader from "../components/reusable/Loader";
 import "../styles/globals.css";
+import Layout from "../layout";
+import LoginPage from "./login";
 
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   const [globalLoader, setGlobalLoader] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
 
   useEffect(() => {
     Router.events.on("routeChangeStart", (as, { shallow }) => {
@@ -17,12 +20,19 @@ function MyApp({ Component, pageProps }) {
     });
     Router.events.on("routeChangeComplete", () => setGlobalLoader(false));
     Router.events.on("routeChangeError", () => setGlobalLoader(false));
+    setAccessToken(sessionStorage.getItem("access_token"));
   }, []);
   return (
     <>
       <QueryClientProvider client={queryClient}>
         {globalLoader && <Loader />}
-        <Component {...pageProps} />
+        {accessToken !== null ? (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        ) : (
+          <LoginPage />
+        )}
       </QueryClientProvider>
     </>
   );
