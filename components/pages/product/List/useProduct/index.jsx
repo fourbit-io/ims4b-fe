@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const getProducts = async (currentPage) => {
   return await axiosInstance.get(
-    `/v1/product?page=${currentPage}&limit=2&sortBy=createdAt&sortOrder=desc`
+    `/v1/product?page=${currentPage}&limit=20&sortBy=createdAt&sortOrder=desc`
   );
 };
 

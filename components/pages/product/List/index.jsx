@@ -35,11 +35,7 @@ const List = () => {
     let totalPages = Math.ceil(
       data?.data?.meta?.total / data?.data?.meta?.limit
     );
-    let tempArr = [];
-    for (let i = 1; i <= totalPages; i++) {
-      tempArr.push(i);
-    }
-    setPages(tempArr);
+    setPages(totalPages);
   }, [data, currentPage]);
 
   return (

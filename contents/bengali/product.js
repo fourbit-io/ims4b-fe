@@ -26,6 +26,17 @@ export const editProduct = {
     loadingSubmitBtn: "অপেক্ষা করুন",
 }
 
+export const showProduct = {
+    pageTitle : "প্রোডাক্ট বিস্তারিত দেখুন ",
+    date: "তারিখ",
+    productName: "প্রোডাক্টের নাম",
+    productUnit: "একক",
+    productUnit1: "ইউনিট",
+    productUnit2: "পিস্",
+    productQty: "পরিমান",
+    productDetails: "বিবিধ"
+}
+
 export const productsTable = {
     pageTitle: "প্রোডাক্টের তালিকা",
 }

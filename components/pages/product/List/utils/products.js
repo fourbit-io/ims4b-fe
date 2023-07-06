@@ -26,7 +26,11 @@ export const products = () => {
   const { mutate: deleteProduct, isLoading: dltIsLoading } = useDeleteProduct();
 
   const redirectEditPage = (id) => {
-    router.push(`/products/${id}/edit`)
+    router.push(`/products/edit/${id}`)
+  }
+
+  const redirectShowPage = (id) => {
+    router.push(`/products/show/${id}`)
   }
 
   const renderActions = (row) => (
@@ -37,7 +41,7 @@ export const products = () => {
       />
       <BiShow
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
-        onClick={() => console.log({ row })}
+        onClick={() => redirectShowPage(row?.id)}
       />
       <BsTrash
         className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"

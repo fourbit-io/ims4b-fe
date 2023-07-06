@@ -1,46 +1,35 @@
+import { paginationText } from "@/contents/bengali";
 
 const Pagination = ({ pages, setPages, currentPage, setCurrentPage }) => {
-    const handlePrevPage = () => {
-        if(currentPage > 1){
-            setCurrentPage(currentPage - 1);
-        }
+  const {previous, next } = paginationText;
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
-    const handleNextPage = () => {
-        if(currentPage < pages[pages?.length - 1]){
-            setCurrentPage(currentPage + 1);
-        }
+  };
+  const handleNextPage = () => {
+    if (currentPage < pages ) {
+      setCurrentPage(currentPage + 1);
     }
-    const changePage = (item)=> {
-        if(currentPage !== item){
-            setCurrentPage(item);
-        }
-    } 
+  };
   return (
     <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8">
       <div className="hidden justify-center sm:flex" aria-label="Pagination">
-        <ul className="flex items-center">
-          <li onClick={handlePrevPage} className="hover:text-primary-600 hover:bg-gray-50 px-4 py-2.5 border border-r-0 rounded-tl-lg rounded-bl-lg cursor-pointer">
-            {"<"}
+        <ul className="flex items-center gap-4">
+          <li
+            onClick={handlePrevPage}
+            className={`${currentPage === 1 ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-500  cursor-pointer'} text-white  px-4 py-2.5 border rounded-lg`}>
+            {previous}
           </li>
-          {pages?.map((item, idx) => (
-            <li onClick={() => changePage(item)} key={item} className="">
-              {item == "..." ? (
-                <span className="px-4 py-3 border border-l-0">{item}</span>
-              ) : (
-                <a
-                  aria-current={currentPage == item ? "page" : false}
-                  className={`px-4 py-3 border border-l-0 duration-150 hover:text-primary-600 hover:bg-primary-50 ${
-                    currentPage == item
-                      ? "bg-primary-50 text-primary-600 font-medium"
-                      : ""
-                  }`}>
-                  {item}
-                </a>
-              )}
-            </li>
-          ))}
-          <li onClick={handleNextPage} className="hover:text-primary-600 hover:bg-gray-50 px-4 py-2.5 border border-l-0 rounded-tr-lg rounded-br-lg cursor-pointer">
-            {">"}
+          <li className="">
+            <span>
+               {currentPage} / {pages}
+            </span>
+          </li>
+          <li
+            onClick={handleNextPage}
+            className={`${currentPage === pages ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary-600 hover:bg-primary-500  cursor-pointer'} text-white  px-4 py-2.5 border rounded-lg`}>
+            {next}
           </li>
         </ul>
       </div>
@@ -49,15 +38,15 @@ const Pagination = ({ pages, setPages, currentPage, setCurrentPage }) => {
         <a
           onClick={handlePrevPage}
           className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">
-          Previous
+          {previous}
         </a>
         <div className="font-medium">
-          Page {currentPage} of {pages.length}
+           {currentPage} / {pages}
         </div>
         <a
           onClick={handleNextPage}
           className="px-4 py-2 border rounded-lg duration-150 hover:bg-gray-50">
-          Next
+          {next}
         </a>
       </div>
     </div>
