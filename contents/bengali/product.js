@@ -30,6 +30,7 @@ export const showProduct = {
     pageTitle : "প্রোডাক্ট বিস্তারিত দেখুন ",
     date: "তারিখ",
     productName: "প্রোডাক্টের নাম",
+    productCode: "প্রোডাক্ট কোড",
     productUnit: "একক",
     productUnit1: "ইউনিট",
     productUnit2: "পিস্",
@@ -47,7 +48,8 @@ export const productModal = {
 
 export const productTableHeader = [
     "প্রোডাক্টের নাম",
-    "পরিমান",
+    "প্রোডাক্ট কোড",
+    "একক",
     "বিবিধ",
     "তারিখ"
   ];

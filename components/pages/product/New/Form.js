@@ -47,35 +47,37 @@ const Form = () => {
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
-          {/* <div>
-            <label className="font-medium">{productUnit} *</label>
+          <div>
+            <label className="font-medium">{productUnit}</label>
             <select
-              {...register("unite", {required: true })}
+              {...register("unite")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unite" selected>{productUnit1}</option>
+              <option value="unite" selected>
+                {productUnit1}
+              </option>
               <option value="piece">{productUnit2}</option>
             </select>
-          </div> */}
+          </div>
           <div>
-            <label className="font-medium">{productQty}</label>
             <input
               type="number"
               placeholder={productQty}
-              {...register("quantity", { required: true, valueAsNumber:true })}
+              {...register("quantity", { required: true, valueAsNumber: true })}
               defaultValue={0}
+              hidden
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
-          {/* <div>
+          <div>
             <label className="font-medium">{date}</label>
             <input
               type="date"
-              placeholder={date}
+              defaultValue={new Date().toISOString().split("T")[0]}
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
-          </div> */}
+          </div>
           <div>
             <label className="font-medium">{productDetails}</label>
             <textarea
