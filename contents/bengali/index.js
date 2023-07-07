@@ -9,10 +9,14 @@ import {
   productModal,
   productTableHeader,
 } from "./product";
+import { newStock, stocksTable, stockModal, stockTableHeader } from "./stock";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
 
 export {
+  buttonText,
+  tableText,
+  paginationText,
   login,
   dashboard,
   newRequisition,
@@ -23,7 +27,8 @@ export {
   productsTable,
   productModal,
   productTableHeader,
-  buttonText,
-  tableText,
-  paginationText,
+  newStock,
+  stocksTable,
+  stockModal,
+  stockTableHeader,
 };

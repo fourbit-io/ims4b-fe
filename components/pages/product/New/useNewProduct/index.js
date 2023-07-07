@@ -13,7 +13,6 @@ const addProduct = async (product) => {
   
     return useMutation(addProduct, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries(["product-lists"]);
         router.push("/products");
       },
       onError: (data) => {},

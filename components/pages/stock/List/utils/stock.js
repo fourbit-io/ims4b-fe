@@ -4,13 +4,13 @@ import { BiShow } from "react-icons/bi";
 import { BsTrash } from "react-icons/bs";
 import { useState } from "react";
 import {
-  productTableHeader as tableHeaders,
-  productModal,
-  productsTable,
+  stockTableHeader as tableHeaders,
+  stockModal,
+  stocksTable,
 } from "@/contents/bengali";
-import { useDeleteProduct } from "../useProduct";
+import { useDeleteStock } from "../useStock";
 
-export const products = () => {
+export const stocks = () => {
   const router = useRouter();
   const tableColumns = [
     "name",
@@ -20,24 +20,24 @@ export const products = () => {
     "createdAt",
     "actions",
   ];
-  const { pageTitle } = productsTable;
-  const { deleteModalContent } = productModal;
+  const { pageTitle } = stocksTable;
+  const { deleteModalContent } = stockModal;
 
-  const [productLists, setProductLists] = useState([]);
+  const [stockLists, setStockLists] = useState([]);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [productItem, setProductItem] = useState();
+  const [stockItem, setStockItem] = useState();
 
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { mutate: deleteProduct, isLoading: dltIsLoading } = useDeleteProduct();
+  const { mutate: deleteStock, isLoading: dltIsLoading } = useDeleteStock();
 
   const redirectEditPage = (id) => {
-    router.push(`/products/edit/${id}`);
+    router.push(`/stocks/edit/${id}`);
   };
 
   const redirectShowPage = (id) => {
-    router.push(`/products/show/${id}`);
+    router.push(`/stocks/show/${id}`);
   };
 
   const renderActions = (row) => (
@@ -54,14 +54,14 @@ export const products = () => {
         className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
         onClick={() => {
           setDeleteModal(true);
-          setProductItem(row);
+          setStockItem(row);
         }}
       />
     </div>
   );
 
   const deleteAction = (id) => {
-    deleteProduct(id);
+    deleteStock(id);
   };
 
   return {
@@ -69,15 +69,15 @@ export const products = () => {
     tableColumns,
     tableHeaders,
     pageTitle,
-    productLists,
-    setProductLists,
+    stockLists,
+    setStockLists,
     renderActions,
     deleteModal,
     setDeleteModal,
     deleteModalContent,
     deleteAction,
     dltIsLoading,
-    productItem,
+    stockItem,
     pages,
     setPages,
     currentPage,

@@ -13,6 +13,10 @@ const Pagination = ({ pages, setPages, currentPage, setCurrentPage }) => {
     }
   };
   return (
+    <>
+      {
+        pages !== 0 ? 
+
     <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8">
       <div className="hidden justify-center sm:flex" aria-label="Pagination">
         <ul className="flex items-center gap-4">
@@ -50,6 +54,10 @@ const Pagination = ({ pages, setPages, currentPage, setCurrentPage }) => {
         </a>
       </div>
     </div>
+    :
+    ""
+      }
+    </>
   );
 };
 
