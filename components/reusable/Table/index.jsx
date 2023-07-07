@@ -21,7 +21,7 @@ const Table = ({ tableHeaders, tableItems, tableColumns, getActions }) => {
               {tableColumns?.map((colItem, colIdx) => (
                 colItem !== "actions" ?
                 <td className="pr-6 py-4 whitespace-nowrap text-ellipsis max-w-[100px] overflow-hidden" key={colIdx}>
-                  {item[colItem]}
+                  {item[colItem] ?? "-"}
                 </td>
                 :
                 <td key={colIdx}>
