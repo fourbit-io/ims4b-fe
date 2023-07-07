@@ -3,9 +3,7 @@ import Layout from "@/layout";
 
 const New = () => {
   return (
-    <Layout>
       <NewRequisition />
-    </Layout>
   );
 };
 
