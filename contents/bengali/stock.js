@@ -19,4 +19,19 @@ export const stockTableHeader = [
     "তারিখ"
   ];
 
+  export const selectedProductsContent = {
+    pageTitle:"নিৰ্বাচিত প্রোডাক্ট",
+    emptyProdContent: "কোনো প্রোডাক্ট বাছাই করা হয় নি। অনুগ্রহ করে প্রোডাক্ট বাছাই করুন",
+    productName:"প্রোডাক্টের  নাম",
+    productCode: "কোড",
+    productQty: "পরিমান",
+    totalItm: "মোট পরিমান",
+    totalQt: "মোট পণ্য",
+    note: "মন্তব্য",
+    optional:"ঐচ্ছিক",
+    submitBtn: "রিকোয়েস্ট করুন",
+    submitBtnLoading: "অপেক্ষা করুন",
+    cancelBtn: "বাতিল করুন",
+  }
+
   

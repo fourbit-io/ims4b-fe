@@ -3,8 +3,10 @@ import Pagination from "@/components/reusable/Pagination";
 import { useProducts } from "../../product/List/useProduct";
 import { newStock, productsTable } from "@/contents/bengali";
 import StatusHandler from "@/components/reusable/StatusHandler";
+import { useDispatch } from "react-redux";
+import { add } from "../../../../slices/productSlice"
 
-const ProductList = () => {
+const ProductList = ({selectedProducts}) => {
   const { pageTitle } = productsTable;
   const { productAddBtn } = newStock;
 
@@ -22,6 +24,18 @@ const ProductList = () => {
     );
     setPages(totalPages);
   }, [data, currentPage]);
+
+  const dispatch = useDispatch();
+
+  const handleAddProduct = (product) => {
+    let {id, name, slug} = product;
+    dispatch(add({
+      id,
+      name,
+      code: slug,
+      qty: 0
+    }))
+  }
 
   return (
     <div className="space-y-4">
@@ -67,7 +81,7 @@ const ProductList = () => {
                 <h4 className="text-gray-700">{item?.name}</h4>
                 <span className="text-sm text-gray-400">{item?.slug}</span>
               </div>
-              <button className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">
+              <button onClick={() => handleAddProduct(item)} className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">
                 + {productAddBtn}
               </button>
             </li>

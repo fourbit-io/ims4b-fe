@@ -5,6 +5,8 @@ import Loader from "../components/reusable/Loader";
 import "../styles/globals.css";
 import Layout from "../layout";
 import LoginPage from "./login";
+import {store} from "../store"
+import { Provider } from "react-redux";
 
 const queryClient = new QueryClient();
 
@@ -27,9 +29,11 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         {globalLoader && <Loader />}
         {accessToken !== null ? (
+          <Provider store={store}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          </Provider>
         ) : (
           <LoginPage />
         )}
