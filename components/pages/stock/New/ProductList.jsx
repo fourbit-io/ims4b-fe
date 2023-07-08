@@ -6,7 +6,7 @@ import StatusHandler from "@/components/reusable/StatusHandler";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../slices/productSlice"
 
-const ProductList = ({selectedProducts}) => {
+const ProductList = () => {
   const { pageTitle } = productsTable;
   const { productAddBtn } = newStock;
 

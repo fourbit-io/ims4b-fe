@@ -10,7 +10,6 @@ import { selectedProductsContent } from "@/contents/bengali";
 import { remove, qtyCount, removeAll } from "../../../../slices/productSlice";
 
 const SelectedProduct = ({selectedProducts}) => {
-  const [noteData, setNoteData] = useState("");
   const {
     pageTitle,
     emptyProdContent,
@@ -38,13 +37,11 @@ const SelectedProduct = ({selectedProducts}) => {
   };
 
   const handleCancelAll = () => {
-    setNoteData("");
     dispatch(removeAll());
-    console.log({noteData});
   }
 
   const handleSubmit = () => {
-    console.log({selectedProducts, noteData});
+    console.log({selectedProducts});
   }
   return (
     <div className="px-4">
@@ -105,7 +102,7 @@ const SelectedProduct = ({selectedProducts}) => {
           </p>
         </div>
       </div>
-      <div>
+      {/* <div>
         <h4 className="p-1 text-gray-600">
           {note} ({optional})
         </h4>
@@ -113,8 +110,8 @@ const SelectedProduct = ({selectedProducts}) => {
           rows={4}
           placeholder={note}
           onChange={(e) => setNoteData(e.target.value)}
-          className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2" value={noteData}></textarea>
-      </div>
+          className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
+      </div> */}
       <div className="flex items-center gap-4 py-2">
         <button onClick={handleCancelAll} className="px-2 py-1 bg-red-400 text-white rounded-md">
           {cancelBtn}

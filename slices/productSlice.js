@@ -39,6 +39,7 @@ export const productSlice = createSlice({
     removeAll: (state) => {
         state.productData.splice(0, state.productData.length);
         state.totalQty = 0;
+        state.totalItem = 0;
     }
   },
 });
