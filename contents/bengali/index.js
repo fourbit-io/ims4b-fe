@@ -9,7 +9,15 @@ import {
   productModal,
   productTableHeader,
 } from "./product";
-import { newStock, stocksTable, stockModal, stockTableHeader, selectedProductsContent } from "./stock";
+import {
+  newStock,
+  stocksTable,
+  stockModal,
+  stockTableHeader,
+  selectedProductsContent,
+  editStock,
+  showStock,
+} from "./stock";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
 
@@ -32,4 +40,6 @@ export {
   stockModal,
   stockTableHeader,
   selectedProductsContent,
+  editStock,
+  showStock,
 };

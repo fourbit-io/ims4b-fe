@@ -8,8 +8,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProductsContent } from "@/contents/bengali";
 import { remove, qtyCount, removeAll } from "../../../../slices/productSlice";
+import { useNewStockData } from "./useNewStock";
 
-const SelectedProduct = ({selectedProducts}) => {
+const SelectedProduct = () => {
   const {
     pageTitle,
     emptyProdContent,
@@ -25,9 +26,15 @@ const SelectedProduct = ({selectedProducts}) => {
     cancelBtn,
   } = selectedProductsContent;
 
+
+  const selectedProducts = useSelector((state) => state.product.productData);
+
   const totalItem = useSelector((state) => state.product.totalItem);
   const totalQty = useSelector((state) => state.product.totalQty);
   const dispatch = useDispatch();
+
+  const { mutate, isLoading, isError, error } = useNewStockData();
+
   const removeProduct = (id) => {
     dispatch(remove(id));
   };
@@ -40,8 +47,9 @@ const SelectedProduct = ({selectedProducts}) => {
     dispatch(removeAll());
   }
 
+
   const handleSubmit = () => {
-    console.log({selectedProducts});
+    mutate(selectedProducts);
   }
   return (
     <div className="px-4">
@@ -64,17 +72,17 @@ const SelectedProduct = ({selectedProducts}) => {
                 <div className="flex gap-4 items-center">
                   <div className="flex-1 flex items-center justify-between border px-2 py-1 rounded-md">
                     <AiOutlineMinus
-                      onClick={() => handleProductCount(item?.id, "dec")}
+                      onClick={() => handleProductCount(item?.productId, "dec")}
                       className="cursor-pointer"
                     />
-                    <span>{item?.qty}</span>
+                    <span>{item?.quantity}</span>
                     <AiOutlinePlus
-                      onClick={() => handleProductCount(item?.id, "inc")}
+                      onClick={() => handleProductCount(item?.productId, "inc")}
                       className="cursor-pointer"
                     />
                   </div>
                   <AiOutlineClose
-                    onClick={() => removeProduct(item?.id)}
+                    onClick={() => removeProduct(item?.productId)}
                     className="text-red-500 cursor-pointer"
                   />
                 </div>
@@ -116,8 +124,8 @@ const SelectedProduct = ({selectedProducts}) => {
         <button onClick={handleCancelAll} className="px-2 py-1 bg-red-400 text-white rounded-md">
           {cancelBtn}
         </button>
-        <button onClick={handleSubmit} className="px-2 py-1 bg-blue-400 text-white rounded-md">
-          {submitBtn}
+        <button disabled={isLoading} onClick={handleSubmit} className={`px-2 py-1 ${isLoading ? 'bg-gray-400' : 'bg-blue-400'}  text-white rounded-md`}>
+          {isLoading ? submitBtnLoading : submitBtn}
         </button>
       </div>
     </div>

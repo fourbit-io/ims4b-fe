@@ -16,22 +16,22 @@ export const productSlice = createSlice({
     },
     qtyCount: (state, action) => {
       const { id, type } = action?.payload;
-      const index = state.productData.findIndex((p) => p?.id === id);
+      const index = state.productData.findIndex((p) => p?.productId === id);
       const currentProduct = state.productData[index];
       if (type === "inc") {
-        currentProduct.qty += 1;
+        currentProduct.quantity += 1;
         state.totalQty += 1;
       }
-      if (type === "dec" && currentProduct.qty > 0) {
-        currentProduct.qty -= 1;
+      if (type === "dec" && currentProduct.quantity > 0) {
+        currentProduct.quantity -= 1;
         state.totalQty -= 1;
       }
     },
     remove: (state, action) => {
-      const index = state.productData.findIndex((p) => p?.id === action.payload);
+      const index = state.productData.findIndex((p) => p?.productId === action.payload);
       const currentProduct = state.productData[index];
       state.productData = state.productData.filter(
-        (product) => product?.id !== currentProduct?.id
+        (product) => product?.productId !== currentProduct?.productId
       );
       state.totalQty -= currentProduct.qty;
       state.totalItem -= 1;

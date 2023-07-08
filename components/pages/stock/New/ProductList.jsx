@@ -30,10 +30,10 @@ const ProductList = () => {
   const handleAddProduct = (product) => {
     let {id, name, slug} = product;
     dispatch(add({
-      id,
+      productId: id,
       name,
       code: slug,
-      qty: 0
+      quantity: 0
     }))
   }
 

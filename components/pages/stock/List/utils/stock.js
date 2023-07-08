@@ -13,11 +13,11 @@ import { useDeleteStock } from "../useStock";
 export const stocks = () => {
   const router = useRouter();
   const tableColumns = [
-    "name",
-    "slug",
+    "productName",
+    "productCode",
     "unit",
-    "details",
-    "createdAt",
+    "quantity",
+    "status",
     "actions",
   ];
   const { pageTitle } = stocksTable;

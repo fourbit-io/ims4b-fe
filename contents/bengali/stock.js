@@ -13,10 +13,11 @@ export const stockModal = {
 }
 
 export const stockTableHeader = [
-    "স্টকের নাম",
+    "প্রোডাক্টের নাম",
+    "কোড",
     "একক",
-    "বিবিধ",
-    "তারিখ"
+    "পরিমান",
+    "স্ট্যাটাস"
   ];
 
   export const selectedProductsContent = {
@@ -34,4 +35,19 @@ export const stockTableHeader = [
     cancelBtn: "বাতিল করুন",
   }
 
+  export const editStock = {
+    pageTitle : "স্টক সংশোধন করুন",
+    formTitle: "স্টক সংশোধন করুন",
+    productName: "প্রোডাক্টের নাম",
+    productQty: "পরিমান",
+    submitBtn: "সংশোধন করুন",
+    loadingSubmitBtn: "অপেক্ষা করুন",
+}
+
+  export const showStock = {
+    pageTitle : "স্টকের বিস্তারিত দেখুন ",
+    productName: "প্রোডাক্টের নাম",
+    productCode: "প্রোডাক্ট কোড",
+    productQty: "পরিমান"
+}
   

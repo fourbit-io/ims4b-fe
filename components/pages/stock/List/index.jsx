@@ -31,7 +31,19 @@ const List = () => {
   const { data, isLoading, error } = useStocks(currentPage);
 
   useEffect(() => {
-    setStockLists(data?.data?.data);
+    const dataValues = data?.data?.data?.map((dataValue) => {
+      const values = {
+        id: dataValue?.id,
+        quantity: dataValue?.quantity,
+        status: dataValue?.status,
+        productName: dataValue?.product?.name,
+        productCode: dataValue?.product?.slug,
+        productUnit: dataValue?.product?.unit,
+      }
+      return values;
+    });
+
+    setStockLists(dataValues);
     let totalPages = Math.ceil(
       data?.data?.meta?.total / data?.data?.meta?.limit
     );
