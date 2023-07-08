@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "@/components/reusable/Pagination";
-import { useProducts } from "../../product/List/useProduct";
 import { newStock, productsTable } from "@/contents/bengali";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../slices/productSlice"
+import { useProducts } from "./useNewStock";
 
 const ProductList = () => {
   const { pageTitle } = productsTable;
@@ -14,8 +14,9 @@ const ProductList = () => {
 
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchString, setSearchString] = useState("");
 
-  const { data, isLoading, error } = useProducts(currentPage);
+  const { data, isLoading, error } = useProducts(searchString, currentPage);
 
   useEffect(() => {
     setProductLists(data?.data?.data);
@@ -23,7 +24,7 @@ const ProductList = () => {
       data?.data?.meta?.total / data?.data?.meta?.limit
     );
     setPages(totalPages);
-  }, [data, currentPage]);
+  }, [data, currentPage, searchString]);
 
   const dispatch = useDispatch();
 
@@ -62,6 +63,7 @@ const ProductList = () => {
         <input
           type="text"
           placeholder="Search"
+          onChange={(e) => setSearchString(e?.target?.value)}
           className="w-full py-2 pl-12 pr-4 text-sm text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-primary-600"
         />
       </div>
