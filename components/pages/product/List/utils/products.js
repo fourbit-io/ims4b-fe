@@ -12,7 +12,7 @@ import { useDeleteProduct } from "../useProduct";
 
 export const products = () => {
   const router = useRouter();
-  const tableColumns = ["name", "slug", "unit", "details", "createdAt", "actions"];
+  const tableColumns = ["name", "slug", "unit", "details", "date", "actions"];
   const { pageTitle } = productsTable;
   const { deleteModalContent } = productModal;
 

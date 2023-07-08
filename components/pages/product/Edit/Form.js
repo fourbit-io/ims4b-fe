@@ -20,6 +20,7 @@ const Form = ({ productData, id }) => {
   useEffect(() => {
     setValue("name", productData?.name);
     setValue("quantity", productData?.quantity);
+    setValue("unit", productData?.unit);
     setValue("details", productData?.details);
     setValue("date", productData?.date ?? new Date().toISOString().split("T")[0])
   }, [productData]);
@@ -56,9 +57,9 @@ const Form = ({ productData, id }) => {
           <div>
             <label className="font-medium">{productUnit}</label>
             <select
-              {...register("unite")}
+              {...register("unit")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unite" selected>{productUnit1}</option>
+              <option value="unit" selected>{productUnit1}</option>
               <option value="piece">{productUnit2}</option>
             </select>
           </div>

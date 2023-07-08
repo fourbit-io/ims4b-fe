@@ -22,8 +22,7 @@ const Form = () => {
 
   const onSubmit = (data) => {
     mutate(data);
-    // reset();
-    console.log({ data });
+    reset();
   };
 
   return (
@@ -50,9 +49,9 @@ const Form = () => {
           <div>
             <label className="font-medium">{productUnit}</label>
             <select
-              {...register("unite")}
+              {...register("unit")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unite" selected>
+              <option value="unit" selected>
                 {productUnit1}
               </option>
               <option value="piece">{productUnit2}</option>
@@ -69,7 +68,7 @@ const Form = () => {
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
-          <div>
+          {/* <div>
             <label className="font-medium">{date}</label>
             <input
               type="date"
@@ -77,7 +76,7 @@ const Form = () => {
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
-          </div>
+          </div> */}
           <div>
             <label className="font-medium">{productDetails}</label>
             <textarea
