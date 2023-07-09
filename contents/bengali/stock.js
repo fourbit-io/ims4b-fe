@@ -10,12 +10,13 @@ export const stocksTable = {
 
 export const stockModal = {
     deleteModalContent: "আপনি কি এই স্টক টি লিস্ট থেকে মুছে ফেলতে চান?",
+    approveModalContent: "আপনি কি এই স্টক টি পাস্ করতে চান?",
 }
 
 export const stockTableHeader = [
     "প্রোডাক্টের নাম",
     "কোড",
-    "একক",
+    // "একক",
     "পরিমান",
     "স্ট্যাটাস"
   ];
