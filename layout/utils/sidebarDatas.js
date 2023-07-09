@@ -1,4 +1,4 @@
-import { FiSettings } from "react-icons/fi";
+import { AiOutlineFileAdd } from "react-icons/ai";
 import { BsHexagon, BsPaperclip } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
@@ -15,6 +15,12 @@ export const sidebarDatas = [
     url: "/products",
     subDatas: [],
     icon: <BsPaperclip className="text-[20px]" />,
+  },
+  {
+    name: "স্টক",
+    url: "/stocks",
+    subDatas: [],
+    icon: <AiOutlineFileAdd className="text-[20px]" />,
   },
   {
     name: "রিকুইজিশন",
