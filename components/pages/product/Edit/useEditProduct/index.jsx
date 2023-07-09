@@ -24,7 +24,7 @@ export const useProduct = (id) => {
 
 const editProduct = async (product) => {
     const {id, ...rest} = product;
-    return await axiosInstance.patch(`/v1/product/${id}`, rest);
+    return await axiosInstance.patch(`/v1/product/without-quantity/${id}`, rest);
   };
   
   export const useEditProductData = () => {
