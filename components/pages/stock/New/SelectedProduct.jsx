@@ -125,10 +125,10 @@ const SelectedProduct = () => {
           {cancelBtn}
         </button>
         <button
-          disabled={isLoading}
+          disabled={isLoading || selectedProducts?.length === 0}
           onClick={handleSubmit}
           className={`px-2 py-1 ${
-            isLoading ? "bg-gray-400" : "bg-blue-400"
+            (isLoading || selectedProducts?.length === 0) ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400"
           }  text-white rounded-md`}>
           {isLoading ? submitBtnLoading : submitBtn}
         </button>
