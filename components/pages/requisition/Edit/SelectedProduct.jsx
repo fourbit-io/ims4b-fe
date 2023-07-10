@@ -7,9 +7,10 @@ import {
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProductsContent } from "@/contents/bengali";
-import { remove, qtyCount, removeAll } from "../../../../slices/productSlice";
+import { remove, qtyCount, removeAll, setRemark } from "../../../../slices/productSlice";
+import { useUpdateRequisitionData } from "./useEditRequisition";
 
-const SelectedProduct = () => {
+const SelectedProduct = ({id}) => {
   const {
     pageTitle,
     emptyProdContent,
@@ -27,12 +28,14 @@ const SelectedProduct = () => {
 
 
   const selectedProducts = useSelector((state) => state.product.productData);
+  const remark = useSelector((state) => state.product.remark);
 
   const totalItem = useSelector((state) => state.product.totalItem);
   const totalQty = useSelector((state) => state.product.totalQty);
   const dispatch = useDispatch();
 
-  const [remark, setRemark] = useState("");
+
+  const { mutate, isLoading, isError, error } = useUpdateRequisitionData();
 
 
   const removeProduct = (id) => {
@@ -45,12 +48,11 @@ const SelectedProduct = () => {
 
   const handleCancelAll = () => {
     dispatch(removeAll());
-    setRemark("");
   }
 
 
   const handleSubmit = () => {
-    // mutate({requisitionProducts:selectedProducts, remark});
+    mutate({id, requisitionProducts:selectedProducts, remark});
   }
   return (
     <div className="px-4">
@@ -118,7 +120,7 @@ const SelectedProduct = () => {
         <textarea
           rows={4}
           placeholder={note}
-          onChange={(e) => setRemark(e.target.value)}
+          onChange={(e) => dispatch(setRemark(e.target.value))}
           value={remark}
           className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
       </div>

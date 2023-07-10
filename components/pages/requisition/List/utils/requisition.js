@@ -13,6 +13,7 @@ import { useApproveRequisition, useDeleteRequisition } from "../useRequisition";
 export const requisitions = () => {
   const router = useRouter();
   const tableColumns = [
+    "id",
     "productName",
     "productCode",
     "quantity",

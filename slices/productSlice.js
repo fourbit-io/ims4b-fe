@@ -4,6 +4,7 @@ const initialState = {
   productData: [],
   totalItem: 0,
   totalQty: 0,
+  remark: "",
 };
 
 export const productSlice = createSlice({
@@ -13,6 +14,7 @@ export const productSlice = createSlice({
     add: (state, action) => {
       state.productData.push(action.payload);
       state.totalItem += 1;
+      state.totalQty += action.payload?.quantity;
     },
     qtyCount: (state, action) => {
       const { id, type } = action?.payload;
@@ -27,24 +29,32 @@ export const productSlice = createSlice({
         state.totalQty -= 1;
       }
     },
+    setRemark: (state, action) => {
+      state.remark = action?.payload;
+    },
     remove: (state, action) => {
-      const index = state.productData.findIndex((p) => p?.productId === action.payload);
+      const index = state.productData.findIndex(
+        (p) => p?.productId === action.payload
+      );
       const currentProduct = state.productData[index];
       state.productData = state.productData.filter(
         (product) => product?.productId !== currentProduct?.productId
       );
       state.totalQty -= currentProduct.quantity;
       state.totalItem -= 1;
+      state.remark = "";
     },
     removeAll: (state) => {
-        state.productData.splice(0, state.productData.length);
-        state.totalQty = 0;
-        state.totalItem = 0;
-    }
+      state.productData.splice(0, state.productData.length);
+      state.totalQty = 0;
+      state.totalItem = 0;
+      state.remark = "";
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { add, remove, qtyCount, removeAll } = productSlice.actions;
+export const { add, setRemark, remove, qtyCount, removeAll } =
+  productSlice.actions;
 
 export default productSlice.reducer;

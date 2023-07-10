@@ -14,6 +14,7 @@ export const requisitionModal = {
 }
 
 export const requisitionTableHeader = [
+  "id",
     "প্রোডাক্টের নাম",
     "কোড",
     // "একক",
