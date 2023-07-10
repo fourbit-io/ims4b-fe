@@ -1,13 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Pagination from "@/components/reusable/Pagination";
+import { newRequisition, productsTable } from "@/contents/bengali";
+import StatusHandler from "@/components/reusable/StatusHandler";
+import { useDispatch } from "react-redux";
+import { add } from "../../../../slices/productSlice"
+import { useProducts } from "./useNewRequisition";
 
 const ProductList = () => {
-  const products = [1, 2, 3, 4, 5, 6];
+  const { pageTitle } = productsTable;
+  const { productAddBtn } = newRequisition;
+
+  const [productLists, setProductLists] = useState([]);
+
+  const [pages, setPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchString, setSearchString] = useState("");
+
+  const { data, isLoading, error } = useProducts(searchString, currentPage);
+
+  useEffect(() => {
+    setProductLists(data?.data?.data);
+    let totalPages = Math.ceil(
+      data?.data?.meta?.total / data?.data?.meta?.limit
+    );
+    setPages(totalPages);
+  }, [data, currentPage, searchString]);
+
+  const dispatch = useDispatch();
+
+  const handleAddProduct = (product) => {
+    let {id, name, slug} = product;
+    dispatch(add({
+      productId: id,
+      name,
+      code: slug,
+      quantity: 0
+    }))
+  }
+
   return (
     <div className="space-y-4">
       <h2>
-        All Products
-        <span className="text-gray-400"> (110)</span>
+        {pageTitle}
+        <span className="text-gray-400"> ({data?.data?.meta?.total})</span>
       </h2>
 
       {/* search field */}
@@ -28,34 +63,40 @@ const ProductList = () => {
         <input
           type="text"
           placeholder="Search"
+          onChange={(e) => setSearchString(e?.target?.value)}
           className="w-full py-2 pl-12 pr-4 text-sm text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-primary-600"
         />
       </div>
       {/* search field */}
 
       {/* product list  */}
-      <div>
+      <StatusHandler isLoading={isLoading} error={error}>
         <ul className="space-y-2">
-          {products?.map((item, id) => (
+          {productLists?.map((item, id) => (
             <li className="flex justify-start items-center gap-4" key={id}>
               <img
-                src="../images/product-sample.avif"
+                src="../images/dummy-product.jpeg"
                 className=" w-10  h-10"
                 alt="product image"
               />
               <div className="flex-1 flex-col">
-                <h4 className="text-gray-700">Prodduct name</h4>
-                <span className="text-sm text-gray-400">#000code</span>
+                <h4 className="text-gray-700">{item?.name}</h4>
+                <span className="text-sm text-gray-400">{item?.slug}</span>
               </div>
-              <button className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">+ Add this</button>
+              <button onClick={() => handleAddProduct(item)} className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">
+                + {productAddBtn}
+              </button>
             </li>
           ))}
         </ul>
-      </div>
-      {/* product list */}
-      <div>
-        <Pagination />
-      </div>
+        {/* product list */}
+        <Pagination
+          pages={pages}
+          setPages={setPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </StatusHandler>
     </div>
   );
 };

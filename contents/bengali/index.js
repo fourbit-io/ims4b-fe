@@ -1,6 +1,14 @@
 import { dashboard } from "./dashboard";
 import { login } from "./login";
-import { requisitionTableHeader, newRequisition } from "./requisition";
+import {
+  newRequisition,
+  requisitionsTable,
+  requisitionModal,
+  requisitionTableHeader,
+  requisitionSelectedProductsContent,
+  editRequisition,
+  showRequisition,
+} from "./requisition";
 import {
   newProduct,
   editProduct,
@@ -28,7 +36,12 @@ export {
   login,
   dashboard,
   newRequisition,
+  requisitionsTable,
+  requisitionModal,
   requisitionTableHeader,
+  requisitionSelectedProductsContent,
+  editRequisition,
+  showRequisition,
   newProduct,
   editProduct,
   showProduct,

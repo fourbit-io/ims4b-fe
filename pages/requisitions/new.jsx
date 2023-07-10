@@ -1,10 +1,7 @@
 import NewRequisition from "@/components/pages/requisition/New";
-import Layout from "@/layout";
 
 const New = () => {
-  return (
-      <NewRequisition />
-  );
+  return <NewRequisition />;
 };
 
 export default New;
