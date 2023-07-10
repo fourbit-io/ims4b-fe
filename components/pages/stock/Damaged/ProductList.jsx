@@ -4,7 +4,7 @@ import { newStock, productsTable } from "@/contents/bengali";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../slices/productSlice"
-import { useProducts } from "./useNewStock";
+import { useProducts } from "./useDamagedStock";
 
 const ProductList = () => {
   const { pageTitle } = productsTable;
@@ -36,7 +36,7 @@ const ProductList = () => {
       code: slug,
       quantity: 0,
       date: new Date().toISOString(),
-      incrementQuantity: true,
+      incrementQuantity: false,
     }))
   }
 

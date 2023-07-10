@@ -3,9 +3,16 @@ export const newStock = {
     productAddBtn: "যোগ করুন"
 }
 
+export const damagedStock = {
+  pageTitle : "বাতিল স্টক",
+  productAddBtn: "যোগ করুন"
+}
+
 
 export const stocksTable = {
     pageTitle: "স্টকের তালিকা",
+    newStockType: "নতুন স্টক",
+    damagedStockType: "বাতিল স্টক",
 }
 
 export const stockModal = {
@@ -18,7 +25,10 @@ export const stockTableHeader = [
     "কোড",
     // "একক",
     "পরিমান",
-    "স্ট্যাটাস"
+    "স্টক টাইপ",
+    "স্ট্যাটাস",
+    "অনুরোধে",
+    "তারিখ",
   ];
 
   export const selectedProductsContent = {

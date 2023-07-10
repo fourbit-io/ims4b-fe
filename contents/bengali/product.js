@@ -40,8 +40,8 @@ export const showProduct = {
   prodStockTitle: "প্রোডাক্ট তৈরী করা হয়েছে",
   stockUpdateTitle: "স্টক আপডেট করা হয়েছে",
   dateSub: "তারিখে",
-  stockAddHistorySub: "স্টক এ যোগ করা হয়েছে।",
-  stockRemoveHistorySub: "স্টক থেকে সরানো হয়েছে।"
+  stockAddHistorySub: "স্টক এ যোগ করেছেন।",
+  stockRemoveHistorySub: "স্টক থেকে সরিয়ে ফেলেছেন।"
 };
 
 export const productsTable = {

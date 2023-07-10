@@ -1,7 +1,7 @@
-import EditStock from "@/components/pages/stock/Edit";
+import EditRequisition from "@/components/pages/requisition/Edit";
 
 const EditPage = () => {
-  return <EditStock />;
+  return <EditRequisition />;
 };
 
 export default EditPage;

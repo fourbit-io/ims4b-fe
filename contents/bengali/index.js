@@ -19,6 +19,7 @@ import {
 } from "./product";
 import {
   newStock,
+  damagedStock,
   stocksTable,
   stockModal,
   stockTableHeader,
@@ -48,6 +49,7 @@ export {
   productsTable,
   productModal,
   productTableHeader,
+  damagedStock,
   newStock,
   stocksTable,
   stockModal,

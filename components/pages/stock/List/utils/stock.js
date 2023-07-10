@@ -16,10 +16,13 @@ export const stocks = () => {
     "productName",
     "productCode",
     "quantity",
+    "type",
     "status",
+    "user",
+    "date",
     "actions",
   ];
-  const { pageTitle } = stocksTable;
+  const { pageTitle, newStockType, damagedStockType } = stocksTable;
   const { deleteModalContent, approveModalContent } = stockModal;
 
   const [stockLists, setStockLists] = useState([]);
@@ -41,7 +44,6 @@ export const stocks = () => {
   const redirectShowPage = (id) => {
     router.push(`/stocks/show/${id}`);
   };
-
 
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
@@ -84,6 +86,8 @@ export const stocks = () => {
     tableColumns,
     tableHeaders,
     pageTitle,
+    newStockType,
+    damagedStockType,
     stockLists,
     setStockLists,
     renderActions,

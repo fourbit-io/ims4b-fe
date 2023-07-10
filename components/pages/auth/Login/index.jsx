@@ -21,7 +21,7 @@ const Login = () => {
       <div className="max-w-full md:max-w-md w-full text-gray-600 px-4 md:p-8 rounded-md md:shadow-lg bg-white md:border-2">
         <div className="text-center">
           <img
-            src="./images/fourbit-logo.png"
+            src="/images/fourbit-logo.png"
             width={150}
             className="mx-auto"
           />

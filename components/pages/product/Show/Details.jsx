@@ -1,7 +1,6 @@
 import React from "react";
 import { showProduct } from "@/contents/bengali";
-import {BsFillCalendarDateFill, BsFillClipboardFill } from "react-icons/bs"
-import {FaUserCircle} from "react-icons/fa"
+import { BsFillCircleFill } from "react-icons/bs";
 
 const Details = ({ data }) => {
   const {
@@ -16,7 +15,7 @@ const Details = ({ data }) => {
     stockUpdateTitle,
     dateSub,
     stockAddHistorySub,
-    stockRemoveHistorySub
+    stockRemoveHistorySub,
   } = showProduct;
   return (
     <main>
@@ -28,30 +27,34 @@ const Details = ({ data }) => {
       </div>
       <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
         <div className="p-2">
-          <p className="bg-primary-600 text-white rounded-md">{productName}</p>
+          <p className="font-extrabold text-gray-600">{productName}</p>
+          <hr />
           <p> {data?.name}</p>
         </div>
         <div className="p-2">
-          <p className="bg-primary-600 text-white rounded-md">{productCode}</p>
+          <p className="font-extrabold text-gray-600">{productCode}</p>
+          <hr />
           <p> {data?.slug}</p>
         </div>
         <div className="p-2">
-          <p className="bg-primary-600 text-white rounded-md">{productQty}</p>
+          <p className="font-extrabold text-gray-600">{productQty}</p>
+          <hr />
           <p>
             {" "}
             {data?.quantity} ({data?.unit})
           </p>
         </div>
         <div className="p-2">
-          <p className="bg-primary-600 text-white rounded-md">{date}</p>
+          <p className="font-extrabold text-gray-600">{date}</p>
+          <hr />
           <p> {data?.date.split("T")[0]}</p>
         </div>
       </div>
       <div className="px-4">
-        <div className="bg-primary-600 text-white rounded-md px-3">
+        <div className="font-extrabold text-gray-600 underline">
           {productDetails} :{" "}
         </div>
-        <div className="px-2">{data?.details}</div>
+        <div className="px-0">{data?.details}</div>
       </div>
 
       <div className="mt-10 space-y-4">
@@ -66,25 +69,29 @@ const Details = ({ data }) => {
             <li key={idx} className="px-5 py-2 bg-white rounded-md shadow-sm">
               <div>
                 <div className="justify-between sm:flex">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-medium text-primary-600">
-                      {idx === 0 ? prodStockTitle : stockUpdateTitle}
-                    </h3>
-                    <p>{item?.updatedAt.split("T")[0]} {dateSub} {idx !== 0 && item?.quantityChange} { idx !== 0 && data?.unit} {data?.name}  {stockAddHistorySub} </p>
-                  </div>
-                  <div className="mt-5 space-y-2 text-sm sm:mt-0">
-                    <span className="flex gap-2 justify-between items-center text-gray-500">
-                      <BsFillCalendarDateFill className="text-[18px]"/>
-                      {item?.updatedAt.split("T")[0]}
-                    </span>
-                    <span className={`flex gap-2 justify-between items-center text-gray-500`}>
-                      <BsFillClipboardFill className="text-[18px]"/>
-                      {item?.quantityChange}
-                    </span>
-                    <span className="flex gap-2 justify-between items-center text-gray-500">
-                      <FaUserCircle className="text-[18px]"/>
-                      by superadmin
-                    </span>
+                  <div className="flex-1 flex gap-2 items-center">
+                    <BsFillCircleFill
+                      className={`${
+                        idx !== 0 && !item?.incrementQuantity
+                          ? "text-red-600"
+                          : "text-primary-600"
+                      }`}
+                    />
+                    <p>
+                        {item?.user?.userName} 
+                      <span className="font-bold">
+                      {" "} {idx === 0 ? data?.date.split("T")[0] : item?.updatedAt.split("T")[0]}{" "}
+                      </span>
+                      {dateSub}
+                      <span className="font-bold">
+                      {" "}
+                        {idx !== 0 && item?.quantityChange}{" "}
+                        {idx !== 0 && data?.unit} {data?.name}{" "}
+                      </span>
+                      {idx !== 0 && !item?.incrementQuantity
+                        ? stockRemoveHistorySub
+                        : stockAddHistorySub}{" "}
+                    </p>
                   </div>
                 </div>
               </div>

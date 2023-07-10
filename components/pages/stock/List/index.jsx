@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { newStock } from "@/contents/bengali";
+import { newStock, damagedStock } from "@/contents/bengali";
 import Table from "@/components/reusable/Table";
 import { useStocks } from "./useStock";
 import StatusHandler from "@/components/reusable/StatusHandler";
@@ -13,6 +13,8 @@ const List = () => {
     tableColumns,
     tableHeaders,
     pageTitle,
+    newStockType,
+    damagedStockType,
     stockLists,
     stockItem,
     setStockLists,
@@ -39,11 +41,14 @@ const List = () => {
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {
         id: dataValue?.id,
-        quantity: dataValue?.quantity,
+        quantity: dataValue?.incrementQuantity ? dataValue?.quantity : "("+dataValue?.quantity+")",
+        type: dataValue?.incrementQuantity ? newStockType : damagedStockType,
         status: dataValue?.status,
         productName: dataValue?.product?.name,
         productCode: dataValue?.product?.slug,
         productUnit: dataValue?.product?.unit,
+        user: dataValue?.user?.userName,
+        date: dataValue?.date ? dataValue?.date?.split("T")[0] : "-",
       }
       return values;
     });
@@ -82,7 +87,12 @@ const List = () => {
               {pageTitle}
             </h3>
           </div>
-          <div className="mt-3 md:mt-0">
+          <div className="mt-3 md:mt-0 flex gap-2 items-center">
+          <button
+              onClick={() => router.push("/stocks/damaged")}
+              className="inline-block px-4 py-2 text-white duration-150 font-medium bg-red-600 rounded-lg hover:bg-red-500 active:bg-red-700 md:text-sm">
+              {damagedStock?.pageTitle}
+            </button>
             <button
               onClick={() => router.push("/stocks/new")}
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">

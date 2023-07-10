@@ -4,18 +4,18 @@ import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useDispatch } from "react-redux";
 import { removeAll } from "../../../../../slices/productSlice";
 
-const addRequisition = async (requisitions) => {
-  return await axiosInstance.post("/v1/requisition", requisitions);
+const addStock = async (stocks) => {
+  return await axiosInstance.post("/v1/stock/multiple", { stocks });
 };
 
-export const useNewRequisitionData = () => {
+export const useDamagedStockData = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  return useMutation(addRequisition, {
+  return useMutation(addStock, {
     onSuccess: (data) => {
       dispatch(removeAll());
-      router.push("/requisitions");
+      router.push("/stocks");
     },
     onError: (data) => {},
   });
