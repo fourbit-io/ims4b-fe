@@ -20,8 +20,14 @@ const Form = ({ productData, id }) => {
   useEffect(() => {
     setValue("name", productData?.name);
     setValue("quantity", productData?.quantity);
+    setValue("unit", productData?.unit ?? "unit");
     setValue("details", productData?.details);
-    setValue("date", productData?.date ?? new Date().toISOString().split("T")[0])
+    setValue(
+      "date",
+      productData?.date
+        ? new Date(productData?.date).toISOString().split("T")[0]
+        : new Date().toISOString().split("T")[0]
+    );
   }, [productData]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -29,7 +35,8 @@ const Form = ({ productData, id }) => {
   const { mutate, isLoading, isError, error } = useEditProductData();
 
   const onSubmit = (data) => {
-    mutate({...data, id});
+    const { date, ...rest } = data;
+    mutate({ ...rest, date: new Date(date).toISOString(), id });
     reset();
   };
 
@@ -56,9 +63,12 @@ const Form = ({ productData, id }) => {
           <div>
             <label className="font-medium">{productUnit}</label>
             <select
-              {...register("unite")}
+              {...register("unit")}
+              defaultValue="unit"
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unite" selected>{productUnit1}</option>
+              <option value="unit">
+                {productUnit1}
+              </option>
               <option value="piece">{productUnit2}</option>
             </select>
           </div>

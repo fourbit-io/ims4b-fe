@@ -16,14 +16,14 @@ const Form = () => {
     submitBtn,
     loadingSubmitBtn,
   } = newProduct;
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
 
   const { mutate, isLoading, isError, error } = useNewProductData();
 
   const onSubmit = (data) => {
-    mutate(data);
-    // reset();
-    console.log({ data });
+    const { date, ...rest } = data;
+    mutate({ ...rest, date: new Date(date).toISOString() });
+    reset();
   };
 
   return (
@@ -50,11 +50,10 @@ const Form = () => {
           <div>
             <label className="font-medium">{productUnit}</label>
             <select
-              {...register("unite")}
+              {...register("unit")}
+              defaultValue="unit"
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unite" selected>
-                {productUnit1}
-              </option>
+              <option value="unit">{productUnit1}</option>
               <option value="piece">{productUnit2}</option>
             </select>
           </div>
@@ -73,7 +72,7 @@ const Form = () => {
             <label className="font-medium">{date}</label>
             <input
               type="date"
-              defaultValue={new Date().toISOString().split("T")[0]}
+              defaultValue={new Date().toISOString().split('T')[0]}
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />

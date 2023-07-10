@@ -33,7 +33,7 @@ export const productSlice = createSlice({
       state.productData = state.productData.filter(
         (product) => product?.productId !== currentProduct?.productId
       );
-      state.totalQty -= currentProduct.qty;
+      state.totalQty -= currentProduct.quantity;
       state.totalItem -= 1;
     },
     removeAll: (state) => {

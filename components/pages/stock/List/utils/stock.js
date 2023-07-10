@@ -58,11 +58,10 @@ export const stocks = () => {
         className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
         onClick={() => redirectEditPage(row?.id)}
       />
-      <BiShow
+      {/* <BiShow
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
         onClick={() => redirectShowPage(row?.id)}
-      />
-
+      /> */}
       <BsTrash
         className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
         onClick={() => {
