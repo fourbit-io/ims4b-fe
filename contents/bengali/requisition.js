@@ -61,3 +61,11 @@ export const showRequisition = {
   assignedTo: "দায়িত্বপ্রাপ্ত",
   approvedBy: "অনুমোদনকারী",
 };
+
+export const requisitionStatus = {
+  PENDING: "তারিখে রিকুইজিশন আবেদন করেছে।",
+  MODIFIED: "তারিখে রিকুইজিশন সংশোধন করেছে।",
+  APPROVED: "তারিখে রিকুইজিশন অনুমোদন করেছে।",
+  RELEASED: "তারিখে রিকুইজিশন বিতরণ করেছে।",
+}
+

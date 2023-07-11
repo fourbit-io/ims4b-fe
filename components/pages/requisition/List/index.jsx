@@ -6,6 +6,7 @@ import StatusHandler from "@/components/reusable/StatusHandler";
 import Modal from "@/components/reusable/Modal";
 import Pagination from "@/components/reusable/Pagination";
 import { requisitions } from "./utils/requisition";
+import {convertNumber, convertDate } from "@/lib";
 
 const List = () => {
   const {
@@ -38,8 +39,8 @@ const List = () => {
   useEffect(() => {
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {
-        id: dataValue?.id,
-        date: dataValue?.createdAt.split("T")[0],
+        id: convertNumber(dataValue?.id),
+        date: convertDate(dataValue?.createdAt),
         createdBy: dataValue?.createdByUser?.userName,
         assignedTo: dataValue?.assginedUser?.userName,
         approvedBy: dataValue?.approvedByUser?.userName,

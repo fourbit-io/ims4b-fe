@@ -5,7 +5,8 @@ import { showRequisition } from "@/contents/bengali";
 import Head from "next/head";
 import { useRequisition } from "./useShowRequisition";
 import StatusHandler from "@/components/reusable/StatusHandler";
-import Details from "./Details";
+import ProductDetails from "./ProductDetails";
+import RequisitionDetails from "./requisitionDetails";
 
 const RequisitionShow = () => {
   const router = useRouter();
@@ -24,7 +25,14 @@ const RequisitionShow = () => {
           previousPages={previousPages}
           currentPage={showRequisition?.pageTitle}
         />
-        <Details data={data?.data?.data}/>
+        <ProductDetails
+          data={data?.data?.data}
+          showRequisition={showRequisition}
+        />
+        <RequisitionDetails
+          data={data?.data?.data}
+          showRequisition={showRequisition}
+        />
       </StatusHandler>
     </>
   );

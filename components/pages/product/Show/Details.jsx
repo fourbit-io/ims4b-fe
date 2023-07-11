@@ -1,6 +1,7 @@
 import React from "react";
 import { showProduct } from "@/contents/bengali";
 import { BsFillCircleFill } from "react-icons/bs";
+import { convertDate, convertNumber } from "@/lib";
 
 const Details = ({ data }) => {
   const {
@@ -41,13 +42,13 @@ const Details = ({ data }) => {
           <hr />
           <p>
             {" "}
-            {data?.quantity} ({data?.unit})
+            {convertNumber(data?.quantity)} ({data?.unit})
           </p>
         </div>
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{date}</p>
           <hr />
-          <p> {data?.date.split("T")[0]}</p>
+          <p> {convertDate(data?.date)}</p>
         </div>
       </div>
       <div className="px-4">
@@ -80,12 +81,12 @@ const Details = ({ data }) => {
                     <p>
                         {item?.user?.userName} 
                       <span className="font-bold">
-                      {" "} {idx === 0 ? data?.date.split("T")[0] : item?.updatedAt.split("T")[0]}{" "}
+                      {" "} {idx === 0 ? convertDate(data?.date)  : convertDate(item?.updatedAt) }{" "}
                       </span>
                       {dateSub}
                       <span className="font-bold">
                       {" "}
-                        {idx !== 0 && item?.quantityChange}{" "}
+                        {idx !== 0 && convertNumber(item?.quantityChange)}{" "}
                         {idx !== 0 && data?.unit} {data?.name}{" "}
                       </span>
                       {idx !== 0 && !item?.incrementQuantity

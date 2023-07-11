@@ -8,6 +8,7 @@ import {
   requisitionSelectedProductsContent,
   editRequisition,
   showRequisition,
+  requisitionStatus,
 } from "./requisition";
 import {
   newProduct,
@@ -29,8 +30,10 @@ import {
 } from "./stock";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
+import { convertedNumber } from "./global";
 
 export {
+  convertedNumber,
   buttonText,
   tableText,
   paginationText,
@@ -43,6 +46,7 @@ export {
   requisitionSelectedProductsContent,
   editRequisition,
   showRequisition,
+  requisitionStatus,
   newProduct,
   editProduct,
   showProduct,
