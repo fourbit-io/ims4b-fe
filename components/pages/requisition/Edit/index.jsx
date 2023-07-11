@@ -50,8 +50,8 @@ const EditRequisition = () => {
           previousPages={previousPages}
           currentPage={editRequisition?.pageTitle}
         />
-        <div className="mt-5 px-4 py-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-          <ProductList />
+        <div className="mt-5 px-4 py-2 max-w-2xl mx-auto">
+          {/* <ProductList /> */}
           <SelectedProduct id={id} />
         </div>
       </StatusHandler>

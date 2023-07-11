@@ -84,10 +84,10 @@ const SelectedProduct = ({id}) => {
                       className="cursor-pointer"
                     />
                   </div>
-                  <AiOutlineClose
+                  {/* <AiOutlineClose
                     onClick={() => removeProduct(item?.productId)}
                     className="text-red-500 cursor-pointer"
-                  />
+                  /> */}
                 </div>
               </div>
             ))}

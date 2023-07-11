@@ -10,6 +10,7 @@ const Details = ({ data }) => {
     productName,
     productCode,
     productQty,
+    productUnit,
     productDetails,
     stockHistoryTitle,
     prodStockTitle,
@@ -26,7 +27,7 @@ const Details = ({ data }) => {
         </h3>
         <hr />
       </div>
-      <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
+      <div className="grid grid-cols-5 px-4 my-10 divide-x-2  text-center">
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{productName}</p>
           <hr />
@@ -42,7 +43,15 @@ const Details = ({ data }) => {
           <hr />
           <p>
             {" "}
-            {convertNumber(data?.quantity)} ({data?.unit})
+            {convertNumber(data?.quantity)}
+          </p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productUnit}</p>
+          <hr />
+          <p>
+            {" "}
+             {data?.unit}
           </p>
         </div>
         <div className="p-2">
@@ -74,8 +83,8 @@ const Details = ({ data }) => {
                     <BsFillCircleFill
                       className={`${
                         idx !== 0 && !item?.incrementQuantity
-                          ? "text-red-600"
-                          : "text-primary-600"
+                          ? "text-red-400"
+                          : "text-primary-400"
                       }`}
                     />
                     <p>

@@ -13,9 +13,11 @@ import { useApproveStock, useDeleteStock } from "../useStock";
 export const stocks = () => {
   const router = useRouter();
   const tableColumns = [
+    "stockId",
     "productName",
     "productCode",
     "quantity",
+    "productUnit",
     "type",
     "status",
     "user",

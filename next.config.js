@@ -18,6 +18,7 @@ module.exports = {
       "@/components": path.resolve(__dirname, "components"),
       "@/contents": path.resolve(__dirname, "contents"),
       "@/lib": path.resolve(__dirname, "lib"),
+      "@/slice": path.resolve(__dirname, "slice"),
     };
     return config;
   },

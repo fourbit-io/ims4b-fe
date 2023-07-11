@@ -8,6 +8,7 @@ import {
   requisitionSelectedProductsContent,
   editRequisition,
   showRequisition,
+  assignRequisition,
   requisitionStatus,
 } from "./requisition";
 import {
@@ -46,6 +47,7 @@ export {
   requisitionSelectedProductsContent,
   editRequisition,
   showRequisition,
+  assignRequisition,
   requisitionStatus,
   newProduct,
   editProduct,

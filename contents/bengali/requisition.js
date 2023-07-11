@@ -10,6 +10,7 @@ export const requisitionsTable = {
 export const requisitionModal = {
   deleteModalContent: "আপনি কি এই রিকুইজিশন টি লিস্ট থেকে মুছে ফেলতে চান?",
   approveModalContent: "আপনি কি এই রিকুইজিশন টি পাস্ করতে চান?",
+  releaseModalContent: "আপনি কি এই রিকুইজিশন টি খালাশ করতে চান?",
 };
 
 export const requisitionTableHeader = [
@@ -60,6 +61,27 @@ export const showRequisition = {
   assignedBy: "দায়িত্বপ্রদান করেছেন",
   assignedTo: "দায়িত্বপ্রাপ্ত",
   approvedBy: "অনুমোদনকারী",
+};
+
+export const assignRequisition = {
+  productHeader: "প্রোডাক্ট বিস্তারিত দেখুন",
+  pageTitle: "রিকুইজিশনের দায়িত্বপ্রদান করুন ",
+  productName: "প্রোডাক্টের নাম",
+  productCode: "প্রোডাক্ট কোড",
+  productQty: "পরিমান",
+  productUnit: "একক",
+  date: "তারিখ",
+  remarks: "মন্তব্য",
+  statusContent: "স্ট্যাটাস",
+  createdBy: "আবেদনকারি",
+  assignedBy: "দায়িত্বপ্রদান করেছেন",
+  assignedTo: "দায়িত্বপ্রাপ্ত",
+  approvedBy: "অনুমোদনকারী",
+  storeKeepers: "স্টোরের দায়িত্বরত কর্মকর্তার তালিকা",
+  placeholder: "স্টোরের দায়িত্বরত কর্মকর্তা...",
+  noOptionsMessage: "কোনো কর্মকর্তা খুঁজে পাওয়া যায় নি",
+  submitBtn: "দায়িত্বপ্রদান করুন",
+  loadingSubmitBtn: "অপেক্ষা করুন",
 };
 
 export const requisitionStatus = {

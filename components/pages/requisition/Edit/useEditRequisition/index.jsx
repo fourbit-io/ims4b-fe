@@ -2,6 +2,7 @@ import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import { removeAll } from "@/slices/productSlice";
 
 const getProducts = async (search, currentPage) => {
   return await axiosInstance.get(
@@ -56,6 +57,7 @@ export const useUpdateRequisitionData = () => {
     onSuccess: (data) => {
       dispatch(removeAll());
       router.push("/requisitions");
+      console.log("onSuccess")
     },
     onError: (data) => {},
   });

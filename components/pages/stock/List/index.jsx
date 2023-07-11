@@ -6,6 +6,7 @@ import StatusHandler from "@/components/reusable/StatusHandler";
 import { stocks } from "./utils/stock";
 import Modal from "@/components/reusable/Modal";
 import Pagination from "../../../reusable/Pagination";
+import { convertDate, convertNumber } from "../../../../lib/convertToBen";
 
 const List = () => {
   const {
@@ -38,17 +39,19 @@ const List = () => {
   const { data, isLoading, error } = useStocks(currentPage);
 
   useEffect(() => {
+    
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {
         id: dataValue?.id,
-        quantity: dataValue?.incrementQuantity ? dataValue?.quantity : "("+dataValue?.quantity+")",
+        stockId: convertNumber(dataValue?.id),
+        quantity: dataValue?.incrementQuantity ? convertNumber(dataValue?.quantity) : "("+convertNumber(dataValue?.quantity)+")",
         type: dataValue?.incrementQuantity ? newStockType : damagedStockType,
         status: dataValue?.status,
         productName: dataValue?.product?.name,
         productCode: dataValue?.product?.slug,
         productUnit: dataValue?.product?.unit,
         user: dataValue?.user?.userName,
-        date: dataValue?.date ? dataValue?.date?.split("T")[0] : "-",
+        date: dataValue?.date ? convertDate(dataValue?.date) : "-",
       }
       return values;
     });
