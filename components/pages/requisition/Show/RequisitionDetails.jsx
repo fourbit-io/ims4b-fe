@@ -1,12 +1,12 @@
 import { BsFillCircleFill } from "react-icons/bs";
 import { requisitionStatus } from "@/contents/bengali";
-import { convertDate } from '@/lib';
+import { convertDate } from "@/lib";
 
 const RequisitionDetails = ({ data, showRequisition }) => {
   const statusToBengali = (param) => {
     return requisitionStatus[param];
   };
-  const { requisitionActivity } = data;
+  const { requisitionActivity, assginedUser } = data;
 
   const { pageTitle } = showRequisition;
   return (
@@ -24,11 +24,15 @@ const RequisitionDetails = ({ data, showRequisition }) => {
                 <div className="justify-between sm:flex">
                   <div className="flex-1 flex gap-2 items-center">
                     <BsFillCircleFill className="text-primary-600" />
-                    <p>
-                      {item?.updatedUser?.userName}{" "}
-                      { convertDate(item?.createdAt) }
+                    <p className="flex gap-2 items-center">
+                      <span className="font-bold">{item?.updatedUser?.userName}</span>
+                      {" "}
+                      <span className="font-bold">{convertDate(item?.createdAt)}</span>
+                      
                       {" "}
                       {statusToBengali(item?.status)}
+                      <span className="font-bold">{item?.status == "ASSIGNED" && assginedUser?.userName}</span>
+                      
                     </p>
                   </div>
                 </div>
