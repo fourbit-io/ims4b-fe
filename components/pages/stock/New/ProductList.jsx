@@ -34,7 +34,9 @@ const ProductList = () => {
       productId: id,
       name,
       code: slug,
-      quantity: 0
+      quantity: 0,
+      date: new Date().toISOString(),
+      incrementQuantity: true,
     }))
   }
 

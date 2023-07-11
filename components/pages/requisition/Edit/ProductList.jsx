@@ -4,7 +4,7 @@ import { newRequisition, productsTable } from "@/contents/bengali";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../slices/productSlice"
-import { useProducts } from "./useNewRequisition";
+import { useProducts } from "./useEditRequisition";
 
 const ProductList = () => {
   const { pageTitle } = productsTable;
@@ -75,7 +75,7 @@ const ProductList = () => {
           {productLists?.map((item, id) => (
             <li className="flex justify-start items-center gap-4" key={id}>
               <img
-                src="../images/dummy-product.jpeg"
+                src="/images/dummy-product.jpeg"
                 className=" w-10  h-10"
                 alt="product image"
               />

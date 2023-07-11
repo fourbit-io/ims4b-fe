@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "@/components/reusable/Pagination";
-import { newRequisition, productsTable } from "@/contents/bengali";
+import { newStock, productsTable } from "@/contents/bengali";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { useDispatch } from "react-redux";
 import { add } from "../../../../slices/productSlice"
-import { useProducts } from "./useNewRequisition";
+import { useProducts } from "./useDamagedStock";
 
 const ProductList = () => {
   const { pageTitle } = productsTable;
-  const { productAddBtn } = newRequisition;
+  const { productAddBtn } = newStock;
 
   const [productLists, setProductLists] = useState([]);
 
@@ -34,7 +34,9 @@ const ProductList = () => {
       productId: id,
       name,
       code: slug,
-      quantity: 0
+      quantity: 0,
+      date: new Date().toISOString(),
+      incrementQuantity: false,
     }))
   }
 

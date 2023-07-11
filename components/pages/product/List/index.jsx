@@ -6,6 +6,7 @@ import StatusHandler from "@/components/reusable/StatusHandler";
 import { products } from "./utils/products";
 import Modal from "@/components/reusable/Modal";
 import Pagination from "../../../reusable/Pagination";
+import { convertDate, convertNumber } from "@/lib";
 
 const List = () => {
   const {
@@ -31,7 +32,19 @@ const List = () => {
   const { data, isLoading, error } = useProducts(currentPage);
 
   useEffect(() => {
-    setProductLists(data?.data?.data);
+    const dataValues = data?.data?.data?.map((dataValue) => {
+      const values = {
+        id: dataValue?.id,
+        name: dataValue?.name,
+        slug: dataValue?.slug,
+        quantity: convertNumber(dataValue?.quantity),
+        unit : dataValue?.unit,
+        details: dataValue?.details,
+        date: convertDate(dataValue?.date),
+      };
+      return values;
+    });
+    setProductLists(dataValues);
     let totalPages = Math.ceil(
       data?.data?.meta?.total / data?.data?.meta?.limit
     );
