@@ -87,6 +87,7 @@ export const assignRequisition = {
 export const requisitionStatus = {
   PENDING: "তারিখে রিকুইজিশন আবেদন করেছে।",
   MODIFIED: "তারিখে রিকুইজিশন সংশোধন করেছে।",
+  ASSIGNED: "তারিখে রিকুইজিশনের দায়িত্ব দিয়েছে ",
   APPROVED: "তারিখে রিকুইজিশন অনুমোদন করেছে।",
   RELEASED: "তারিখে রিকুইজিশন বিতরণ করেছে।",
 }
