@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useRequisition } from "./useShowRequisition";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import ProductDetails from "./ProductDetails";
-import RequisitionDetails from "./requisitionDetails";
+import RequisitionDetails from "./RequisitionDetails";
 
 const RequisitionShow = () => {
   const router = useRouter();
