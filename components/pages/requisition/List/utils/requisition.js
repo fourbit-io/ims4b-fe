@@ -14,9 +14,10 @@ export const requisitions = () => {
   const router = useRouter();
   const tableColumns = [
     "id",
-    "productName",
-    "productCode",
-    "quantity",
+    "date",
+    "createdBy",
+    "assignedTo",
+    "approvedBy",
     "status",
     "actions",
   ];

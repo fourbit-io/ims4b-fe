@@ -1,9 +1,7 @@
-import StockShow from '@/components/pages/stock/Show'
+import RequisitionShow from "@/components/pages/requisition/Show";
 
 const RequisitionShowPage = () => {
-  return (
-    <StockShow/>
-  )
-}
+  return <RequisitionShow />;
+};
 
-export default RequisitionShowPage
+export default RequisitionShowPage;

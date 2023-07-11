@@ -29,6 +29,7 @@ const EditRequisition = () => {
       (data?.data?.data?.requisitionProduct?.map((item) => {
         dispatch(
           add({
+            id: item?.id,
             productId: item?.productId,
             name: item?.product?.name,
             code: item?.product?.slug,

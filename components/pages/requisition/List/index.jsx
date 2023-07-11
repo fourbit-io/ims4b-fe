@@ -39,11 +39,11 @@ const List = () => {
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {
         id: dataValue?.id,
-        quantity: dataValue?.quantity,
+        date: dataValue?.createdAt.split("T")[0],
+        createdBy: dataValue?.createdByUser?.userName,
+        assignedTo: dataValue?.assginedUser?.userName,
+        approvedBy: dataValue?.approvedByUser?.userName,
         status: dataValue?.status,
-        productName: dataValue?.product?.name,
-        productCode: dataValue?.product?.slug,
-        productUnit: dataValue?.product?.unit,
       };
       return values;
     });

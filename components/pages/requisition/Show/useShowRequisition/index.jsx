@@ -1,14 +1,14 @@
 import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useQuery } from "@tanstack/react-query";
 
-const getStock = async (id) => {
-  return await axiosInstance.get(`/v1/stock/${id}`);
+const getRequisition = async (id) => {
+  return await axiosInstance.get(`/v1/requisition/${id}`);
 };
 
-export const useStock = (id) => {
+export const useRequisition = (id) => {
   const { data, isLoading, isError, error, isSuccess } = useQuery(
-    ["stock-get", id],
-    () => getStock(id)
+    ["requisition-get", id],
+    () => getRequisition(id)
   );
   return {
     data,
