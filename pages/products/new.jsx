@@ -1,5 +1,4 @@
 
-import Layout from "@/layout";
 import NewProduct from "@/components/pages/product/New";
 import withStorekeeper from "@/lib/hoc/withStoreKeeper";
 

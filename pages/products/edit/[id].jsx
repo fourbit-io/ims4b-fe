@@ -1,6 +1,6 @@
 
 import EditProduct from '@/components/pages/product/Edit'
-import withStorekeeper from '@/lib/hoc/withStoreKeeper'
+import withManager from '@/lib/hoc/withManager'
 
 const EditPage = () => {
   return (
@@ -8,4 +8,4 @@ const EditPage = () => {
   )
 }
 
-export default withStorekeeper(EditPage)
+export default withManager(EditPage)

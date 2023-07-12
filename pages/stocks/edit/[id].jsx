@@ -1,8 +1,8 @@
 import EditStock from "@/components/pages/stock/Edit";
-import withStorekeeper from "@/lib/hoc/withStoreKeeper";
+import withManager from "@/lib/hoc/withManager";
 
 const EditPage = () => {
   return <EditStock />;
 };
 
-export default withStorekeeper(EditPage);
+export default withManager(EditPage);
