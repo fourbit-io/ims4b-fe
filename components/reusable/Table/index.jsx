@@ -25,7 +25,7 @@ const Table = ({ tableHeaders, tableItems, tableColumns, getActions }) => {
                 </td>
                 :
                 <td key={colIdx}>
-                {getActions?.(item)}
+                {getActions && getActions?.(item)}
                 </td>
               ))}
             </tr>

@@ -5,7 +5,7 @@ import Loader from "../components/reusable/Loader";
 import "../styles/globals.css";
 import Layout from "../layout";
 import LoginPage from "./login";
-import {store} from "../store"
+import { store } from "../store";
 import { Provider } from "react-redux";
 
 const queryClient = new QueryClient();
@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState(null);
 
   useEffect(() => {
+    setAccessToken(sessionStorage.getItem("access_token"));
     Router.events.on("routeChangeStart", (as, { shallow }) => {
       if (!shallow) {
         setGlobalLoader(true);
@@ -22,18 +23,17 @@ function MyApp({ Component, pageProps }) {
     });
     Router.events.on("routeChangeComplete", () => setGlobalLoader(false));
     Router.events.on("routeChangeError", () => setGlobalLoader(false));
-    setAccessToken(sessionStorage.getItem("access_token"));
   }, []);
   return (
     <>
       <QueryClientProvider client={queryClient}>
         {globalLoader && <Loader />}
         {accessToken !== null ? (
-          <Provider store={store}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          </Provider>
+            <Provider store={store}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </Provider>
         ) : (
           <LoginPage />
         )}

@@ -8,7 +8,7 @@ const Sidebar = ({ active, setActive, items }) => {
     <div
       className={`${
         active ? "fixed !z-[9999] w-[200px]" : "w-[0px]"
-      }  h-[100vh] flex flex-col  items-center py-8 transition-all duration-150 lg:w-[250px] lg:py-5 bg-gray-100`}>
+      }  h-[100vh] flex flex-col  items-center py-2 transition-all duration-150 lg:w-[250px] bg-gray-100`}>
       {active && (
         <div
           onClick={() => setActive(false)}

@@ -9,7 +9,7 @@ import SelectedProduct from "./SelectedProduct";
 const DamagedStock = () => {
   const router = useRouter();
   const pathname = "/" + router?.pathname.split("/")[1];
-  const previousPages = sidebarDatas?.filter((item) => item?.url === pathname);
+  const previousPages = sidebarDatas()?.filter((item) => item?.url === pathname);
   return (
     <>
       <Head>
