@@ -28,12 +28,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <Head>
+          <link rel="icon" href="/images/ims-logo.png" sizes="any" />
+        </Head>
         {globalLoader && <Loader />}
         {accessToken !== null ? (
           <Provider store={store}>
-            <Head>
-              <link rel="icon" href="/images/ims-logo.png" sizes="any" />
-            </Head>
             <Layout>
               <Component {...pageProps} />
             </Layout>
