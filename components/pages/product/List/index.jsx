@@ -7,6 +7,7 @@ import { products } from "./utils/products";
 import Modal from "@/components/reusable/Modal";
 import Pagination from "../../../reusable/Pagination";
 import { convertDate, convertNumber } from "@/lib";
+import Head from "next/head";
 
 const List = () => {
   const {
@@ -38,7 +39,7 @@ const List = () => {
         name: dataValue?.name,
         slug: dataValue?.slug,
         quantity: convertNumber(dataValue?.quantity),
-        unit : dataValue?.unit,
+        unit: dataValue?.unit,
         details: dataValue?.details,
         date: convertDate(dataValue?.date),
       };
@@ -53,6 +54,9 @@ const List = () => {
 
   return (
     <>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
       {deleteModal && (
         <Modal
           state={deleteModal}
