@@ -157,5 +157,6 @@ export const requisitions = () => {
     setPages,
     currentPage,
     setCurrentPage,
+    role,
   };
 };

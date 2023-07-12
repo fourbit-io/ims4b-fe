@@ -37,6 +37,7 @@ const List = () => {
     setPages,
     currentPage,
     setCurrentPage,
+    role,
   } = requisitions();
 
   const { data, isLoading, error } = useRequisitions(currentPage);
@@ -98,13 +99,15 @@ const List = () => {
               {pageTitle}
             </h3>
           </div>
-          <div className="mt-3 md:mt-0">
-            <button
-              onClick={() => router.push("/requisitions/new")}
-              className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
-              {newRequisition?.pageTitle}
-            </button>
-          </div>
+          {(role === "USER" || role === "MANAGER" || role === "SUPERADMIN") && (
+            <div className="mt-3 md:mt-0">
+              <button
+                onClick={() => router.push("/requisitions/new")}
+                className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
+                {newRequisition?.pageTitle}
+              </button>
+            </div>
+          )}
         </div>
         <StatusHandler
           isLoading={isLoading || dltIsLoading || aprvIsLoading}
