@@ -15,6 +15,9 @@ import {
   useDeleteRequisition,
   useReleaseRequisition,
 } from "../useRequisition";
+import { userInfo } from "@/api/authentication/userInfo";
+
+const { role } = userInfo();
 
 export const requisitions = () => {
   const router = useRouter();
@@ -56,7 +59,7 @@ export const requisitions = () => {
 
   const redirectAssigneePage = (id) => {
     router.push(`/requisitions/assign/${id}`);
-  }
+  };
 
   const redirectShowPage = (id) => {
     router.push(`/requisitions/show/${id}`);
@@ -64,37 +67,55 @@ export const requisitions = () => {
 
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
-      <MdOutlineAssignmentInd onClick={() => redirectAssigneePage(row?.id)} className="w-7 h-7 border p-1 rounded-md bg-purple-600 text-white hover:bg-purple-500 cursor-pointer" />
-      <ImExit
-        className="w-7 h-7 border p-1 rounded-md bg-gray-600 text-white hover:bg-gray-500 cursor-pointer"
-        onClick={() => {
-          setReleaseModal(true);
-          setRequisitionItem(row);
-        }}
-      />
-      <BsCheckLg
-        className={`w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer`}
-        onClick={() => {
-          setApproveModal(true);
-          setRequisitionItem(row);
-        }}
-      />
-      <HiPencilAlt
-        className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
-        onClick={() => redirectEditPage(row?.id)}
-      />
+      {(role === "SHOPKEEPER" || role === "MANAGER" || role === "SUPERADMIN") &&
+        row?.status === "APPROVED" && (
+          <ImExit
+            className="w-7 h-7 border p-1 rounded-md bg-gray-600 text-white hover:bg-gray-500 cursor-pointer"
+            onClick={() => {
+              setReleaseModal(true);
+              setRequisitionItem(row);
+            }}
+          />
+        )}
+      {(role === "MANAGER" || role === "SUPERADMIN") && (
+        <>
+          {(row?.status === "PENDING" || row?.status === "MODIFIED") && (
+            <>
+              <MdOutlineAssignmentInd
+                onClick={() => redirectAssigneePage(row?.id)}
+                className="w-7 h-7 border p-1 rounded-md bg-purple-600 text-white hover:bg-purple-500 cursor-pointer"
+              />
+              <HiPencilAlt
+                className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
+                onClick={() => redirectEditPage(row?.id)}
+              />
+            </>
+          )}
+          {row?.status === "ASSIGNED" && (
+            <BsCheckLg
+              className={`w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer`}
+              onClick={() => {
+                setApproveModal(true);
+                setRequisitionItem(row);
+              }}
+            />
+          )}
+        </>
+      )}
       <BiShow
-        className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
+        className="w-7 h-7 border p-1 rounded-md bg-blue-600 text-white hover:bg-blue-500 cursor-pointer"
         onClick={() => redirectShowPage(row?.id)}
       />
 
-      <BsTrash
-        className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
-        onClick={() => {
-          setDeleteModal(true);
-          setRequisitionItem(row);
-        }}
-      />
+      {role === "SUPERADMIN" && (
+        <BsTrash
+          className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
+          onClick={() => {
+            setDeleteModal(true);
+            setRequisitionItem(row);
+          }}
+        />
+      )}
     </div>
   );
 

@@ -1,6 +1,6 @@
 
 import EditProduct from '@/components/pages/product/Edit'
-import { useRouter } from 'next/router'
+import withStorekeeper from '@/lib/hoc/withStoreKeeper'
 
 const EditPage = () => {
   return (
@@ -8,4 +8,4 @@ const EditPage = () => {
   )
 }
 
-export default EditPage
+export default withStorekeeper(EditPage)

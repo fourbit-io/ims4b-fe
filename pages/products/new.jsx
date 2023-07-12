@@ -1,6 +1,7 @@
 
 import Layout from "@/layout";
 import NewProduct from "@/components/pages/product/New";
+import withStorekeeper from "@/lib/hoc/withStoreKeeper";
 
 const New = () => {
   return (
@@ -8,4 +9,4 @@ const New = () => {
   );
 };
 
-export default New;
+export default withStorekeeper(New);
