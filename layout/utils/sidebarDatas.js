@@ -2,6 +2,7 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import { BsHexagon, BsPaperclip } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
+import { BiPurchaseTagAlt } from "react-icons/bi";
 
 export const sidebarDatas = [
   {
@@ -27,6 +28,12 @@ export const sidebarDatas = [
     url: "/requisitions",
     subDatas: [],
     icon: <BsHexagon className="text-[20px]" />,
+  },
+  {
+    name: "ক্রয় আদেশ",
+    url: "/purchases",
+    subDatas: [],
+    icon: <BiPurchaseTagAlt className="text-[20px]" />,
   },
   {
     name: "লগ আউট",
