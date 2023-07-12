@@ -13,13 +13,18 @@ import { useApproveStock, useDeleteStock } from "../useStock";
 export const stocks = () => {
   const router = useRouter();
   const tableColumns = [
+    "stockId",
     "productName",
     "productCode",
     "quantity",
+    "productUnit",
+    "type",
     "status",
+    "user",
+    "date",
     "actions",
   ];
-  const { pageTitle } = stocksTable;
+  const { pageTitle, newStockType, damagedStockType } = stocksTable;
   const { deleteModalContent, approveModalContent } = stockModal;
 
   const [stockLists, setStockLists] = useState([]);
@@ -42,7 +47,6 @@ export const stocks = () => {
     router.push(`/stocks/show/${id}`);
   };
 
-
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
       <BsCheckLg
@@ -58,11 +62,10 @@ export const stocks = () => {
         className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
         onClick={() => redirectEditPage(row?.id)}
       />
-      <BiShow
+      {/* <BiShow
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
         onClick={() => redirectShowPage(row?.id)}
-      />
-
+      /> */}
       <BsTrash
         className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
         onClick={() => {
@@ -85,6 +88,8 @@ export const stocks = () => {
     tableColumns,
     tableHeaders,
     pageTitle,
+    newStockType,
+    damagedStockType,
     stockLists,
     setStockLists,
     renderActions,

@@ -1,80 +1,116 @@
-import React from 'react'
-import { showProduct } from '@/contents/bengali';
+import React from "react";
+import { showProduct } from "@/contents/bengali";
+import { BsFillCircleFill } from "react-icons/bs";
+import { convertDate, convertNumber } from "@/lib";
 
-const Details = ({data}) => {
-
-    const {
-        pageTitle,
-        date,
-        productName,
-        productCode,
-        productUnit,
-        productUnit1,
-        productUnit2,
-        productQty,
-        productDetails,
-        submitBtn,
-        loadingSubmitBtn,
-      } = showProduct;
-    console.log({data})
+const Details = ({ data }) => {
+  const {
+    pageTitle,
+    date,
+    productName,
+    productCode,
+    productQty,
+    productUnit,
+    productDetails,
+    stockHistoryTitle,
+    prodStockTitle,
+    stockUpdateTitle,
+    dateSub,
+    stockAddHistorySub,
+    stockRemoveHistorySub,
+  } = showProduct;
   return (
-    <main className="w-full h-auto px-4 flex justify-center">
-    <div className="max-w-full md:max-w-lg w-full text-gray-600 px-4 md:p-8 rounded-md md:shadow-lg bg-white md:border-2">
-      <div className="text-center">
-        <div className="mt-5 space-y-2">
-          <h3 className="text-gray-600 text-2xl font-semibold">
-            {pageTitle}
-          </h3>
+    <main>
+      <div className="mt-5 space-y-2">
+        <h3 className="text-gray-600 text-2xl font-semibold px-4">
+          {pageTitle}
+        </h3>
+        <hr />
+      </div>
+      <div className="grid grid-cols-5 px-4 my-10 divide-x-2  text-center">
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productName}</p>
+          <hr />
+          <p> {data?.name}</p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productCode}</p>
+          <hr />
+          <p> {data?.slug}</p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productQty}</p>
+          <hr />
+          <p>
+            {" "}
+            {convertNumber(data?.quantity)}
+          </p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productUnit}</p>
+          <hr />
+          <p>
+            {" "}
+             {data?.unit}
+          </p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{date}</p>
+          <hr />
+          <p> {convertDate(data?.date)}</p>
         </div>
       </div>
-      <form className="mt-8 space-y-5">
-        <div>
-          <label className="font-medium">{productName}</label>
-          <input
-            type="text"
-            value={data?.name}
-            disabled
-            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
-          />
+      <div className="px-4">
+        <div className="font-extrabold text-gray-600 underline">
+          {productDetails} :{" "}
         </div>
-        <div>
-          <label className="font-medium">{productCode}</label>
-          <input
-            type="text"
-            value={data?.slug}
-            disabled
-            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
-          />
-        </div>
-        <div>
-          <label className="font-medium">{productUnit}</label>
-          <input
-            type="text"
-            value={data?.unit ?? "-"}
-            disabled
-            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
-          />
-        </div>
-        <div>
-          <label className="font-medium">{date}</label>
-          <input
-            type="date"
-            value={new Date(data?.createdAt).toISOString().split("T")[0]}
-            disabled
-            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
-          />
-        </div>
-        <div>
-          <label className="font-medium">{productDetails}</label>
-          <textarea
-            rows={5}
-            disabled
-            className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">{data?.details}</textarea>
-        </div>
-      </form>
-    </div>
-  </main>
-  )
-}
+        <div className="px-0">{data?.details}</div>
+      </div>
 
-export default Details
+      <div className="mt-10 space-y-4">
+        <h3 className="text-gray-600 text-2xl font-semibold px-4">
+          {stockHistoryTitle}
+        </h3>
+        <hr />
+      </div>
+      <div>
+        <ul className="space-y-4">
+          {data?.productActivity?.map((item, idx) => (
+            <li key={idx} className="px-5 py-2 bg-white rounded-md shadow-sm">
+              <div>
+                <div className="justify-between sm:flex">
+                  <div className="flex-1 flex gap-2 items-center">
+                    <BsFillCircleFill
+                      className={`${
+                        idx !== 0 && !item?.incrementQuantity
+                          ? "text-red-400"
+                          : "text-primary-400"
+                      }`}
+                    />
+                    <p>
+                        {item?.user?.userName} 
+                      <span className="font-bold">
+                      {" "} {idx === 0 ? convertDate(data?.date)  : convertDate(item?.updatedAt) }{" "}
+                      </span>
+                      {dateSub}
+                      <span className="font-bold">
+                      {" "}
+                        {idx !== 0 && convertNumber(item?.quantityChange)}{" "}
+                        {idx !== 0 && data?.unit} {data?.name}{" "}
+                      </span>
+                      {idx !== 0 && !item?.incrementQuantity
+                        ? stockRemoveHistorySub
+                        : stockAddHistorySub}{" "}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
+  );
+};
+
+export default Details;

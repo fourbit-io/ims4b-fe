@@ -1,6 +1,16 @@
 import { dashboard } from "./dashboard";
 import { login } from "./login";
-import { requisitionTableHeader, newRequisition } from "./requisition";
+import {
+  newRequisition,
+  requisitionsTable,
+  requisitionModal,
+  requisitionTableHeader,
+  requisitionSelectedProductsContent,
+  editRequisition,
+  showRequisition,
+  assignRequisition,
+  requisitionStatus,
+} from "./requisition";
 import {
   newProduct,
   editProduct,
@@ -11,6 +21,7 @@ import {
 } from "./product";
 import {
   newStock,
+  damagedStock,
   stocksTable,
   stockModal,
   stockTableHeader,
@@ -20,21 +31,31 @@ import {
 } from "./stock";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
+import { convertedNumber } from "./global";
 
 export {
+  convertedNumber,
   buttonText,
   tableText,
   paginationText,
   login,
   dashboard,
   newRequisition,
+  requisitionsTable,
+  requisitionModal,
   requisitionTableHeader,
+  requisitionSelectedProductsContent,
+  editRequisition,
+  showRequisition,
+  assignRequisition,
+  requisitionStatus,
   newProduct,
   editProduct,
   showProduct,
   productsTable,
   productModal,
   productTableHeader,
+  damagedStock,
   newStock,
   stocksTable,
   stockModal,

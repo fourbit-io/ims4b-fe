@@ -26,7 +26,6 @@ const SelectedProduct = () => {
     cancelBtn,
   } = selectedProductsContent;
 
-
   const selectedProducts = useSelector((state) => state.product.productData);
 
   const totalItem = useSelector((state) => state.product.totalItem);
@@ -45,12 +44,11 @@ const SelectedProduct = () => {
 
   const handleCancelAll = () => {
     dispatch(removeAll());
-  }
-
+  };
 
   const handleSubmit = () => {
     mutate(selectedProducts);
-  }
+  };
   return (
     <div className="px-4">
       <div className="bg-gray-50 p-2 rounded-md">
@@ -70,7 +68,7 @@ const SelectedProduct = () => {
                 <div>{item?.name}</div>
                 <div>{item?.code}</div>
                 <div className="flex gap-4 items-center">
-                  <div className="flex-1 flex items-center justify-between border px-2 py-1 rounded-md">
+                  <div className="flex-1 flex gap-2 items-center justify-between border px-2 py-1 rounded-md">
                     <AiOutlineMinus
                       onClick={() => handleProductCount(item?.productId, "dec")}
                       className="cursor-pointer"
@@ -103,10 +101,10 @@ const SelectedProduct = () => {
         <hr className="text-gray-600" />
         <div className="ml-4 flex justify-start gap-8 items-center text-gray-400">
           <p>
-            {totalQt}: {totalQty}
+            {totalItm}: {totalItem}
           </p>
           <p>
-            {totalItm}: {totalItem}
+            {totalQt}: {totalQty}
           </p>
         </div>
       </div>
@@ -121,10 +119,17 @@ const SelectedProduct = () => {
           className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
       </div> */}
       <div className="flex items-center gap-4 py-2">
-        <button onClick={handleCancelAll} className="px-2 py-1 bg-red-400 text-white rounded-md">
+        <button
+          onClick={handleCancelAll}
+          className="px-2 py-1 bg-red-400 text-white rounded-md">
           {cancelBtn}
         </button>
-        <button disabled={isLoading} onClick={handleSubmit} className={`px-2 py-1 ${isLoading ? 'bg-gray-400' : 'bg-blue-400'}  text-white rounded-md`}>
+        <button
+          disabled={isLoading || selectedProducts?.length === 0}
+          onClick={handleSubmit}
+          className={`px-2 py-1 ${
+            (isLoading || selectedProducts?.length === 0) ? "bg-gray-400 cursor-not-allowed" : "bg-blue-400"
+          }  text-white rounded-md`}>
           {isLoading ? submitBtnLoading : submitBtn}
         </button>
       </div>
