@@ -1,12 +1,6 @@
-import { useEffect, useState } from "react";
-import Layout from "../layout";
-import LoginPage from "./login";
+import Head from "next/head";
 
 export default function Home() {
-  const [accessToken, setAccessToken] = useState(null);
-  useEffect(() => {
-    setAccessToken(sessionStorage.getItem("access_token"));
-  }, []);
 
   const stats = [
     {
@@ -29,6 +23,9 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+      <title>ড্যাসবোর্ড</title>
+    </Head>
       <h1 className="text-4xl font-bold text-center my-12">ড্যাসবোর্ড</h1>
       <div className="mt-12 mx-32">
         <ul className="flex justify-between px-8">

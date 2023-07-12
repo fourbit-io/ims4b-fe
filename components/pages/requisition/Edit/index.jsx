@@ -5,17 +5,19 @@ import { editRequisition } from "@/contents/bengali";
 import Head from "next/head";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { useRequisition } from "./useEditRequisition";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductList from "./ProductList";
 import SelectedProduct from "./SelectedProduct";
 import { useDispatch, useSelector } from "react-redux";
-import { add, removeAll, setRemark } from "../../../../slices/productSlice";
+import { add, removeAll, setRemark } from "@/slices/productSlice";
 
 const EditRequisition = () => {
   const router = useRouter();
   const id = router?.query?.id;
   const pathname = "/" + router?.pathname.split("/")[1];
-  const previousPages = sidebarDatas()?.filter((item) => item?.url === pathname);
+  const previousPages = sidebarDatas()?.filter(
+    (item) => item?.url === pathname
+  );
 
   const { data, isLoading, error } = useRequisition(id);
   const dispatch = useDispatch();

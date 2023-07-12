@@ -7,6 +7,7 @@ import Modal from "@/components/reusable/Modal";
 import Pagination from "@/components/reusable/Pagination";
 import { requisitions } from "./utils/requisition";
 import { convertNumber, convertDate } from "@/lib";
+import Head from "next/head";
 
 const List = () => {
   const {
@@ -65,6 +66,9 @@ const List = () => {
 
   return (
     <>
+    <Head>
+        <title>{pageTitle}</title>
+      </Head>
       {deleteModal && (
         <Modal
           state={deleteModal}
