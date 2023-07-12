@@ -9,10 +9,21 @@ import {
   productsTable,
 } from "@/contents/bengali";
 import { useDeleteProduct } from "../useProduct";
+import { userInfo } from "@/api/authentication/userInfo";
+
+const { role } = userInfo();
 
 export const products = () => {
   const router = useRouter();
-  const tableColumns = ["name", "slug", "quantity", "unit", "details", "date", "actions"];
+  const tableColumns = [
+    "name",
+    "slug",
+    "quantity",
+    "unit",
+    "details",
+    "date",
+    "actions",
+  ];
   const { pageTitle } = productsTable;
   const { deleteModalContent } = productModal;
 
@@ -35,21 +46,26 @@ export const products = () => {
 
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
-      <HiPencilAlt
-        className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
-        onClick={() => redirectEditPage(row?.id)}
-      />
+      {(role === "MANAGER" || role === "SUPERADMIN") && (
+        <HiPencilAlt
+          className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
+          onClick={() => redirectEditPage(row?.id)}
+        />
+      )}
+
       <BiShow
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
         onClick={() => redirectShowPage(row?.id)}
       />
-      <BsTrash
-        className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
-        onClick={() => {
-          setDeleteModal(true);
-          setProductItem(row);
-        }}
-      />
+      {role === "SUPERADMIN" && (
+        <BsTrash
+          className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
+          onClick={() => {
+            setDeleteModal(true);
+            setProductItem(row);
+          }}
+        />
+      )}
     </div>
   );
 

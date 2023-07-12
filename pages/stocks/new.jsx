@@ -1,4 +1,5 @@
 import NewStock from "@/components/pages/stock/New";
+import withStorekeeper from "@/lib/hoc/withStoreKeeper";
 
 
 const New = () => {
@@ -7,4 +8,4 @@ const New = () => {
   );
 };
 
-export default New;
+export default withStorekeeper(New);

@@ -9,8 +9,10 @@ import {
   stocksTable,
 } from "@/contents/bengali";
 import { useApproveStock, useDeleteStock } from "../useStock";
+import { userInfo } from "@/api/authentication/userInfo";
 
 export const stocks = () => {
+  const { role } = userInfo();
   const router = useRouter();
   const tableColumns = [
     "stockId",
@@ -66,13 +68,15 @@ export const stocks = () => {
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
         onClick={() => redirectShowPage(row?.id)}
       /> */}
-      <BsTrash
-        className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
-        onClick={() => {
-          setDeleteModal(true);
-          setStockItem(row);
-        }}
-      />
+      {role === "SUPERADMIN" && (
+        <BsTrash
+          className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
+          onClick={() => {
+            setDeleteModal(true);
+            setStockItem(row);
+          }}
+        />
+      )}
     </div>
   );
 
@@ -108,5 +112,6 @@ export const stocks = () => {
     setPages,
     currentPage,
     setCurrentPage,
+    role,
   };
 };

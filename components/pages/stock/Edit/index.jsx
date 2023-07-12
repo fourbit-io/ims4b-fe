@@ -12,7 +12,7 @@ const EditStock = () => {
   const router = useRouter();
   const id = router?.query?.id;
   const pathname = "/" + router?.pathname.split("/")[1];
-  const previousPages = sidebarDatas?.filter((item) => item?.url === pathname);
+  const previousPages = sidebarDatas()?.filter((item) => item?.url === pathname);
 
   const { data, isLoading, error } = useStock(id);
   const { productData, isLoading:productLoading } = useProducts();
