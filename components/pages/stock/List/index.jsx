@@ -34,6 +34,7 @@ const List = () => {
     setPages,
     currentPage,
     setCurrentPage,
+    role,
   } = stocks();
 
   const { data, isLoading, error } = useStocks(currentPage);
@@ -108,7 +109,7 @@ const List = () => {
             tableHeaders={tableHeaders}
             tableItems={stockLists}
             tableColumns={tableColumns}
-            getActions={renderActions}
+            getActions={role !== "SHOPKEEPER" && renderActions}
           />
           <Pagination
             pages={pages}
