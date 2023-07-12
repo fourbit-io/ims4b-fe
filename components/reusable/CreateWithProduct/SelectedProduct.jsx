@@ -7,10 +7,9 @@ import {
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProductsContent } from "@/contents/bengali";
-import { remove, qtyCount, removeAll } from "../../../../slices/productSlice";
-import { useNewRequisitionData } from "./useNewRequisition";
+import { remove, qtyCount, removeAll } from "@/slices/productSlice";
 
-const SelectedProduct = () => {
+const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
   const {
     pageTitle,
     emptyProdContent,
@@ -26,7 +25,6 @@ const SelectedProduct = () => {
     cancelBtn,
   } = selectedProductsContent;
 
-
   const selectedProducts = useSelector((state) => state.product.productData);
 
   const totalItem = useSelector((state) => state.product.totalItem);
@@ -34,8 +32,6 @@ const SelectedProduct = () => {
   const dispatch = useDispatch();
 
   const [remark, setRemark] = useState("");
-
-  const { mutate, isLoading, isError, error } = useNewRequisitionData();
 
   const removeProduct = (id) => {
     dispatch(remove(id));
@@ -48,12 +44,15 @@ const SelectedProduct = () => {
   const handleCancelAll = () => {
     dispatch(removeAll());
     setRemark("");
-  }
-
+  };
 
   const handleSubmit = () => {
-    mutate({requisitionProducts:selectedProducts, remark});
-  }
+    if (remarkValue) {
+      mutate({ requisitionProducts: selectedProducts, remark });
+    } else {
+      mutate(selectedProducts);
+    }
+  };
   return (
     <div className="px-4">
       <div className="bg-gray-50 p-2 rounded-md">
@@ -113,22 +112,32 @@ const SelectedProduct = () => {
           </p>
         </div>
       </div>
-      <div>
-        <h4 className="p-1 text-gray-600">
-          {note} ({optional})
-        </h4>
-        <textarea
-          rows={4}
-          placeholder={note}
-          onChange={(e) => setRemark(e.target.value)}
-          value={remark}
-          className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
-      </div>
+      {remarkValue && (
+        <div>
+          <h4 className="p-1 text-gray-600">
+            {note} ({optional})
+          </h4>
+          <textarea
+            rows={4}
+            placeholder={note}
+            onChange={(e) => setRemark(e.target.value)}
+            value={remark}
+            className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
+        </div>
+      )}
+
       <div className="flex items-center gap-4 py-2">
-        <button onClick={handleCancelAll} className="px-2 py-1 bg-red-400 text-white rounded-md">
+        <button
+          onClick={handleCancelAll}
+          className="px-2 py-1 bg-red-400 text-white rounded-md">
           {cancelBtn}
         </button>
-        <button disabled={isLoading} onClick={handleSubmit} className={`px-2 py-1 ${isLoading ? 'bg-gray-400' : 'bg-blue-400'}  text-white rounded-md`}>
+        <button
+          disabled={isLoading}
+          onClick={handleSubmit}
+          className={`px-2 py-1 ${
+            isLoading ? "bg-gray-400" : "bg-blue-400"
+          }  text-white rounded-md`}>
           {isLoading ? submitBtnLoading : submitBtn}
         </button>
       </div>

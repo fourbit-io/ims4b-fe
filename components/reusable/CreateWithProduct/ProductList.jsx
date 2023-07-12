@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "@/components/reusable/Pagination";
-import { newStock, productsTable } from "@/contents/bengali";
+import { newRequisition, productsTable } from "@/contents/bengali";
 import StatusHandler from "@/components/reusable/StatusHandler";
-import { useDispatch } from "react-redux";
-import { add } from "../../../../slices/productSlice"
-import { useProducts } from "./useNewStock";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "@/slices/productSlice";
+import { useProducts } from "./useCreateWithProduct";
 
-const ProductList = () => {
+const ProductList = ({incQty}) => {
   const { pageTitle } = productsTable;
-  const { productAddBtn } = newStock;
+  const { productAddBtn } = newRequisition;
 
   const [productLists, setProductLists] = useState([]);
 
@@ -27,18 +27,21 @@ const ProductList = () => {
   }, [data, currentPage, searchString]);
 
   const dispatch = useDispatch();
+  const selectedProducts = useSelector((state) => state.product.productData);
 
   const handleAddProduct = (product) => {
-    let {id, name, slug} = product;
-    dispatch(add({
-      productId: id,
-      name,
-      code: slug,
-      quantity: 0,
-      date: new Date().toISOString(),
-      incrementQuantity: true,
-    }))
-  }
+    let { id, name, slug } = product;
+    dispatch(
+      add({
+        productId: id,
+        name,
+        code: slug,
+        quantity: 0,
+        date: new Date().toISOString(),
+        incrementQuantity: incQty ?? true,
+      })
+    );
+  };
 
   return (
     <div className="space-y-4">
@@ -76,18 +79,21 @@ const ProductList = () => {
         <ul className="space-y-2">
           {productLists?.map((item, id) => (
             <li className="flex justify-start items-center gap-4" key={id}>
-              <img
-                src="../images/dummy-product.jpeg"
-                className=" w-10  h-10"
-                alt="product image"
-              />
+              <p className="w-10  h-10 flex justify-center items-center font-bold bg-gray-400 text-white text-4xl uppercase border-2 border-gray-400 rounded-md bg-secondary-main">
+                {item?.name[0] ?? "N"}
+              </p>
               <div className="flex-1 flex-col">
                 <h4 className="text-gray-700">{item?.name}</h4>
                 <span className="text-sm text-gray-400">{item?.slug}</span>
               </div>
-              <button onClick={() => handleAddProduct(item)} className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">
-                + {productAddBtn}
-              </button>
+              {selectedProducts?.filter(
+                (sItem) => sItem?.productId === item?.id).length === 0 && (
+                <button
+                  onClick={() => handleAddProduct(item)}
+                  className="bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded-md">
+                  + {productAddBtn}
+                </button>
+              )}
             </li>
           ))}
         </ul>

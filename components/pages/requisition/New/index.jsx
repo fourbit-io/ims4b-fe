@@ -3,13 +3,14 @@ import { sidebarDatas } from "@/layout/utils/sidebarDatas";
 import BreadCrumb from "@/components/reusable/Breadcrumb";
 import { newRequisition } from "@/contents/bengali";
 import Head from "next/head";
-import ProductList from "./ProductList";
-import SelectedProduct from "./SelectedProduct";
+import { useNewRequisitionData } from "./useNewRequisition";
+import CreateWithProduct from "@/components/reusable/CreateWithProduct";
 
 const NewRequisition = () => {
   const router = useRouter();
   const pathname = "/" + router?.pathname.split("/")[1];
   const previousPages = sidebarDatas()?.filter((item) => item?.url === pathname);
+  const { mutate, isLoading, isError, error } = useNewRequisitionData();
   return (
     <>
       <Head>
@@ -19,10 +20,7 @@ const NewRequisition = () => {
         previousPages={previousPages}
         currentPage={newRequisition?.pageTitle}
       />
-      <div className="mt-5 px-4 py-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-        <ProductList />
-        <SelectedProduct />
-      </div>
+      <CreateWithProduct mutate={mutate} isLoading={isLoading} remark={true} />
     </>
   );
 };
