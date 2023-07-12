@@ -7,6 +7,7 @@ import { stocks } from "./utils/stock";
 import Modal from "@/components/reusable/Modal";
 import Pagination from "../../../reusable/Pagination";
 import { convertDate, convertNumber } from "../../../../lib/convertToBen";
+import Head from "next/head";
 
 const List = () => {
   const {
@@ -66,6 +67,9 @@ const List = () => {
 
   return (
     <>
+    <Head>
+        <title>{pageTitle}</title>
+      </Head>
       {deleteModal && (
         <Modal
           state={deleteModal}

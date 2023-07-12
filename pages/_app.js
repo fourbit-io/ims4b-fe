@@ -7,6 +7,7 @@ import Layout from "../layout";
 import LoginPage from "./login";
 import { store } from "../store";
 import { Provider } from "react-redux";
+import Head from "next/head";
 
 const queryClient = new QueryClient();
 
@@ -29,11 +30,14 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         {globalLoader && <Loader />}
         {accessToken !== null ? (
-            <Provider store={store}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </Provider>
+          <Provider store={store}>
+            <Head>
+              <link rel="icon" href="/images/ims-logo.png" sizes="any" />
+            </Head>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </Provider>
         ) : (
           <LoginPage />
         )}

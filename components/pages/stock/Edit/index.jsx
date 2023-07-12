@@ -6,7 +6,6 @@ import Head from "next/head";
 import Form from "./Form";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { useProducts, useStock } from "./useEditStock";
-import { useEffect, useState } from "react";
 
 const EditStock = () => {
   const router = useRouter();

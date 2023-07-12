@@ -21,7 +21,7 @@ const Login = () => {
       <div className="max-w-full md:max-w-md w-full text-gray-600 px-4 md:p-8 rounded-md md:shadow-lg bg-white md:border-2">
         <div className="text-center">
           <img
-            src="/images/fourbit-logo.png"
+            src="/images/ims-logo.png"
             width={150}
             className="mx-auto"
           />
@@ -53,11 +53,11 @@ const Login = () => {
           <button disabled={isLoading} className={`w-full px-4 py-2 text-white font-medium bg-primary-600 hover:bg-primary-500 active:bg-primary-600 rounded-lg duration-150 ${isLoading && '!bg-gray-400 cursor-not-allowed'}`}>
             {isLoading ? buttonLoading : button}
           </button>
-          <div className="text-center">
+          {/* <div className="text-center">
             <a href="#" className="hover:text-primary-600">
               {forgotPass}
             </a>
-          </div>
+          </div> */}
         </form>
       </div>
     </main>
