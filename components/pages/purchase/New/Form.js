@@ -1,24 +1,20 @@
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { newProduct } from "@/contents/bengali/product";
-import { useNewProductData } from "./useNewProduct";
+import { newPurchase } from "@/contents/bengali/purchase";
+import { useNewPurchaseData } from "./useNewPurchase";
 
 const Form = () => {
   const {
     formTitle,
     date,
-    productName,
-    productUnit,
-    productUnit1,
-    productUnit2,
-    productQty,
-    productDetails,
+    purchaseTitle,
+    remark,
+    details,
     submitBtn,
     loadingSubmitBtn,
-  } = newProduct;
+  } = newPurchase;
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  const { mutate, isLoading, isError, error } = useNewProductData();
+  const { mutate, isLoading, isError, error } = useNewPurchaseData();
 
   const onSubmit = (data) => {
     const { date, ...rest } = data;
@@ -38,51 +34,43 @@ const Form = () => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
           <div>
-            <label className="font-medium">{productName} *</label>
+            <label className="font-medium">{purchaseTitle} *</label>
             <input
               type="text"
-              placeholder={productName}
-              {...register("name", { required: true })}
+              placeholder={purchaseTitle}
+              {...register("title", { required: true })}
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
-          </div>
-          <div>
-            <label className="font-medium">{productUnit}</label>
-            <select
-              {...register("unit")}
-              defaultValue="unit"
-              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unit">{productUnit1}</option>
-              <option value="piece">{productUnit2}</option>
-            </select>
-          </div>
-          <div>
             <input
-              type="number"
-              placeholder={productQty}
-              {...register("quantity", { required: true, valueAsNumber: true })}
-              defaultValue={0}
-              hidden
-              required
-              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+              type="hidden"
+              {...register("status", { required: true })}
+              value="PENDING"
             />
           </div>
           <div>
             <label className="font-medium">{date}</label>
             <input
               type="date"
-              defaultValue={new Date().toISOString().split('T')[0]}
+              defaultValue={new Date().toISOString().split("T")[0]}
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
           <div>
-            <label className="font-medium">{productDetails}</label>
+            <label className="font-medium">{details}</label>
             <textarea
               rows={5}
-              placeholder={productDetails}
-              {...register("details")}
+              placeholder={details}
+              {...register("description")}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
+          </div>
+          <div>
+            <label className="font-medium">{remark}</label>
+            <textarea
+              rows={5}
+              placeholder={remark}
+              {...register("remark")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
           </div>
           <button

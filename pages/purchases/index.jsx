@@ -1,7 +1,7 @@
-import Purchase from "@/components/pages/purchase";
+import List from "@/components/pages/purchase/List";
 
 const PurchasePage = () => {
-  return <Purchase />;
+  return <List />;
 };
 
 export default PurchasePage;

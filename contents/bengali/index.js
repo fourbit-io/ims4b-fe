@@ -29,6 +29,14 @@ import {
   editStock,
   showStock,
 } from "./stock";
+import {
+  newPurchase,
+  editPurchase,
+  showPurchase,
+  purchasesTable,
+  purchaseModal,
+  purchaseTableHeader,
+} from "./purchase";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
 import { convertedNumber } from "./global";
@@ -63,4 +71,10 @@ export {
   selectedProductsContent,
   editStock,
   showStock,
+  newPurchase,
+  editPurchase,
+  showPurchase,
+  purchasesTable,
+  purchaseModal,
+  purchaseTableHeader,
 };

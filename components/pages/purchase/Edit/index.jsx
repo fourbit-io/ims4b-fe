@@ -7,7 +7,7 @@ import Form from "./Form";
 import { useProduct } from "./useEditProduct";
 import StatusHandler from "@/components/reusable/StatusHandler"
 
-const EditProduct = () => {
+const EditPurchase = () => {
   const router = useRouter();
   const id = router?.query?.id;
   const pathname = "/" + router?.pathname.split("/")[1];
@@ -31,4 +31,4 @@ const EditProduct = () => {
   );
 };
 
-export default EditProduct;
+export default EditPurchase;

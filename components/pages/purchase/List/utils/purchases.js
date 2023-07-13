@@ -4,33 +4,33 @@ import { BiShow } from "react-icons/bi";
 import { BsTrash } from "react-icons/bs";
 import { useState } from "react";
 import {
-  productTableHeader as tableHeaders,
-  productModal,
-  productsTable,
+  purchaseTableHeader as tableHeaders,
+  purchaseModal,
+  purchasesTable,
 } from "@/contents/bengali";
-import { useDeleteProduct } from "../useProduct";
+import { useDeletePurchase } from "../usePurchase";
 
-export const products = () => {
+export const purchases = () => {
   const router = useRouter();
-  const tableColumns = ["name", "slug", "quantity", "unit", "details", "date", "actions"];
-  const { pageTitle } = productsTable;
-  const { deleteModalContent } = productModal;
+  const tableColumns = ["poId", "title", "status", "date", "remark", "description", "createdBy", "actions"];
+  const { pageTitle } = purchasesTable;
+  const { deleteModalContent } = purchaseModal;
 
-  const [productLists, setProductLists] = useState([]);
+  const [purchaseLists, setPurchaseLists] = useState([]);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [productItem, setProductItem] = useState();
+  const [purchaseItem, setPurchaseItem] = useState();
 
   const [pages, setPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { mutate: deleteProduct, isLoading: dltIsLoading } = useDeleteProduct();
+  const { mutate: deletePurchase, isLoading: dltIsLoading } = useDeletePurchase();
 
   const redirectEditPage = (id) => {
-    router.push(`/products/edit/${id}`);
+    router.push(`/purchases/edit/${id}`);
   };
 
   const redirectShowPage = (id) => {
-    router.push(`/products/show/${id}`);
+    router.push(`/purchases/show/${id}`);
   };
 
   const renderActions = (row) => (
@@ -47,14 +47,14 @@ export const products = () => {
         className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
         onClick={() => {
           setDeleteModal(true);
-          setProductItem(row);
+          setPurchaseItem(row);
         }}
       />
     </div>
   );
 
   const deleteAction = (id) => {
-    deleteProduct(id);
+    deletePurchase(id);
   };
 
   return {
@@ -62,15 +62,15 @@ export const products = () => {
     tableColumns,
     tableHeaders,
     pageTitle,
-    productLists,
-    setProductLists,
+    purchaseLists,
+    setPurchaseLists,
     renderActions,
     deleteModal,
     setDeleteModal,
     deleteModalContent,
     deleteAction,
     dltIsLoading,
-    productItem,
+    purchaseItem,
     pages,
     setPages,
     currentPage,

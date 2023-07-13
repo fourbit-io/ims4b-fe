@@ -7,7 +7,7 @@ import { useProduct } from "./useShowProduct";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import Details from "./Details";
 
-const ProductShow = () => {
+const PurchaseShow = () => {
   const router = useRouter();
   const id = router?.query?.id;
   const pathname = "/" + router?.pathname.split("/")[1];
@@ -30,4 +30,4 @@ const ProductShow = () => {
   );
 };
 
-export default ProductShow;
+export default PurchaseShow;
