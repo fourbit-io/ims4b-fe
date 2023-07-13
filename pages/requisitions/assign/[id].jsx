@@ -1,9 +1,8 @@
-import Assign from "@/components/pages/requisition/Assign"
+import Assign from "@/components/pages/requisition/Assign";
+import withManager from "@/lib/hoc/withManager";
 
 const AssignPage = () => {
-  return (
-    <Assign/>
-  )
-}
+  return <Assign />;
+};
 
-export default AssignPage
+export default withManager(AssignPage);

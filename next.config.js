@@ -19,6 +19,7 @@ module.exports = {
       "@/contents": path.resolve(__dirname, "contents"),
       "@/lib": path.resolve(__dirname, "lib"),
       "@/slice": path.resolve(__dirname, "slice"),
+      "@/api": path.resolve(__dirname, "api"),
     };
     return config;
   },

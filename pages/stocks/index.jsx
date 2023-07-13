@@ -1,4 +1,5 @@
 import List from "@/components/pages/stock/List";
+import withStorekeeper from "@/lib/hoc/withStoreKeeper";
 
 const StockPage = () => {
   return (
@@ -6,4 +7,4 @@ const StockPage = () => {
   );
 };
 
-export default StockPage;
+export default withStorekeeper(StockPage);
