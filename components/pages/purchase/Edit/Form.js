@@ -1,38 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { editProduct } from "@/contents/bengali/product";
-import { useEditProductData } from "./useEditProduct";
+import { editPurchase } from "@/contents/bengali/purchase";
+import { useEditPurchaseData } from "./useEditPurchase";
 
-const Form = ({ productData, id }) => {
+const Form = ({ purchaseData, id }) => {
   const {
     formTitle,
     date,
-    productName,
-    productUnit,
-    productUnit1,
-    productUnit2,
-    productQty,
-    productDetails,
+    purchaseTitle,
+    remark,
+    details,
     submitBtn,
     loadingSubmitBtn,
-  } = editProduct;
+  } = editPurchase;
 
   useEffect(() => {
-    setValue("name", productData?.name);
-    setValue("quantity", productData?.quantity);
-    setValue("unit", productData?.unit ?? "unit");
-    setValue("details", productData?.details);
+    setValue("title", purchaseData?.title);
+    setValue("status", purchaseData?.status);
+    setValue("remark", purchaseData?.remark);
+    setValue("description", purchaseData?.description);
     setValue(
       "date",
-      productData?.date
-        ? new Date(productData?.date).toISOString().split("T")[0]
+      purchaseData?.date
+        ? new Date(purchaseData?.date).toISOString().split("T")[0]
         : new Date().toISOString().split("T")[0]
     );
-  }, [productData]);
+  }, [purchaseData]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  const { mutate, isLoading, isError, error } = useEditProductData();
+  const { mutate, isLoading, isError, error } = useEditPurchaseData();
 
   const onSubmit = (data) => {
     const { date, ...rest } = data;
@@ -52,52 +49,42 @@ const Form = ({ productData, id }) => {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
           <div>
-            <label className="font-medium">{productName} *</label>
+            <label className="font-medium">{purchaseTitle} *</label>
             <input
               type="text"
-              placeholder={productName}
-              {...register("name", { required: false })}
+              placeholder={purchaseTitle}
+              {...register("title", { required: true })}
+              required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
-          </div>
-          <div>
-            <label className="font-medium">{productUnit}</label>
-            <select
-              {...register("unit")}
-              defaultValue="unit"
-              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unit">
-                {productUnit1}
-              </option>
-              <option value="piece">{productUnit2}</option>
-            </select>
-          </div>
-          {/* <div>
-            <label className="font-medium">{productQty}</label>
             <input
-              type="number"
-              placeholder={productQty}
-              {...register("quantity", {
-                required: false,
-                valueAsNumber: true,
-              })}
-              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+              type="hidden"
+              {...register("status", { required: true })}
             />
-          </div> */}
+          </div>
           <div>
             <label className="font-medium">{date}</label>
             <input
               type="date"
+              defaultValue={new Date().toISOString().split("T")[0]}
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
           <div>
-            <label className="font-medium">{productDetails}</label>
+            <label className="font-medium">{details}</label>
             <textarea
               rows={5}
-              placeholder={productDetails}
-              {...register("details")}
+              placeholder={details}
+              {...register("description")}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
+          </div>
+          <div>
+            <label className="font-medium">{remark}</label>
+            <textarea
+              rows={5}
+              placeholder={remark}
+              {...register("remark")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
           </div>
           <button

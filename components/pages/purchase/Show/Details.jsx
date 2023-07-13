@@ -1,58 +1,99 @@
 import React from "react";
-import { showProduct } from "@/contents/bengali";
-import { BsFillCircleFill } from "react-icons/bs";
+import { showPurchase } from "@/contents/bengali";
 import { convertDate, convertNumber } from "@/lib";
+import { useChangePurchaseData } from "./useShowPurchase";
+import { userInfo } from "@/api/authentication/userInfo";
+
+const { role } = userInfo();
 
 const Details = ({ data }) => {
+  const { mutate: approveMutate, isLoading: approveLoading } =
+    useChangePurchaseData();
+  const { mutate: rejectMutate, isLoading: rejectLoading } =
+    useChangePurchaseData();
+  const handleApprovePO = () => {
+    const { id, title, description, remark } = data;
+    const status = "APPROVED";
+    const date = new Date().toISOString();
+    approveMutate({ id, title, description, remark, status, date });
+  };
+  const handleCancelPO = () => {
+    const { id, title, description, remark } = data;
+    const status = "REJECTED";
+    const date = new Date().toISOString();
+    rejectMutate({ id, title, description, remark, status, date });
+  };
   const {
     pageTitle,
     date,
-    productName,
-    productCode,
-    productQty,
-    productUnit,
-    productDetails,
-    stockHistoryTitle,
-    prodStockTitle,
-    stockUpdateTitle,
-    dateSub,
-    stockAddHistorySub,
-    stockRemoveHistorySub,
-  } = showProduct;
+    id,
+    purchaseTitle,
+    status,
+    createdBy,
+    remark,
+    details,
+    approveBtn,
+    cancelBtn,
+    loadingSubmitBtn,
+  } = showPurchase;
   return (
     <main>
       <div className="mt-5 space-y-2">
-        <h3 className="text-gray-600 text-2xl font-semibold px-4">
-          {pageTitle}
-        </h3>
+        <div className="flex items-center py-2">
+          <h3 className="text-gray-600 text-2xl font-semibold px-4">
+            {pageTitle}
+          </h3>
+          { role !== "SHOPKEEPER" &&
+            <div className="flex-1 px-2 flex gap-4 items-center justify-end">
+            {data?.status !== "REJECTED" && (
+              <button
+                onClick={handleCancelPO}
+                className={`${
+                  rejectLoading
+                    ? "bg-gray-600 hover:bg-gray-500 cursor-not-allowed"
+                    : "bg-red-600 hover:bg-red-500 cursor-pointer"
+                }  px-2 py-1 rounded-md text-white`}>
+                {rejectLoading ? loadingSubmitBtn : cancelBtn}
+              </button>
+            )}
+            {data?.status !== "APPROVED" && (
+              <button
+              onClick={handleApprovePO}
+              className={`${
+                approveLoading
+                  ? "bg-gray-600 hover:bg-gray-500 cursor-not-allowed"
+                  : "bg-primary-600 hover:bg-primary-500 cursor-pointer"
+              } px-2 py-1 rounded-md text-white`}>
+              {approveLoading ? loadingSubmitBtn : approveBtn}
+            </button>
+            )}
+
+            
+          </div>
+          }
+        </div>
         <hr />
       </div>
       <div className="grid grid-cols-5 px-4 my-10 divide-x-2  text-center">
         <div className="p-2">
-          <p className="font-extrabold text-gray-600">{productName}</p>
+          <p className="font-extrabold text-gray-600">{id}</p>
           <hr />
-          <p> {data?.name}</p>
+          <p> {convertNumber(data?.id)}</p>
         </div>
         <div className="p-2">
-          <p className="font-extrabold text-gray-600">{productCode}</p>
+          <p className="font-extrabold text-gray-600">{purchaseTitle}</p>
           <hr />
-          <p> {data?.slug}</p>
+          <p> {data?.title}</p>
         </div>
         <div className="p-2">
-          <p className="font-extrabold text-gray-600">{productQty}</p>
+          <p className="font-extrabold text-gray-600">{status}</p>
           <hr />
-          <p>
-            {" "}
-            {convertNumber(data?.quantity)}
-          </p>
+          <p> {data?.status}</p>
         </div>
         <div className="p-2">
-          <p className="font-extrabold text-gray-600">{productUnit}</p>
+          <p className="font-extrabold text-gray-600">{createdBy}</p>
           <hr />
-          <p>
-            {" "}
-             {data?.unit}
-          </p>
+          <p> {data?.createdByUser?.userName}</p>
         </div>
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{date}</p>
@@ -60,54 +101,17 @@ const Details = ({ data }) => {
           <p> {convertDate(data?.date)}</p>
         </div>
       </div>
-      <div className="px-4">
+      <div className="px-4 py-2">
         <div className="font-extrabold text-gray-600 underline">
-          {productDetails} :{" "}
+          {remark} :{" "}
         </div>
-        <div className="px-0">{data?.details}</div>
+        <div className="px-0">{data?.remark}</div>
       </div>
-
-      <div className="mt-10 space-y-4">
-        <h3 className="text-gray-600 text-2xl font-semibold px-4">
-          {stockHistoryTitle}
-        </h3>
-        <hr />
-      </div>
-      <div>
-        <ul className="space-y-4">
-          {data?.productActivity?.map((item, idx) => (
-            <li key={idx} className="px-5 py-2 bg-white rounded-md shadow-sm">
-              <div>
-                <div className="justify-between sm:flex">
-                  <div className="flex-1 flex gap-2 items-center">
-                    <BsFillCircleFill
-                      className={`${
-                        idx !== 0 && !item?.incrementQuantity
-                          ? "text-red-400"
-                          : "text-primary-400"
-                      }`}
-                    />
-                    <p>
-                        {item?.user?.userName} 
-                      <span className="font-bold">
-                      {" "} {idx === 0 ? convertDate(data?.date)  : convertDate(item?.updatedAt) }{" "}
-                      </span>
-                      {dateSub}
-                      <span className="font-bold">
-                      {" "}
-                        {idx !== 0 && convertNumber(item?.quantityChange)}{" "}
-                        {idx !== 0 && data?.unit} {data?.name}{" "}
-                      </span>
-                      {idx !== 0 && !item?.incrementQuantity
-                        ? stockRemoveHistorySub
-                        : stockAddHistorySub}{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <div className="px-4 py-2">
+        <div className="font-extrabold text-gray-600 underline">
+          {details} :{" "}
+        </div>
+        <div className="px-0">{data?.description}</div>
       </div>
     </main>
   );

@@ -16,7 +16,7 @@ export const editPurchase = {
   purchaseTitle: "টাইটেল",
   remark: "মন্তব্য",
   details: "বিস্তারিত",
-  submitBtn: "অ্যাড করুন",
+  submitBtn: "সংশোধন করুন",
   loadingSubmitBtn: "অপেক্ষা করুন",
 };
 
@@ -29,13 +29,9 @@ export const showPurchase = {
   createdBy: "তৈরী করেছেন",
   remark: "মন্তব্য",
   details: "বিস্তারিত",
-  stockHistoryTitle: "ক্রয় আদেশ বিস্তারিত দেখুন ",
-  poCreateTitle: "ক্রয় আদেশ তৈরী করা হয়েছে",
-  poUpdateTitle: "ক্রয় আদেশ আপডেট করা হয়েছে",
-  dateSub: "তারিখে",
-  poAddHistorySub: "ক্রয় আদেশ তৈরী করেছেন।",
-  poUpdateHistory: "ক্রয় আদেশ সংশোধন করেছেন।",
-  poRemoveHistorySub: "ক্রয় আদেশ তৈরী সরিয়ে ফেলেছেন।",
+  approveBtn: "ক্রয় আদেশ পাস্ করুন ",
+  cancelBtn: "ক্রয় আদেশ বাতিল করুন",
+  loadingSubmitBtn: "অপেক্ষা করুন",
 };
 
 export const purchasesTable = {

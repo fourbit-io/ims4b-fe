@@ -2,16 +2,16 @@ import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
-const getProduct = async (id) => {
+const getPurchase = async (id) => {
   return await axiosInstance.get(
-    `/v1/product/${id}`
+    `/v1/purchase-order/${id}`
   );
 };
 
-export const useProduct = (id) => {
+export const usePurchase = (id) => {
   const { data, isLoading, isError, error, isSuccess } = useQuery(
-    ["product-get", id],
-    () => getProduct(id)
+    ["purchase-order-get", id],
+    () => getPurchase(id)
   );
   return {
     data,
@@ -22,19 +22,19 @@ export const useProduct = (id) => {
   };
 };
 
-const editProduct = async (product) => {
-    const {id, ...rest} = product;
-    return await axiosInstance.patch(`/v1/product/without-quantity/${id}`, rest);
+const editPurchase = async (purchase) => {
+    const {id, ...rest} = purchase;
+    return await axiosInstance.patch(`/v1/purchase-order/${id}`, rest);
   };
   
-  export const useEditProductData = () => {
+  export const useEditPurchaseData = () => {
     const router = useRouter();
     const queryClient = useQueryClient();
   
-    return useMutation(editProduct, {
+    return useMutation(editPurchase, {
        onSuccess: async (data) => {
-        await queryClient.invalidateQueries(["product-lists"]);
-        router.push("/products");
+        await queryClient.invalidateQueries(["purchase-order-lists"]);
+        router.push("/purchases");
       },
       onError: (data) => {},
     });
