@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { sidebarDatas } from "@/layout/utils/sidebarDatas";
 import BreadCrumb from "@/components/reusable/Breadcrumb";
 import { showRequisition } from "@/contents/bengali";
@@ -7,20 +6,27 @@ import { useRequisition } from "./useShowRequisition";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import ProductDetails from "./ProductDetails";
 import RequisitionDetails from "./RequisitionDetails";
+import { useRouter } from "next/router";
 
 const RequisitionShow = () => {
   const router = useRouter();
   const id = router?.query?.id;
   const pathname = "/" + router?.pathname.split("/")[1];
-  const previousPages = sidebarDatas()?.filter((item) => item?.url === pathname);
+  const previousPages = sidebarDatas()?.filter(
+    (item) => item?.url === pathname
+  );
 
   const { data, isLoading, error } = useRequisition(id);
+
+
   return (
     <>
       <Head>
         <title>{showRequisition?.pageTitle}</title>
       </Head>
-      <StatusHandler isLoading={isLoading} error={error}>
+      <StatusHandler
+        isLoading={isLoading}
+        error={error}>
         <BreadCrumb
           previousPages={previousPages}
           currentPage={showRequisition?.pageTitle}

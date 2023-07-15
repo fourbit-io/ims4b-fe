@@ -11,6 +11,7 @@ export const requisitionModal = {
   deleteModalContent: "আপনি কি এই রিকুইজিশন টি লিস্ট থেকে মুছে ফেলতে চান?",
   approveModalContent: "আপনি কি এই রিকুইজিশন টি পাস্ করতে চান?",
   releaseModalContent: "আপনি কি এই রিকুইজিশন টি খালাশ করতে চান?",
+  receiveModalContent: "আপনি কি এই রিকুইজিশন টি গ্রহণ করতে চান?",
 };
 
 export const requisitionTableHeader = [
@@ -90,5 +91,6 @@ export const requisitionStatus = {
   ASSIGNED: "তারিখে রিকুইজিশনের দায়িত্ব দিয়েছে ",
   APPROVED: "তারিখে রিকুইজিশন অনুমোদন করেছে।",
   RELEASED: "তারিখে রিকুইজিশন বিতরণ করেছে।",
+  DELIVERED: "তারিখে রিকুইজিশন গ্রহণ করেছে।",
 }
 
