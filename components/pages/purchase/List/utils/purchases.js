@@ -7,6 +7,7 @@ import {
   purchaseTableHeader as tableHeaders,
   purchaseModal,
   purchasesTable,
+  buttons,
 } from "@/contents/bengali";
 import { useDeletePurchase } from "../usePurchase";
 import { userInfo } from "@/api/authentication/userInfo";
@@ -49,24 +50,30 @@ export const purchases = () => {
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
       {role !== "SHOPKEEPER" && (
-        <HiPencilAlt
-          className="w-7 h-7 border p-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
-          onClick={() => redirectEditPage(row?.id)}
-        />
+        <button
+          className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
+          onClick={() => redirectEditPage(row?.id)}>
+          <HiPencilAlt />
+          {buttons?.edit}
+        </button>
       )}
 
-      <BiShow
-        className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
-        onClick={() => redirectShowPage(row?.id)}
-      />
+      <button
+        className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
+        onClick={() => redirectShowPage(row?.id)}>
+        <BiShow />
+        {buttons?.show}
+      </button>
       {role === "SUPERADMIN" && (
-        <BsTrash
-          className="w-7 h-7 border p-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
+        <button
+          className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
           onClick={() => {
             setDeleteModal(true);
             setPurchaseItem(row);
-          }}
-        />
+          }}>
+          <BsTrash />
+          {buttons?.delete}
+        </button>
       )}
     </div>
   );
