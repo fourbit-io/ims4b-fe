@@ -1,38 +1,44 @@
-import React from 'react'
-import { convertNumber, convertDate } from '@/lib';
+import React from "react";
+import { convertNumber, convertDate } from "@/lib";
+import Actions from "./Actions";
 
-const ProductDetails = ({data, showRequisition}) => {
-    const {
-        status,
-        remark,
-        createdByUser,
-        assginedUser,
-        assginedByUser,
-        approvedByUser,
-        updatedAt,
-        requisitionProduct,
-      } = data;
-    
-      const {
-        productHeader,
-        productName,
-        productCode,
-        productQty,
-        productUnit,
-        date,
-        remarks,
-        statusContent,
-        createdBy,
-        assignedBy,
-        assignedTo,
-        approvedBy,
-      } = showRequisition;
+const ProductDetails = ({ data, showRequisition, buttons }) => {
+  const {
+    id,
+    status,
+    remark,
+    createdByUser,
+    assginedUser,
+    assginedByUser,
+    approvedByUser,
+    updatedAt,
+    requisitionProduct,
+  } = data;
+
+  const {
+    productHeader,
+    productName,
+    productCode,
+    productQty,
+    productUnit,
+    date,
+    remarks,
+    statusContent,
+    createdBy,
+    assignedBy,
+    assignedTo,
+    approvedBy,
+  } = showRequisition;
+
   return (
     <div>
-        <div className="mt-5 space-y-2">
-        <h3 className="text-gray-600 text-2xl font-semibold px-4 my-6">
-          {productHeader}
-        </h3>
+      <div className="mt-5 space-y-2">
+        <div className="flex items-center py-2">
+          <h3 className="text-gray-600 text-2xl font-semibold px-4 my-6">
+            {productHeader}
+          </h3>
+          <Actions id={id} status={status}/>
+        </div>
       </div>
       <div className="flex items-center justify-between">
         <div className="px-4 flex gap-2 items-center">
@@ -100,7 +106,7 @@ const ProductDetails = ({data, showRequisition}) => {
         <span>{remark}</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;

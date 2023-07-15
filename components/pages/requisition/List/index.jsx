@@ -19,16 +19,6 @@ const List = () => {
     requisitionItem,
     setRequisitionLists,
     renderActions,
-    approveModal,
-    setApproveModal,
-    approveModalContent,
-    approveAction,
-    aprvIsLoading,
-    releaseModal,
-    setReleaseModal,
-    releaseModalContent,
-    releaseAction,
-    rlsIsLoading,
     deleteModal,
     setDeleteModal,
     deleteModalContent,
@@ -78,24 +68,6 @@ const List = () => {
           id={requisitionItem?.id}
         />
       )}
-      {approveModal && (
-        <Modal
-          state={approveModal}
-          setState={setApproveModal}
-          content={approveModalContent}
-          action={approveAction}
-          id={requisitionItem?.id}
-        />
-      )}
-      {releaseModal && (
-        <Modal
-          state={releaseModal}
-          setState={setReleaseModal}
-          content={releaseModalContent}
-          action={releaseAction}
-          id={requisitionItem?.id}
-        />
-      )}
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -114,7 +86,7 @@ const List = () => {
           )}
         </div>
         <StatusHandler
-          isLoading={isLoading || dltIsLoading || aprvIsLoading}
+          isLoading={isLoading || dltIsLoading}
           error={error}>
           <Table
             tableHeaders={tableHeaders}
