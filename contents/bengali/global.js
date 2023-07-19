@@ -10,3 +10,14 @@ export const convertedNumber = {
     8: "৮",
     9: "৯",
 }
+
+export const buttons = {
+    edit: "সংশোধন",
+    show: "বিস্তারিত",
+    delete: "মুছে ফেলুন",
+    approve: "অনুমোদন করুন",
+    assign: "বরাদ্দ করুন",
+    release: "বিতরণ করুন",
+    receive: "প্রাপ্তিস্বীকার করুন",
+    loading: "অপেক্ষা করুন",
+}

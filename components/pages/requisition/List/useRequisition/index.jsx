@@ -40,38 +40,4 @@ export const useDeleteRequisition = () => {
   });
 };
 
-const approveRequisition = async (id) => {
-  return await axiosInstance.patch(`/v1/requisition/approved/${id}`);
-};
 
-export const useApproveRequisition = () => {
-  const router = useRouter();
-  const queryClient = useQueryClient();
-  return useMutation(approveRequisition, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["requisition-lists"]);
-      router.push("/requisitions");
-    },
-    onError: (data) => {
-      console.log({ data });
-    },
-  });
-};
-
-const releaseRequisition = async (id) => {
-  return await axiosInstance.patch(`/v1/requisition/released/${id}`);
-};
-
-export const useReleaseRequisition = () => {
-  const router = useRouter();
-  const queryClient = useQueryClient();
-  return useMutation(releaseRequisition, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["requisition-lists"]);
-      router.push("/requisitions");
-    },
-    onError: (data) => {
-      console.log({ data });
-    },
-  });
-};

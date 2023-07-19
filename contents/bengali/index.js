@@ -39,10 +39,11 @@ import {
 } from "./purchase";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
-import { convertedNumber } from "./global";
+import { convertedNumber, buttons } from "./global";
 
 export {
   convertedNumber,
+  buttons,
   buttonText,
   tableText,
   paginationText,
