@@ -9,9 +9,8 @@ const ReportPage = () => {
   });
 
   return (
-    <div>
+    <div className="w-a4 mx-auto">
       <Component ref={componentRef}/>
-      {/* <div ref={componentRef}>hello</div> */}
 
       <div className="my-10 flex justify-center">
       <button className="text-center bg-primary-600 text-white hover:bg-primary-500 rounded-md px-2 py-1" onClick={handlePrint}>Print this out!</button>

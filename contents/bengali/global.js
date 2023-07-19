@@ -20,4 +20,5 @@ export const buttons = {
     release: "বিতরণ করুন",
     receive: "প্রাপ্তিস্বীকার করুন",
     loading: "অপেক্ষা করুন",
+    report: "রিপোর্ট দেখুন",
 }

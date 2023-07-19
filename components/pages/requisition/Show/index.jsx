@@ -1,6 +1,6 @@
 import { sidebarDatas } from "@/layout/utils/sidebarDatas";
 import BreadCrumb from "@/components/reusable/Breadcrumb";
-import { showRequisition } from "@/contents/bengali";
+import { showRequisition, buttons } from "@/contents/bengali";
 import Head from "next/head";
 import { useRequisition } from "./useShowRequisition";
 import StatusHandler from "@/components/reusable/StatusHandler";
@@ -34,12 +34,12 @@ const RequisitionShow = () => {
         <ProductDetails
           data={data?.data?.data}
           showRequisition={showRequisition}
+          buttons={buttons}
         />
         <RequisitionDetails
           data={data?.data?.data}
           showRequisition={showRequisition}
         />
-        <button onClick={() => router.push(`/requisitions/report/${id}`)}>Report</button>
       </StatusHandler>
     </>
   );

@@ -28,29 +28,56 @@ export const Component = forwardRef((props, ref) => {
           পদবী……………………………………… এর ব্যবহারের জন্য নিম্নে বর্ণিত মালামালগুলো সরবরাহ
           করার জন্য অনুরোধ করা হলো।
         </p>
-        <div className="border-2 text-center">
-        <div className="grid grid-cols-4 divide-x-2">
-          <h4 className="border-b">ক্রম</h4>
-          <h4 className="border-b">মালামালের নাম</h4>
-          <h4 className="border-b">সংখ্যা</h4>
-          <h4 className="border-b ">মন্তব্য</h4>
+
+        {/* table data  */}
+
+        <div className="border-2 my-6">
+          <div className="grid grid-cols-4 text-center divide-x-2">
+            <h4 className="border-b">ক্রম</h4>
+            <h4 className="border-b">মালামালের নাম</h4>
+            <h4 className="border-b">সংখ্যা</h4>
+            <h4 className="border-b ">মন্তব্য</h4>
+          </div>
+          <div className="grid grid-cols-4 divide-x-2">
+            <p className="p-2">1</p>
+            <p className="p-2">Data center popwered by fourbit</p>
+            <p className="p-2">43</p>
+            <p className="p-2">Data center popwered by fourbit</p>
+          </div>
+          <div className="grid grid-cols-4 divide-x-2">
+            <p className="p-2">1</p>
+            <p className="p-2">Data center popwered by fourbit</p>
+            <p className="p-2">43</p>
+            <p className="p-2">Data center popwered by fourbit</p>
+          </div>
         </div>
-        <div className="grid grid-cols-4 divide-x-2">
-          <p className="p-2">1</p>
-          <p className="p-2">Data center popwered by fourbit</p>
-          <p className="p-2">43</p>
-          <p className="p-2">
-            Data center popwered by fourbit
+
+        {/* table data  */}
+
+        {/* signature data  */}
+
+        <div className="border-2 divide-x-2 grid grid-cols-2">
+          <div className="p-2">
+            <p className="mb-6">চাহিদাপত্র দাখিলকারীর স্বাক্ষর</p>
+            <p>নামঃ</p>
+          </div>
+          <div className="p-2">
+            <p className="mb-6">সুপারিশকারী কর্মকর্তার স্বাক্ষর</p>
+            <p>পদবীঃ</p>
+          </div>
+        </div>
+
+        {/* signature data  */}
+
+        <div className="my-10">
+          <p>উপর্যুক্ত মালামাল বুঝিয়া পাইলাম</p>
+          <p className="mb-6">মালামাল গ্রহণকারীর নামঃ</p>
+          <p>
+            মালামালগুলো……………তারিখে সরবরাহ করে নিম্নেবর্ণিত রেজিস্টার ও পৃষ্ঠায়
+            লিপিবদ্ধ করা হলো।
           </p>
-        </div>
-        <div className="grid grid-cols-4 divide-x-2">
-          <p className="p-2">1</p>
-          <p className="p-2">Data center popwered by fourbit</p>
-          <p className="p-2">43</p>
-          <p className="p-2">
-            Data center popwered by fourbit
-          </p>
-        </div>
+          <p>রেজিস্টার নং………………………………………………………………</p>
+          <p>পৃষ্ঠা নং……………………………………………………………………</p>
         </div>
       </div>
     </div>

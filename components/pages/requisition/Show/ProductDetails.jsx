@@ -1,8 +1,10 @@
 import React from "react";
 import { convertNumber, convertDate } from "@/lib";
 import Actions from "./Actions";
+import { useRouter } from "next/router";
 
 const ProductDetails = ({ data, showRequisition, buttons }) => {
+  const router = useRouter();
   const {
     id,
     status,
@@ -63,10 +65,17 @@ const ProductDetails = ({ data, showRequisition, buttons }) => {
         </div>
       </div>
 
-      <div className="px-4 flex gap-2 items-center">
+      <div className="flex items-center justify-between">
+        <div className="px-4 flex gap-2 items-center">
         <span className="font-extrabold text-gray-600">{approvedBy} : </span>
         <span>{approvedByUser?.userName}</span>
+        </div>
+        <div className="px-2">
+        <button className="bg-orange-600 text-white px-2 py-1 rounded-md w-[150px]" onClick={() => router.push(`/requisitions/report/${id}`)}>{buttons?.report}</button>
+        </div>
+        
       </div>
+      
 
       <div className="grid grid-cols-4 px-4 mt-4 border divide-x-2  text-center">
         <div>
