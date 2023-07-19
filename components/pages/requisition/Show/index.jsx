@@ -39,6 +39,7 @@ const RequisitionShow = () => {
           data={data?.data?.data}
           showRequisition={showRequisition}
         />
+        <button onClick={() => router.push(`/requisitions/report/${id}`)}>Report</button>
       </StatusHandler>
     </>
   );
