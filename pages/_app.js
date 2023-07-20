@@ -17,10 +17,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     setAccessToken(sessionStorage.getItem("access_token"));
-    Router.events.on("routeChangeStart", (as, { shallow }) => {
-      if (!shallow) {
+    Router.events.on("routeChangeStart", () => {
         setGlobalLoader(true);
-      }
     });
     Router.events.on("routeChangeComplete", () => setGlobalLoader(false));
     Router.events.on("routeChangeError", () => setGlobalLoader(false));

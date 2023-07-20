@@ -3,7 +3,7 @@ import { convertNumber, convertDate } from "@/lib";
 import Actions from "./Actions";
 import { useRouter } from "next/router";
 
-const ProductDetails = ({ data, showRequisition, buttons }) => {
+const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
   const router = useRouter();
   const {
     id,
@@ -71,7 +71,7 @@ const ProductDetails = ({ data, showRequisition, buttons }) => {
         <span>{approvedByUser?.userName}</span>
         </div>
         <div className="px-2">
-        <button className="bg-orange-600 text-white px-2 py-1 rounded-md w-[150px]" onClick={() => router.push(`/requisitions/report/${id}`)}>{buttons?.report}</button>
+        <button className="bg-orange-600 text-white px-2 py-1 rounded-md w-[150px] hover:bg-orange-500" onClick={() => setShowReport(true)}>{buttons?.report}</button>
         </div>
         
       </div>
