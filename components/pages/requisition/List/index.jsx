@@ -33,6 +33,7 @@ const List = () => {
 
   const { data, isLoading, error } = useRequisitions(currentPage);
 
+
   useEffect(() => {
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {

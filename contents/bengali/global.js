@@ -20,4 +20,7 @@ export const buttons = {
     release: "বিতরণ করুন",
     receive: "প্রাপ্তিস্বীকার করুন",
     loading: "অপেক্ষা করুন",
+    report: "রিপোর্ট দেখুন",
+    print: "প্রিন্ট করুন",
+    previousPage: "পূর্ববর্তী পেজ",
 }
