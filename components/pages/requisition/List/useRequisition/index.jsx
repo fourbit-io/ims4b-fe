@@ -1,6 +1,5 @@
 import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
 
 const getRequisitions = async (currentPage) => {
   return await axiosInstance.get(
@@ -27,12 +26,10 @@ const deleteRequisition = async (id) => {
 };
 
 export const useDeleteRequisition = () => {
-  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(deleteRequisition, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["requisition-lists"]);
-      router.push("/requisitions");
+      return queryClient.invalidateQueries(["requisition-lists", 1]);
     },
     onError: (data) => {
       console.log({ data });

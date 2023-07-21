@@ -50,7 +50,8 @@ const assignRequisition = async (requisitions) => {
   
     return useMutation(assignRequisition, {
       onSuccess: (data) => {
-        router.push("/requisitions");
+        const {id} = data?.data?.data;
+        router.push(`/requisitions/show/${id}`);
       },
       onError: (data) => {},
     });

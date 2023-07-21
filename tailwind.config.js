@@ -28,6 +28,9 @@ module.exports = {
         indigo: colors.indigo,
         yellow: colors.yellow,
       },
+      spacing: {
+        a4: '210mm',
+      },
     },
   },
   plugins: [],
