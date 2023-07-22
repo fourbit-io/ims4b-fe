@@ -60,6 +60,12 @@ export const sidebarDatas = () => {
       icon: <BiPurchaseTagAlt className="text-[20px]" />,
     },
     {
+      name: "Report",
+      url: "/report",
+      subDatas: [],
+      icon: <BiPurchaseTagAlt className="text-[20px]" />,
+    },
+    {
       name: "লগ আউট",
       url: "/logout",
       subDatas: [],
