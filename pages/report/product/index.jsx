@@ -1,6 +1,8 @@
 import { CSVLink } from "react-csv";
 
-const ReportPage = () => {
+import withManager from "@/lib/hoc/withManager";
+
+const ProductReport = () => {
   const headers = [
     { label: "First Name", key: "firstname" },
     { label: "Last Name", key: "lastname" },
@@ -18,12 +20,17 @@ const ReportPage = () => {
         data={data}
         headers={headers}
         filename={"my-file.csv"}
-        style={{backgroundColor: 'green', color: 'white', padding: 5, borderRadius:5, cursor: 'pointer'}}
-        >
+        style={{
+          backgroundColor: "green",
+          color: "white",
+          padding: 5,
+          borderRadius: 5,
+          cursor: "pointer",
+        }}>
         Download me
       </CSVLink>
     </div>
   );
 };
 
-export default ReportPage;
+export default withManager(ProductReport);
