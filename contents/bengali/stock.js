@@ -31,6 +31,14 @@ export const stockTableHeader = [
   "তারিখ",
 ];
 
+export const stockReportTableHeader = [
+  "আইডি",
+  "প্রোডাক্টের নাম",
+  "কোড",
+  "পরিমান",
+  "একক",
+];
+
 export const selectedProductsContent = {
   pageTitle: "নিৰ্বাচিত প্রোডাক্ট",
   emptyProdContent:
