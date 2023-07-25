@@ -3,6 +3,7 @@ import { BsHexagon, BsPaperclip } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { BiPurchaseTagAlt } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
 import { userInfo } from "@/api/authentication/userInfo";
 
 export const sidebarDatas = () => {
@@ -73,6 +74,12 @@ export const sidebarDatas = () => {
       url: "/",
       subDatas: [],
       icon: <RxDashboard className="text-[20px]" />,
+    },
+    {
+      name: "কর্মকর্তাদের  তালিকা",
+      url: "/users",
+      subDatas: [],
+      icon: <AiOutlineUser className="text-[20px]" />,
     },
     {
       name: "প্রোডাক্ট",
