@@ -21,8 +21,7 @@ const Form = () => {
   const { mutate, isLoading, isError, error } = useNewUserData();
 
   const onSubmit = (data) => {
-    const { date, ...rest } = data;
-    mutate({ ...rest, date: new Date(date).toISOString() });
+    mutate(data);
     reset();
   };
 
@@ -42,7 +41,7 @@ const Form = () => {
             <input
               type="text"
               placeholder={userName}
-              {...register("name", { required: true })}
+              {...register("userName", { required: true })}
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />

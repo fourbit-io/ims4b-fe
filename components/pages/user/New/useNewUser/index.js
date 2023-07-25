@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axiosInstance from "@/api/globalApi/axiosInstance";
 
 const addUser = async (user) => {
-  return await axiosInstance.post("/v1/user", user);
+  return await axiosInstance.post("/v1/auth/signup/manual", user);
 };
 
 export const useNewUserData = () => {
