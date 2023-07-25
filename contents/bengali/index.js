@@ -29,6 +29,7 @@ import {
   selectedProductsContent,
   editStock,
   showStock,
+  stockFilter,
 } from "./stock";
 import {
   newPurchase,
@@ -74,6 +75,7 @@ export {
   selectedProductsContent,
   editStock,
   showStock,
+  stockFilter,
   newPurchase,
   editPurchase,
   showPurchase,

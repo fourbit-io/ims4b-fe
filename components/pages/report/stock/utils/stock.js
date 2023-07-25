@@ -2,14 +2,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   stockReportTableHeader as tableHeaders,
-  stockModal,
   stocksTable,
-  buttons,
+  stockFilter,
 } from "@/contents/bengali";
-import { userInfo } from "@/api/authentication/userInfo";
 
 export const stocks = () => {
-  const { role } = userInfo();
   const router = useRouter();
   const tableColumns = [
     "stockId",
@@ -18,9 +15,17 @@ export const stocks = () => {
     "quantity",
     "productUnit",
   ];
-  const { pageTitle, newStockType, damagedStockType } = stocksTable;
+  const { pageTitle } = stocksTable;
 
   const [stockLists, setStockLists] = useState([]);
+
+  const [filter, setFilter] = useState({
+    pid: "",
+    pName: "",
+    qtyOrder: "desc",
+    startDate: "",
+    endDate: "",
+  });
 
   const toObject = (arr1, arr2) => {
     let obj = [];
@@ -36,10 +41,12 @@ export const stocks = () => {
     router,
     tableColumns,
     tableHeaders,
+    stockFilter,
     pageTitle,
     stockLists,
     setStockLists,
-    role,
+    filter,
+    setFilter,
     printHeader,
   };
 };

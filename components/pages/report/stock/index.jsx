@@ -1,26 +1,28 @@
-import React, { useEffect } from "react";
-import { newStock, damagedStock } from "@/contents/bengali";
+import React, { useEffect, useState } from "react";
+import { buttons } from "@/contents/bengali";
 import Table from "@/components/reusable/Table";
 import { useStocks } from "./useStock";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { stocks } from "./utils/stock";
-import Modal from "@/components/reusable/Modal";
-import Pagination from "../../../reusable/Pagination";
-import { convertDate, convertNumber } from "../../../../lib/convertToBen";
+import { convertNumber } from "@/lib/convertToBen";
 import Head from "next/head";
 import { CSVLink } from "react-csv";
+import Filter from "./Filter";
 
 const StockReport = () => {
   const {
     tableColumns,
     tableHeaders,
+    stockFilter,
     pageTitle,
     stockLists,
     setStockLists,
+    filter,
+    setFilter,
     printHeader,
   } = stocks();
 
-  const { data, isLoading, error } = useStocks();
+  const { data, isLoading, error, refetch } = useStocks(filter);
 
   useEffect(() => {
     const dataValues = data?.data?.data?.map((dataValue) => {
@@ -61,24 +63,25 @@ const StockReport = () => {
                   padding: 5,
                   borderRadius: 5,
                   cursor: "pointer",
+                  padding: "5px 10px 5px 10px",
                 }}>
-                Download me
+                {buttons?.download}
               </CSVLink>
             </div>
           )}
         </div>
         <StatusHandler isLoading={isLoading} error={error}>
+          <Filter
+            stockFilter={stockFilter}
+            filter={filter}
+            setFilter={setFilter}
+            refetch={refetch}
+          />
           <Table
             tableHeaders={tableHeaders}
             tableItems={stockLists}
             tableColumns={tableColumns}
           />
-          {/* <Pagination
-            pages={pages}
-            setPages={setPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          /> */}
         </StatusHandler>
       </div>
     </>

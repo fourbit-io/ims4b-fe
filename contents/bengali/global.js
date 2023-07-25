@@ -22,5 +22,6 @@ export const buttons = {
     loading: "অপেক্ষা করুন",
     report: "রিপোর্ট দেখুন",
     print: "প্রিন্ট করুন",
+    download: "ডাউনলোড করুন",
     previousPage: "পূর্ববর্তী পেজ",
 }
