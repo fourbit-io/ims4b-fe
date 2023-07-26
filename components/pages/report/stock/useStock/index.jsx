@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const getStocks = async (filter) => {
   const { pid, pName, qtyOrder, startDate, endDate } = filter;
   return await axiosInstance.get(
-    `/v1/stock/report/details?productId=${pid}&productName=${pName}&stockQuantity=${qtyOrder}&startDate=${startDate}&endDate=${endDate}`
+    `/v2/stock/report/details?productId=${pid}&productName=${pName}&stockQuantity=${qtyOrder}&startDate=${startDate}&endDate=${endDate}`
   );
 };
 

@@ -79,5 +79,4 @@ export const stockFilter = {
   stockQtyDsc: "বেশী স্টক",
   startDate: "তারিখ থেকে",
   endDate: "তারিখ পর্যন্ত",
-  search: "খুঁজুন",
 };
