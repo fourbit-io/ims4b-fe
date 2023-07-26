@@ -10,6 +10,8 @@ import {
   showRequisition,
   assignRequisition,
   requisitionStatus,
+  requisitionReportTableHeader,
+  requisitionFilter,
 } from "./requisition";
 import {
   newProduct,
@@ -55,6 +57,8 @@ export {
   requisitionsTable,
   requisitionModal,
   requisitionTableHeader,
+  requisitionReportTableHeader,
+  requisitionFilter,
   requisitionSelectedProductsContent,
   editRequisition,
   showRequisition,

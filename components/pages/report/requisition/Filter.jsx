@@ -1,7 +1,7 @@
 import { buttons } from "@/contents/bengali/global";
 import { useForm } from "react-hook-form";
 
-const Filter = ({ stockFilter, filter, setFilter, refetch }) => {
+const Filter = ({ requisitionFilter, filter, setFilter, refetch }) => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     if (Object.keys(data).length === 5) {
@@ -11,9 +11,9 @@ const Filter = ({ stockFilter, filter, setFilter, refetch }) => {
   };
   const onReset = () => {
     setFilter({
-      pid: "",
-      pName: "",
-      qtyOrder: "desc",
+      eId: "",
+      eName: "",
+      reqStatus: "",
       startDate: "",
       endDate: "",
     });
@@ -25,38 +25,45 @@ const Filter = ({ stockFilter, filter, setFilter, refetch }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-2 justify-between items-center">
           <div>
-            <label className="font-medium">{stockFilter?.id}</label>
+            <label className="font-medium">{requisitionFilter?.eId}</label>
             <input
               type="text"
-              {...register("pid")}
-              placeholder={stockFilter?.id}
-              defaultValue={filter?.pid}
+              {...register("eId")}
+              placeholder={requisitionFilter?.eId}
+              defaultValue={filter?.eId}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
           <div>
-            <label className="font-medium">{stockFilter?.productName}</label>
+            <label className="font-medium">{requisitionFilter?.eName}</label>
             <input
               type="text"
-              {...register("pName")}
-              defaultValue={filter?.pName}
-              placeholder={stockFilter?.productName}
+              {...register("eName")}
+              defaultValue={filter?.eName}
+              placeholder={requisitionFilter?.eName}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
           <div>
-            <label className="font-medium">{stockFilter?.quantity}</label>
+            <label className="font-medium">
+              {requisitionFilter?.reqStatus}
+            </label>
             <select
-              {...register("qtyOrder")}
-              defaultValue={filter?.qtyOrder}
-              onChange={(e) => handleChange("qtyOrder", e.target.value)}
+              {...register("reqStatus")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="desc">{stockFilter?.stockQtyDsc}</option>
-              <option value="asc">{stockFilter?.stockQtyAsc}</option>
+              <option value="">{requisitionFilter?.filterOptionDefault}</option>
+              <option value="PENDING">PENDING</option>
+              <option value="ASSIGNED">ASSIGNED</option>
+              <option value="MODIFIED">MODIFIED</option>\
+              <option value="APPROVED">APPROVED</option>
+              <option value="RELEASED">RELEASED</option>
+              <option value="DELIVERED">DELIVERED</option>
             </select>
           </div>
           <div>
-            <label className="font-medium">{stockFilter?.startDate}</label>
+            <label className="font-medium">
+              {requisitionFilter?.startDate}
+            </label>
             <input
               {...register("startDate")}
               type="date"
@@ -65,7 +72,7 @@ const Filter = ({ stockFilter, filter, setFilter, refetch }) => {
             />
           </div>
           <div>
-            <label className="font-medium">{stockFilter?.endDate}</label>
+            <label className="font-medium">{requisitionFilter?.endDate}</label>
             <input
               {...register("endDate")}
               type="date"

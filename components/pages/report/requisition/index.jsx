@@ -1,42 +1,51 @@
 import React, { useEffect } from "react";
 import { buttons } from "@/contents/bengali";
 import Table from "@/components/reusable/Table";
-import { useStocks } from "./useStock";
+import { useRequisitions } from "./useRequisition";
 import StatusHandler from "@/components/reusable/StatusHandler";
-import { stocks } from "./utils/stock";
-import { convertNumber } from "@/lib/convertToBen";
+import { requisitions } from "./utils/requisition";
+import { convertNumber, convertDate } from "@/lib/convertToBen";
 import Head from "next/head";
 import { CSVLink } from "react-csv";
 import Filter from "./Filter";
 
-const StockReport = () => {
+const RequisitionReport = () => {
   const {
     tableColumns,
     tableHeaders,
-    stockFilter,
+    requisitionFilter,
     pageTitle,
-    stockLists,
-    setStockLists,
+    requisitionLists,
+    setRequisitionLists,
     filter,
     setFilter,
     printHeader,
-  } = stocks();
+  } = requisitions();
 
-  const { data, isLoading, error, refetch } = useStocks(filter);
+  const { data, isLoading, error, refetch } = useRequisitions(filter);
 
   useEffect(() => {
+    let values = [];
     const dataValues = data?.data?.data?.map((dataValue) => {
-      const values = {
-        stockId: convertNumber(dataValue?.id),
-        quantity: convertNumber(dataValue?.quantity),
-        productName: dataValue?.name,
-        productCode: dataValue?.slug,
-        productUnit: dataValue?.unit,
-      };
+      dataValue?.requisitionProduct?.map((item) => {
+        values = {
+          eId: convertNumber(dataValue?.createdByUser?.id),
+          eName: dataValue?.createdByUser?.userName,
+          pId: convertNumber(item?.product?.id),
+          pName: item?.product?.name,
+          reqDate: convertDate(dataValue?.createdAt),
+          reqQty: convertNumber(item?.quantity),
+          deliveredQty:
+            dataValue?.status === "RELEASED"
+              ? convertNumber(item?.requisitionProductActivity[0]?.toQuantity)
+              : convertNumber(0),
+          status: dataValue?.status,
+        };
+      });
+
       return values;
     });
-
-    setStockLists(dataValues);
+    setRequisitionLists(dataValues);
   }, [data]);
 
   return (
@@ -51,12 +60,12 @@ const StockReport = () => {
               {pageTitle}
             </h3>
           </div>
-          {stockLists?.length > 0 && (
+          {requisitionLists?.length > 0 && (
             <div className="mt-3 md:mt-0 flex gap-2 items-center">
               <CSVLink
-                data={stockLists}
+                data={requisitionLists}
                 headers={printHeader}
-                filename={"stock.csv"}
+                filename={"requisition.csv"}
                 style={{
                   backgroundColor: "green",
                   color: "white",
@@ -72,14 +81,14 @@ const StockReport = () => {
         </div>
         <StatusHandler isLoading={isLoading} error={error}>
           <Filter
-            stockFilter={stockFilter}
+            requisitionFilter={requisitionFilter}
             filter={filter}
             setFilter={setFilter}
             refetch={refetch}
           />
           <Table
             tableHeaders={tableHeaders}
-            tableItems={stockLists}
+            tableItems={requisitionLists}
             tableColumns={tableColumns}
           />
         </StatusHandler>
@@ -88,4 +97,4 @@ const StockReport = () => {
   );
 };
 
-export default StockReport;
+export default RequisitionReport;
