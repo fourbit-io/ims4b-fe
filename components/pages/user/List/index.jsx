@@ -4,10 +4,10 @@ import Table from "@/components/reusable/Table";
 import { useUsers } from "./useUser";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { users } from "./utils/users";
-import Modal from "@/components/reusable/Modal";
-import Pagination from "../../../reusable/Pagination";
-import { convertDate, convertNumber } from "@/lib";
+import Pagination from "@/components/reusable/Pagination";
+import { convertDate } from "@/lib";
 import Head from "next/head";
+import PasswordChange from "../PasswordChange";
 
 const List = () => {
   const {
@@ -16,14 +16,11 @@ const List = () => {
     tableHeaders,
     pageTitle,
     userLists,
-    userItem,
     setUserLists,
     renderActions,
-    deleteModal,
-    setDeleteModal,
-    deleteModalContent,
-    deleteAction,
-    dltIsLoading,
+    passwordModal,
+    setPasswordModal,
+    userItem,
     pages,
     setPages,
     currentPage,
@@ -54,13 +51,11 @@ const List = () => {
       <Head>
         <title>{pageTitle}</title>
       </Head>
-      {deleteModal && (
-        <Modal
-          state={deleteModal}
-          setState={setDeleteModal}
-          content={deleteModalContent}
-          action={deleteAction}
-          id={userItem?.id}
+      {passwordModal && (
+        <PasswordChange
+          userItem={userItem}
+          state={passwordModal}
+          setState={setPasswordModal}
         />
       )}
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
@@ -78,7 +73,7 @@ const List = () => {
             </button>
           </div>
         </div>
-        <StatusHandler isLoading={isLoading || dltIsLoading} error={error}>
+        <StatusHandler isLoading={isLoading} error={error}>
           <Table
             tableHeaders={tableHeaders}
             tableItems={userLists}
