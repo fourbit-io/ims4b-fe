@@ -1,4 +1,4 @@
-import { dashboard } from "./dashboard";
+import { dashboardContent } from "./dashboard";
 import { login } from "./login";
 import {
   newUser,
@@ -56,7 +56,7 @@ export {
   tableText,
   paginationText,
   login,
-  dashboard,
+  dashboardContent,
   newUser,
   editUser,
   showUser,

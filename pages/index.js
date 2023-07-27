@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Dashboard from "../components/pages/dashboard";
 
 export default function Home() {
@@ -24,9 +23,6 @@ export default function Home() {
 
   return (
     <>
-    <Head>
-      <title>ড্যাসবোর্ড</title>
-    </Head>
       <Dashboard/>
     </>
   );
