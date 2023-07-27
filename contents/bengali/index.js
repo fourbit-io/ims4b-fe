@@ -1,6 +1,14 @@
 import { dashboard } from "./dashboard";
 import { login } from "./login";
 import {
+  newUser,
+  editUser,
+  showUser,
+  usersTable,
+  userModal,
+  userTableHeader,
+} from "./user";
+import {
   newRequisition,
   requisitionsTable,
   requisitionModal,
@@ -53,6 +61,12 @@ export {
   paginationText,
   login,
   dashboard,
+  newUser,
+  editUser,
+  showUser,
+  usersTable,
+  userModal,
+  userTableHeader,
   newRequisition,
   requisitionsTable,
   requisitionModal,
