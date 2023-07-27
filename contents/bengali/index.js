@@ -18,6 +18,8 @@ import {
   showRequisition,
   assignRequisition,
   requisitionStatus,
+  requisitionReportTableHeader,
+  requisitionFilter,
 } from "./requisition";
 import {
   newProduct,
@@ -32,10 +34,12 @@ import {
   damagedStock,
   stocksTable,
   stockModal,
+  stockReportTableHeader,
   stockTableHeader,
   selectedProductsContent,
   editStock,
   showStock,
+  stockFilter,
 } from "./stock";
 import {
   newPurchase,
@@ -67,6 +71,8 @@ export {
   requisitionsTable,
   requisitionModal,
   requisitionTableHeader,
+  requisitionReportTableHeader,
+  requisitionFilter,
   requisitionSelectedProductsContent,
   editRequisition,
   showRequisition,
@@ -82,10 +88,12 @@ export {
   newStock,
   stocksTable,
   stockModal,
+  stockReportTableHeader,
   stockTableHeader,
   selectedProductsContent,
   editStock,
   showStock,
+  stockFilter,
   newPurchase,
   editPurchase,
   showPurchase,

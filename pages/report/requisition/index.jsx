@@ -1,7 +1,8 @@
 import withManager from "@/lib/hoc/withManager";
+import RequisitionReport from "@/components/pages/report/requisition";
 
-const RequisitionReport = () => {
-  return <div>RequisitionReport</div>;
+const RequisitionReportPage = () => {
+  return <RequisitionReport />;
 };
 
-export default withManager(RequisitionReport);
+export default withManager(RequisitionReportPage);
