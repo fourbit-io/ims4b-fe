@@ -28,6 +28,8 @@ import {
   productsTable,
   productModal,
   productTableHeader,
+  productReportTableHeader,
+  productFilter,
 } from "./product";
 import {
   newStock,
@@ -84,6 +86,8 @@ export {
   productsTable,
   productModal,
   productTableHeader,
+  productReportTableHeader,
+  productFilter,
   damagedStock,
   newStock,
   stocksTable,
