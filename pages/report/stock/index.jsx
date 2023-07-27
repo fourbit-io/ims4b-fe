@@ -1,7 +1,8 @@
 import withManager from "@/lib/hoc/withManager";
+import StockReport from "@/components/pages/report/stock";
 
-const StockReport = () => {
-  return <div>StockReport</div>;
+const StockReportPage = () => {
+  return <StockReport />;
 };
 
-export default withManager(StockReport);
+export default withManager(StockReportPage);

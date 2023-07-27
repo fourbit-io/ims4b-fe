@@ -31,6 +31,14 @@ export const stockTableHeader = [
   "তারিখ",
 ];
 
+export const stockReportTableHeader = [
+  "আইডি",
+  "প্রোডাক্টের নাম",
+  "কোড",
+  "পরিমান",
+  "একক",
+];
+
 export const selectedProductsContent = {
   pageTitle: "নিৰ্বাচিত প্রোডাক্ট",
   emptyProdContent:
@@ -61,4 +69,14 @@ export const showStock = {
   productName: "প্রোডাক্টের নাম",
   productCode: "প্রোডাক্ট কোড",
   productQty: "পরিমান",
+};
+
+export const stockFilter = {
+  id: "আইডি",
+  productName: "প্রোডাক্টের নাম",
+  quantity: "পরিমান",
+  stockQtyAsc: "কম স্টক",
+  stockQtyDsc: "বেশী স্টক",
+  startDate: "তারিখ থেকে",
+  endDate: "তারিখ পর্যন্ত",
 };

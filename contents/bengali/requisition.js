@@ -92,5 +92,24 @@ export const requisitionStatus = {
   APPROVED: "তারিখে রিকুইজিশন অনুমোদন করেছে।",
   RELEASED: "তারিখে রিকুইজিশন বিতরণ করেছে।",
   DELIVERED: "তারিখে রিকুইজিশন গ্রহণ করেছে।",
-}
+};
 
+export const requisitionReportTableHeader = [
+  "কর্মচারীর আইডি",
+  "কর্মচারীর নাম",
+  "প্রোডাক্ট আইডি",
+  "প্রোডাক্ট নাম",
+  "চাহিদাপত্র তারিখ",
+  "আবেদনকৃত পরিমান",
+  "অনুমোদিত পরিমান",
+  "অবস্থা",
+];
+
+export const requisitionFilter = {
+  eId: "কর্মচারীর আইডি",
+  eName: "কর্মচারীর নাম",
+  reqStatus: "অবস্থা",
+  startDate: "তারিখ থেকে",
+  endDate: "তারিখ পর্যন্ত",
+  filterOptionDefault: "যে কোনো একটি অপশন নির্বাচন করুন",
+};
