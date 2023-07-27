@@ -41,7 +41,7 @@ export const showProduct = {
   stockUpdateTitle: "স্টক আপডেট করা হয়েছে",
   dateSub: "তারিখে",
   stockAddHistorySub: "স্টক এ যোগ করেছেন।",
-  stockRemoveHistorySub: "স্টক থেকে সরিয়ে ফেলেছেন।"
+  stockRemoveHistorySub: "স্টক থেকে সরিয়ে ফেলেছেন।",
 };
 
 export const productsTable = {
@@ -60,3 +60,21 @@ export const productTableHeader = [
   "বিবিধ",
   "তারিখ",
 ];
+
+export const productReportTableHeader = [
+  "প্রোডাক্টের আইডি",
+  "প্রোডাক্টের নাম",
+  "স্টক যোগের তারিখ",
+  "স্টক যোগের পরিমান",
+  "স্টক সরানের তারিখ",
+  "স্টক সরানের পরিমান",
+  "রেফারেন্স",
+  "ব্যালান্স",
+];
+
+export const productFilter = {
+  pId: "প্রোডাক্টের আইডি",
+  pName: "প্রোডাক্টের নাম",
+  startDate: "তারিখ থেকে",
+  endDate: "তারিখ পর্যন্ত",
+};
