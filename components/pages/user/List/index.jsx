@@ -20,6 +20,8 @@ const List = () => {
     renderActions,
     passwordModal,
     setPasswordModal,
+    credModal,
+    setCredModal,
     userItem,
     pages,
     setPages,

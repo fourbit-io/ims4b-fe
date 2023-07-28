@@ -12,10 +12,11 @@ const { role } = userInfo();
 export const users = () => {
   const router = useRouter();
   const tableColumns = ["id", "userName", "role", "date", "actions"];
-  const { pageTitle } = usersTable;
+  const { pageTitle, credential } = usersTable;
 
   const [userLists, setUserLists] = useState([]);
   const [passwordModal, setPasswordModal] = useState(false);
+  const [credModal, setCredModal] = useState(false);
   const [userItem, setUserItem] = useState();
 
   const [pages, setPages] = useState(1);
@@ -23,18 +24,28 @@ export const users = () => {
 
 
 
-
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
       {role === "SUPERADMIN" && (
-        <button
+       <>
+       {/* Will be implementing if client needs to share the password through admin  */}
+       {/* <button
           className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
+          onClick={() => {
+            setCredModal(true);
+            setUserItem(row);
+          }}>
+          {credential}
+        </button> */}
+        <button
+          className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
           onClick={() => {
             setPasswordModal(true);
             setUserItem(row);
           }}>
           {changePasswordContent?.pageTitle}
         </button>
+       </>
       )}
     </div>
   );
@@ -49,6 +60,8 @@ export const users = () => {
     renderActions,
     passwordModal,
     setPasswordModal,
+    credModal,
+    setCredModal,
     userItem,
     pages,
     setPages,

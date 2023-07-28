@@ -18,6 +18,7 @@ export const changePasswordContent = {
   userName: "নাম",
   userPassword: "পাসওয়ার্ড",
   userRole: "পদবী",
+  date: "তারিখ",
   submitBtn: "পরিবর্তন করুন",
   loadingSubmitBtn: "অপেক্ষা করুন",
 };
