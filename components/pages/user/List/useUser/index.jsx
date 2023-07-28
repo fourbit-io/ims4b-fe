@@ -1,6 +1,5 @@
 import axiosInstance from "@/api/globalApi/axiosInstance";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { useQuery } from "@tanstack/react-query";
 
 const getUsers = async (currentPage) => {
   return await axiosInstance.get(
@@ -22,20 +21,4 @@ export const useUsers = (currentPage) => {
   };
 };
 
-const deleteUser = async (id) => {
-  return await axiosInstance.delete(`/v1/users/${id}`);
-};
 
-export const useDeleteUser = () => {
-  const router = useRouter();
-  const queryClient = useQueryClient();
-  return useMutation(deleteUser, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["users-lists"]);
-      router.push("/userss");
-    },
-    onError: (data) => {
-      console.log({ data });
-    },
-  });
-};

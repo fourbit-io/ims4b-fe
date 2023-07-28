@@ -2,7 +2,7 @@ import { dashboard } from "./dashboard";
 import { login } from "./login";
 import {
   newUser,
-  editUser,
+  changePasswordContent,
   showUser,
   usersTable,
   userModal,
@@ -64,7 +64,7 @@ export {
   login,
   dashboard,
   newUser,
-  editUser,
+  changePasswordContent,
   showUser,
   usersTable,
   userModal,
