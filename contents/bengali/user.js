@@ -12,13 +12,14 @@ export const newUser = {
   loadingSubmitBtn: "অপেক্ষা করুন",
 };
 
-export const editUser = {
-  pageTitle: "কর্মকর্তা সংশোধন করুন",
-  formTitle: "কর্মকর্তা সংশোধন করুন",
+export const changePasswordContent = {
+  pageTitle: "পাসওয়ার্ড পরিবর্তন করুন",
+  formTitle: "পাসওয়ার্ড পরিবর্তন করুন",
   userName: "নাম",
   userPassword: "পাসওয়ার্ড",
   userRole: "পদবী",
-  submitBtn: "সংশোধন করুন",
+  date: "তারিখ",
+  submitBtn: "পরিবর্তন করুন",
   loadingSubmitBtn: "অপেক্ষা করুন",
 };
 
@@ -42,6 +43,7 @@ export const showUser = {
 
 export const usersTable = {
   pageTitle: "কর্মকর্তাদের  তালিকা",
+  credential: "পরিচয় পত্র",
 };
 
 export const userModal = {
