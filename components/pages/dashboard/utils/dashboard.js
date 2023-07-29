@@ -19,17 +19,11 @@ export const requisitions = () => {
 
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
-      {(role === "MANAGER" || role === "SUPERADMIN") && (
-        <>
-          {(row?.status === "PENDING" || row?.status === "MODIFIED") && (
-            <button
-              className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
-              onClick={() => redirectToPage(row?.id)}>
-              {buttons?.show}
-            </button>
-          )}
-        </>
-      )}
+      <button
+        className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
+        onClick={() => redirectToPage(row?.id)}>
+        {buttons?.show}
+      </button>
     </div>
   );
 
