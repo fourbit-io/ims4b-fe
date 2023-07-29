@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { buttonText } from "@/contents/bengali";
 
 const Modal = ({ state, setState, content, action, id }) => {
