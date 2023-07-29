@@ -6,6 +6,7 @@ import { dashboardContent } from "@/contents/bengali";
 import ManagerDashboard from "./ManagerDashboard";
 import UserDashboard from "./UserDashboard";
 import Head from "next/head";
+import ShopkeeperDashboard from "./ShopkeeperDashboard";
 const { role } = userInfo();
 
 const Dashboard = () => {
@@ -32,7 +33,7 @@ const Dashboard = () => {
           </div>
         </div>
         <StatusHandler isLoading={isLoading} error={error}>
-          {/* {role === "MANAGER" && (
+          {role === "MANAGER" && (
             <ManagerDashboard
               dashboard={dashboard}
               dashboardContent={dashboardContent}
@@ -43,7 +44,13 @@ const Dashboard = () => {
               dashboard={dashboard}
               dashboardContent={dashboardContent}
             />
-          )} */}
+          )}
+          {role === "SHOPKEEPER" && (
+            <ShopkeeperDashboard
+              dashboard={dashboard}
+              dashboardContent={dashboardContent}
+            />
+          )}
         </StatusHandler>
       </div>
     </div>
