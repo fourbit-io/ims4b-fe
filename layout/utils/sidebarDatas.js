@@ -22,6 +22,17 @@ export const sidebarDatas = () => {
       icon: <BsHexagon className="text-[20px]" />,
     },
     {
+      name: "রিপোর্ট",
+      url: "/report",
+      subDatas: [
+        {
+          name: "রিকুইজিশন",
+          url: "/report/user/requisition",
+        },
+      ],
+      icon: <BiPurchaseTagAlt className="text-[20px]" />,
+    },
+    {
       name: "লগ আউট",
       url: "/logout",
       subDatas: [],
