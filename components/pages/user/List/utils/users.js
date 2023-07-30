@@ -27,16 +27,6 @@ export const users = () => {
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
       {role === "SUPERADMIN" && (
-       <>
-       {/* Will be implementing if client needs to share the password through admin  */}
-       {/* <button
-          className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
-          onClick={() => {
-            setCredModal(true);
-            setUserItem(row);
-          }}>
-          {credential}
-        </button> */}
         <button
           className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
           onClick={() => {
@@ -45,12 +35,12 @@ export const users = () => {
           }}>
           {changePasswordContent?.pageTitle}
         </button>
-       </>
       )}
     </div>
   );
 
   return {
+    role,
     router,
     tableColumns,
     tableHeaders,

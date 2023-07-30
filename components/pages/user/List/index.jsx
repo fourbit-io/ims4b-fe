@@ -11,6 +11,7 @@ import PasswordChange from "../PasswordChange";
 
 const List = () => {
   const {
+    role,
     router,
     tableColumns,
     tableHeaders,
@@ -67,13 +68,15 @@ const List = () => {
               {pageTitle}
             </h3>
           </div>
-          <div className="mt-3 md:mt-0">
-            <button
-              onClick={() => router.push("/users/new")}
-              className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
-              {newUser?.pageTitle}
-            </button>
-          </div>
+          {role === "SUPERADMIN" && (
+            <div className="mt-3 md:mt-0">
+              <button
+                onClick={() => router.push("/users/new")}
+                className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
+                {newUser?.pageTitle}
+              </button>
+            </div>
+          )}
         </div>
         <StatusHandler isLoading={isLoading} error={error}>
           <Table
