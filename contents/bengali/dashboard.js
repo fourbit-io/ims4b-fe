@@ -8,6 +8,9 @@ export const dashboardContent = {
   stockApproved: "অনুমোদিত স্টক",
   noOfUsers: "কর্মচারী সংখ্যা",
   noOfStoreKeepers: "মালামাল রক্ষক সংখ্যা ",
+  totalReq: "চাহিদাপত্র সংখ্যা",
+  delivereddReq: "গ্রহীত চাহিদাপত্র",
+  noOfPO: "ক্রয় আদেশ সংখ্যা",
 };
 
 export const reqTableHeader = ["আইডি", "তারিখ", "স্ট্যাটাস"];
