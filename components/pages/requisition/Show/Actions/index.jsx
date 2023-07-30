@@ -92,7 +92,7 @@ const Actions = ({ id, status }) => {
           )}
         {(role === "MANAGER" || role === "SUPERADMIN") && (
           <>
-            {(status === "PENDING" || status === "MODIFIED") && (
+            {(status === "PENDING" || status === "MODIFIED" || status === "ASSIGNED") && (
               <button
                 className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
                 onClick={() => redirectAssigneePage(id)}>
