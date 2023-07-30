@@ -1,4 +1,22 @@
-export const dashboard = {
-    title23 : "লগ ইন ফর্ম",
-    title23 : "লগ ইন ফর্ম",
-}
+export const dashboardContent = {
+  pageTitle: "ড্যাসবোর্ড",
+  pendingReq: "অপেক্ষমান চাহিদাপত্র",
+  assignedReq: "চলমান চাহিদাপত্র",
+  approvedReq: "অনুমোদিত চাহিদাপত্র",
+  releasedReq: "বিতরণকৃত চাহিদাপত্র",
+  stockCreated: "তৈরিকৃত স্টক",
+  stockApproved: "অনুমোদিত স্টক",
+  noOfUsers: "কর্মচারী সংখ্যা",
+  noOfStoreKeepers: "মালামাল রক্ষক সংখ্যা ",
+  totalReq: "চাহিদাপত্র সংখ্যা",
+  delivereddReq: "গ্রহীত চাহিদাপত্র",
+  noOfPO: "ক্রয় আদেশ সংখ্যা",
+};
+
+export const reqTableHeader = ["আইডি", "তারিখ", "স্ট্যাটাস"];
+
+export const tableHeaders = {
+  pendingReq: "অপেক্ষমান চাহিদাপত্র",
+  releasedReq: "সরবরাহকৃত চাহিদাপত্র",
+  assignedReq: "দায়িত্বপ্রাপ্ত চাহিদাপত্র",
+};
