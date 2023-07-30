@@ -7,6 +7,7 @@ import ManagerDashboard from "./ManagerDashboard";
 import UserDashboard from "./UserDashboard";
 import Head from "next/head";
 import ShopkeeperDashboard from "./ShopkeeperDashboard";
+import SuperadminDashboard from "./SuperadminDashboard";
 const { role } = userInfo();
 
 const Dashboard = () => {
@@ -33,6 +34,12 @@ const Dashboard = () => {
           </div>
         </div>
         <StatusHandler isLoading={isLoading} error={error}>
+        {role === "SUPERADMIN" && (
+            <SuperadminDashboard
+              dashboard={dashboard}
+              dashboardContent={dashboardContent}
+            />
+          )}
           {role === "MANAGER" && (
             <ManagerDashboard
               dashboard={dashboard}
