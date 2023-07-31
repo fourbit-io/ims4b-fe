@@ -136,7 +136,7 @@ const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
           disabled={isLoading}
           onClick={handleSubmit}
           className={`px-2 py-1 ${
-            isLoading ? "bg-gray-400" : "bg-blue-400"
+            isLoading ? "bg-gray-400" : "bg-primary-600"
           }  text-white rounded-md`}>
           {isLoading ? submitBtnLoading : submitBtn}
         </button>

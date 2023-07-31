@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const getRequisitions = async (currentPage) => {
   return await axiosInstance.get(
-    `/v1/requisition?page=${currentPage}&limit=20&sortBy=createdAt&sortOrder=desc`
+    `/v1/requisition/role-base?page=${currentPage}&limit=20&sortBy=createdAt&sortOrder=desc`
   );
 };
 

@@ -22,6 +22,7 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
     productName,
     productCode,
     productQty,
+    stockQty,
     productUnit,
     date,
     remarks,
@@ -77,7 +78,7 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
       </div>
       
 
-      <div className="grid grid-cols-4 px-4 mt-4 border divide-x-2  text-center">
+      <div className="grid grid-cols-5 px-4 mt-4 border divide-x-2  text-center">
         <div>
           <p className="font-extrabold text-gray-600">{productName}</p>
         </div>
@@ -88,13 +89,16 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
           <p className="font-extrabold text-gray-600">{productQty}</p>
         </div>
         <div>
+          <p className="font-extrabold text-gray-600">{stockQty}</p>
+        </div>
+        <div>
           <p className="font-extrabold text-gray-600">{productUnit}</p>
         </div>
       </div>
       {requisitionProduct?.map((item, id) => (
         <div
           key={id}
-          className="grid grid-cols-4 px-4 my-2 border divide-x-2 text-center">
+          className="grid grid-cols-5 px-4 my-2 border divide-x-2 text-center">
           <div>
             <p className="text-gray-600">{item?.product?.name}</p>
           </div>
@@ -103,6 +107,9 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
           </div>
           <div>
             <p className="text-gray-600">{convertNumber(item?.quantity)}</p>
+          </div>
+          <div>
+            <p className="text-gray-600">{convertNumber(item?.product?.quantity)}</p>
           </div>
           <div>
             <p className="text-gray-600">{item?.product?.unit}</p>
