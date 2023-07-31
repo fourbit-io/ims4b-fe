@@ -128,7 +128,7 @@ const SelectedProduct = ({id}) => {
         <button onClick={handleCancelAll} className="px-2 py-1 bg-red-400 text-white rounded-md">
           {cancelBtn}
         </button>
-        <button disabled={isLoading} onClick={handleSubmit} className={`px-2 py-1 ${isLoading ? 'bg-gray-400' : 'bg-blue-400'}  text-white rounded-md`}>
+        <button disabled={isLoading} onClick={handleSubmit} className={`px-2 py-1 ${isLoading ? 'bg-gray-400' : 'bg-primary-600'}  text-white rounded-md`}>
           {isLoading ? submitBtnLoading : submitBtn}
         </button>
       </div>

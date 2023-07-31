@@ -1,6 +1,7 @@
 import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { apiMessages } from "@/contents/bengali";
+import cogoToast from "cogo-toast";
 
 const getUsers = async (currentPage) => {
   return await axiosInstance.get(
@@ -29,14 +30,21 @@ const deleteUser = async (id) => {
 };
 
 export const useDeleteUser = () => {
-  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(deleteUser, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["users-lists"]);
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
+      return queryClient.invalidateQueries(["users-lists"]);
     },
     onError: (data) => {
       console.log({ data });
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
     },
   });
 };

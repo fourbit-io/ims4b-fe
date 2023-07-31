@@ -1,6 +1,7 @@
 import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { apiMessages } from "@/contents/bengali";
+import cogoToast from "cogo-toast";
 
 const getStocks = async (currentPage) => {
   return await axiosInstance.get(
@@ -27,15 +28,21 @@ const deleteStock = async (id) => {
 };
 
 export const useDeleteStock = () => {
-  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(deleteStock, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["stock-lists"]);
-      router.push("/stocks");
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
+      return queryClient.invalidateQueries(["stock-lists"]);
     },
     onError: (data) => {
       console.log({ data });
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
     },
   });
 };
@@ -45,15 +52,21 @@ const approveStock = async (id) => {
 };
 
 export const useApproveStock = () => {
-  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(approveStock, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["stock-lists"]);
-      router.push("/stocks");
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
+      return queryClient.invalidateQueries(["stock-lists"]);
     },
     onError: (data) => {
       console.log({ data });
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
     },
   });
 };
