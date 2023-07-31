@@ -8,6 +8,8 @@ import Pagination from "@/components/reusable/Pagination";
 import { convertNumber, convertDate } from "@/lib";
 import Head from "next/head";
 import PasswordChange from "../PasswordChange";
+import Modal from "@/components/reusable/Modal";
+import EditUser from "../Edit";
 
 const List = () => {
   const {
@@ -28,6 +30,13 @@ const List = () => {
     setPages,
     currentPage,
     setCurrentPage,
+    deleteModal,
+    setDeleteModal,
+    deleteModalContent,
+    deleteAction,
+    dltIsLoading,
+    editModal,
+    setEditModal,
   } = users();
 
   const { data, isLoading, error } = useUsers(currentPage);
@@ -63,6 +72,22 @@ const List = () => {
           setState={setPasswordModal}
         />
       )}
+      {editModal && (
+        <EditUser
+          userItem={userItem}
+          state={editModal}
+          setState={setEditModal}
+        />
+      )}
+      {deleteModal && (
+        <Modal
+          state={deleteModal}
+          setState={setDeleteModal}
+          content={deleteModalContent}
+          action={deleteAction}
+          id={userItem?.id}
+        />
+      )}
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -80,7 +105,7 @@ const List = () => {
             </div>
           )}
         </div>
-        <StatusHandler isLoading={isLoading} error={error}>
+        <StatusHandler isLoading={isLoading || dltIsLoading} error={error}>
           <Table
             tableHeaders={tableHeaders}
             tableItems={userLists}
