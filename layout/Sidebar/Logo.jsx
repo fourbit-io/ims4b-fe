@@ -4,13 +4,13 @@ const Logo = ({ active }) => {
   return (
     <div className="w-full px-2">
       <div className={`${active ? "block" : "lg:block hidden"}`}>
-        <div className="flex items-center gap-2 w-full overflow-hidden pl-4">
+        <div className="flex flex-col gap-2 w-full overflow-hidden pl-0">
           <img
             key={"dashboardImage"}
-            className="w-[50px]"
+            className="w-[50px] h-[50px]"
             src="/images/ims-logo.png"
           />
-          <h1 className="text-2xl text-gray-600">DIFE</h1>
+          <h1 className="text-sm text-gray-600">ইনভেন্টরি ও রিকুইজিশন সিস্টেম কলকারখানা ও প্রতিষ্ঠান পরিদর্শন অধিদপ্তর (ডাইফ)</h1>
         </div>
       </div>
 
