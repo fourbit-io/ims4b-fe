@@ -6,6 +6,7 @@ import { useNewUserData } from "./useNewUser";
 const Form = () => {
   const {
     formTitle,
+    name,
     userName,
     userPassword,
     userRole,
@@ -42,6 +43,16 @@ const Form = () => {
               type="text"
               placeholder={userName}
               {...register("userName", { required: true })}
+              required
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{name} *</label>
+            <input
+              type="text"
+              placeholder={name}
+              {...register("name", { required: true })}
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />

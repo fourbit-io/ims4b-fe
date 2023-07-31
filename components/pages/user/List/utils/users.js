@@ -11,7 +11,7 @@ const { role } = userInfo();
 
 export const users = () => {
   const router = useRouter();
-  const tableColumns = ["id", "userName", "role", "date", "actions"];
+  const tableColumns = ["uId", "name", "userName", "role", "date", "actions"];
   const { pageTitle, credential } = usersTable;
 
   const [userLists, setUserLists] = useState([]);
