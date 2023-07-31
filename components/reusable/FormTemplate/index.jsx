@@ -1,9 +1,17 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { buttons } from "@/contents/bengali/global";
 import { convertNumber, convertDate } from "@/lib";
 
-const FormTemplate = ({ id, date, userName, items, remark }) => {
+const FormTemplate = ({ id, activity, userName, items, remark }) => {
+  const [releaseDate, setReleaseDate] = useState(null);
+  useEffect(() => {
+    setReleaseDate(
+      activity?.status === "RELEASED" || activity?.status === "DELIVERED"
+        ? activity?.createdAt
+        : null
+    );
+  }, [activity]);
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -83,8 +91,10 @@ const FormTemplate = ({ id, date, userName, items, remark }) => {
             <p>উপর্যুক্ত মালামাল বুঝিয়া পাইলাম</p>
             <p className="mb-6">মালামাল গ্রহণকারীর নামঃ</p>
             <p>
-              মালামালগুলো {convertDate(date)} তারিখে সরবরাহ করে নিম্নেবর্ণিত
-              রেজিস্টার ও পৃষ্ঠায় লিপিবদ্ধ করা হলো।
+              মালামালগুলো{" "}
+              {releaseDate ? convertDate(releaseDate) : "................."}{" "}
+              তারিখে সরবরাহ করে নিম্নেবর্ণিত রেজিস্টার ও পৃষ্ঠায় লিপিবদ্ধ করা
+              হলো।
             </p>
             <p>রেজিস্টার নং………………………………………………………………</p>
             <p>পৃষ্ঠা নং……………………………………………………………………</p>
