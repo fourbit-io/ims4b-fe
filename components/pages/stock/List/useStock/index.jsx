@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const getStocks = async (currentPage) => {
   return await axiosInstance.get(
-    `/v1/stock?page=${currentPage}&limit=20&sortBy=createdAt&sortOrder=desc`
+    `/v1/stock/role-base?page=${currentPage}&limit=20&sortBy=createdAt&sortOrder=desc`
   );
 };
 

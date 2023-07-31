@@ -28,7 +28,7 @@ const RequisitionShow = () => {
 
   useEffect(() => {
     setRequisition(data?.data?.data);
-  },[data])
+  }, [data]);
 
   return (
     <>
@@ -47,8 +47,15 @@ const RequisitionShow = () => {
           </div>
           <FormTemplate
             id={id}
-            date={requisition?.updatedAt}
-            userName={requisition?.createdByUser?.userName}
+            activity={
+              requisition?.requisitionActivity[
+                requisition?.requisitionActivity?.length - 1
+              ]
+            }
+            userName={
+              requisition?.createdByUser?.name ??
+              requisition?.createdByUser?.userName
+            }
             items={requisition?.requisitionProduct}
             remark={requisition?.remark}
           />

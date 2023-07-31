@@ -54,6 +54,7 @@ export const showRequisition = {
   productName: "প্রোডাক্টের নাম",
   productCode: "প্রোডাক্ট কোড",
   productQty: "পরিমান",
+  stockQty: "স্টক পরিমান",
   productUnit: "একক",
   date: "তারিখ",
   remarks: "মন্তব্য",
