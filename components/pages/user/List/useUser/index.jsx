@@ -34,7 +34,6 @@ export const useDeleteUser = () => {
   return useMutation(deleteUser, {
     onSuccess: () => {
       queryClient.invalidateQueries(["users-lists"]);
-      router.push("/users");
     },
     onError: (data) => {
       console.log({ data });

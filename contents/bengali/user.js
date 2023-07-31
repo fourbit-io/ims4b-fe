@@ -23,23 +23,19 @@ export const changePasswordContent = {
   submitBtn: "পরিবর্তন করুন",
   loadingSubmitBtn: "অপেক্ষা করুন",
 };
-
-export const showUser = {
-  pageTitle: "প্রোডাক্ট বিস্তারিত দেখুন ",
-  date: "তারিখ",
-  userName: "প্রোডাক্টের নাম",
-  userCode: "প্রোডাক্ট কোড",
-  userUnit: "একক",
-  userUnit1: "ইউনিট",
-  userUnit2: "পিস্",
-  userQty: "পরিমান",
-  userDetails: "বিবিধ",
-  stockHistoryTitle: "স্টকের বিস্তারিত দেখুন ",
-  prodStockTitle: "প্রোডাক্ট তৈরী করা হয়েছে",
-  stockUpdateTitle: "স্টক আপডেট করা হয়েছে",
-  dateSub: "তারিখে",
-  stockAddHistorySub: "স্টক এ যোগ করেছেন।",
-  stockRemoveHistorySub: "স্টক থেকে সরিয়ে ফেলেছেন।",
+export const editUser = {
+  pageTitle: "কর্মকর্তা সংশোধন",
+  formTitle: "কর্মকর্তা সংশোধন",
+  name: "কর্মকর্তার নাম",
+  userName: " ইউজার নাম",
+  userPassword: "পাসওয়ার্ড",
+  userRole: "পদবী",
+  manager: "ম্যানেজার",
+  shopkeeper: "স্টোরে কিপার",
+  user: "ইউজার",
+  superAdmin: "সুপার অ্যাডমিন",
+  submitBtn: "সংশোধন করুন",
+  loadingSubmitBtn: "অপেক্ষা করুন",
 };
 
 export const usersTable = {

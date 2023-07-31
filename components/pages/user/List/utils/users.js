@@ -17,11 +17,12 @@ const { role } = userInfo();
 export const users = () => {
   const router = useRouter();
   const tableColumns = ["uId", "name", "userName", "role", "date", "actions"];
-  const { pageTitle, credential } = usersTable;
+  const { pageTitle } = usersTable;
   const { deleteModalContent } = userModal;
 
   const [userLists, setUserLists] = useState([]);
   const [passwordModal, setPasswordModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [credModal, setCredModal] = useState(false);
   const [userItem, setUserItem] = useState();
@@ -31,9 +32,6 @@ export const users = () => {
 
   const { mutate: deleteUser, isLoading: dltIsLoading } = useDeleteUser();
 
-  const redirectEditPage = (id) => {
-    router.push(`/users/edit/${id}`);
-  };
 
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
@@ -49,7 +47,10 @@ export const users = () => {
           </button>
           <button
             className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
-            onClick={() => redirectEditPage(row?.id)}>
+            onClick={() => {
+              setEditModal(true);
+              setUserItem(row);
+            }}>
             <HiPencilAlt />
             {buttons?.edit}
           </button>
@@ -90,8 +91,11 @@ export const users = () => {
     currentPage,
     setCurrentPage,
     deleteAction,
+    dltIsLoading,
     deleteModal,
     setDeleteModal,
     deleteModalContent,
+    editModal,
+    setEditModal,
   };
 };

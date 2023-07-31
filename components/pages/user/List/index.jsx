@@ -9,6 +9,7 @@ import { convertNumber, convertDate } from "@/lib";
 import Head from "next/head";
 import PasswordChange from "../PasswordChange";
 import Modal from "@/components/reusable/Modal";
+import EditUser from "../Edit";
 
 const List = () => {
   const {
@@ -33,6 +34,9 @@ const List = () => {
     setDeleteModal,
     deleteModalContent,
     deleteAction,
+    dltIsLoading,
+    editModal,
+    setEditModal,
   } = users();
 
   const { data, isLoading, error } = useUsers(currentPage);
@@ -68,6 +72,13 @@ const List = () => {
           setState={setPasswordModal}
         />
       )}
+      {editModal && (
+        <EditUser
+          userItem={userItem}
+          state={editModal}
+          setState={setEditModal}
+        />
+      )}
       {deleteModal && (
         <Modal
           state={deleteModal}
@@ -94,7 +105,7 @@ const List = () => {
             </div>
           )}
         </div>
-        <StatusHandler isLoading={isLoading} error={error}>
+        <StatusHandler isLoading={isLoading || dltIsLoading} error={error}>
           <Table
             tableHeaders={tableHeaders}
             tableItems={userLists}
