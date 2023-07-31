@@ -2,6 +2,8 @@ import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 import { removeAll } from "@/slices/productSlice";
+import { apiMessages } from "@/contents/bengali";
+import cogoToast from "cogo-toast";
 
 const getProducts = async (search, currentPage) => {
   return await axiosInstance.get(
@@ -24,9 +26,7 @@ export const useProducts = (search, currentPage) => {
 };
 
 const getRequisition = async (id) => {
-  return await axiosInstance.get(
-    `/v1/requisition/${id}`
-  );
+  return await axiosInstance.get(`/v1/requisition/${id}`);
 };
 
 export const useRequisition = (id) => {
@@ -44,8 +44,8 @@ export const useRequisition = (id) => {
 };
 
 const updateRequisition = async (requisitions) => {
-  const {id, ...rest} = requisitions;
-  return await axiosInstance.patch(`/v1/requisition/${id}`, rest );
+  const { id, ...rest } = requisitions;
+  return await axiosInstance.patch(`/v1/requisition/${id}`, rest);
 };
 
 export const useUpdateRequisitionData = () => {
@@ -54,8 +54,17 @@ export const useUpdateRequisitionData = () => {
   return useMutation(updateRequisition, {
     onSuccess: (data) => {
       dispatch(removeAll());
-      window.location.href = '/requisitions'
+      window.location.href = "/requisitions";
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
     },
-    onError: (data) => {},
+    onError: (data) => {
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
+    },
   });
 };

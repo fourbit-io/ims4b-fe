@@ -1,6 +1,7 @@
 import axiosInstance from "@/api/globalApi/axiosInstance";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { apiMessages } from "@/contents/bengali";
+import cogoToast from "cogo-toast";
 
 const getProducts = async (currentPage) => {
   return await axiosInstance.get(
@@ -27,15 +28,21 @@ const deleteProduct = async (id) => {
 };
 
 export const useDeleteProduct = () => {
-  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(deleteProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["product-lists"]);
-      router.push("/products");
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
+      return queryClient.invalidateQueries(["product-lists"]);
     },
     onError: (data) => {
       console.log({ data });
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
     },
   });
 };
