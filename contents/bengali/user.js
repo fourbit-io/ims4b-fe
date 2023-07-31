@@ -18,6 +18,8 @@ export const changePasswordContent = {
   formTitle: "পাসওয়ার্ড পরিবর্তন করুন",
   userName: "নাম",
   userPassword: "পাসওয়ার্ড",
+  oldPassword: "পুরাতন পাসওয়ার্ড",
+  newPassword: "নতুন পাসওয়ার্ড",
   userRole: "পদবী",
   date: "তারিখ",
   submitBtn: "পরিবর্তন করুন",
