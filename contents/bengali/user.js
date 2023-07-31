@@ -1,7 +1,8 @@
 export const newUser = {
   pageTitle: "নতুন কর্মকর্তা",
   formTitle: "নতুন কর্মকর্তা",
-  userName: "নাম",
+  name: "কর্মকর্তার নাম",
+  userName: " ইউজার নাম",
   userPassword: "পাসওয়ার্ড",
   userRole: "পদবী",
   manager: "ম্যানেজার",
@@ -50,4 +51,4 @@ export const userModal = {
   deleteModalContent: "আপনি কি এই কর্মকর্তা কে লিস্ট থেকে মুছে ফেলতে চান?",
 };
 
-export const userTableHeader = ["পরিচয় নং", "নাম", "পদবী", "তারিখ"];
+export const userTableHeader = ["পরিচয় নং", "কর্মকর্তার নাম", "ইউজার নাম", "পদবী", "তারিখ"];
