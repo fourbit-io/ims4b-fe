@@ -4,6 +4,7 @@ import { MdLogout } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
+import { BsShieldLock } from "react-icons/bs";
 import { userInfo } from "@/api/authentication/userInfo";
 
 export const sidebarDatas = () => {
@@ -20,6 +21,23 @@ export const sidebarDatas = () => {
       url: "/requisitions",
       subDatas: [],
       icon: <BsHexagon className="text-[20px]" />,
+    },
+    {
+      name: "রিপোর্ট",
+      url: "/report",
+      subDatas: [
+        {
+          name: "রিকুইজিশন",
+          url: "/report/user/requisition",
+        },
+      ],
+      icon: <BiPurchaseTagAlt className="text-[20px]" />,
+    },
+    {
+      name: "পাসওয়ার্ড পরিবর্তন",
+      url: "/changepassword",
+      subDatas: [],
+      icon: <BsShieldLock className="text-[20px]" />,
     },
     {
       name: "লগ আউট",
@@ -59,6 +77,12 @@ export const sidebarDatas = () => {
       url: "/purchases",
       subDatas: [],
       icon: <BiPurchaseTagAlt className="text-[20px]" />,
+    },
+    {
+      name: "পাসওয়ার্ড পরিবর্তন",
+      url: "/changepassword",
+      subDatas: [],
+      icon: <BsShieldLock className="text-[20px]" />,
     },
     {
       name: "লগ আউট",
@@ -123,6 +147,12 @@ export const sidebarDatas = () => {
         },
       ],
       icon: <BiPurchaseTagAlt className="text-[20px]" />,
+    },
+    {
+      name: "পাসওয়ার্ড পরিবর্তন",
+      url: "/changepassword",
+      subDatas: [],
+      icon: <BsShieldLock className="text-[20px]" />,
     },
     {
       name: "লগ আউট",

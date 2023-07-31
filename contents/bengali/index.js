@@ -3,7 +3,7 @@ import { login } from "./login";
 import {
   newUser,
   changePasswordContent,
-  showUser,
+  editUser,
   usersTable,
   userModal,
   userTableHeader,
@@ -67,7 +67,7 @@ export {
   tableHeaders,
   newUser,
   changePasswordContent,
-  showUser,
+  editUser,
   usersTable,
   userModal,
   userTableHeader,
