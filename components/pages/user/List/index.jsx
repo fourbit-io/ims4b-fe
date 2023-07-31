@@ -8,6 +8,7 @@ import Pagination from "@/components/reusable/Pagination";
 import { convertDate } from "@/lib";
 import Head from "next/head";
 import PasswordChange from "../PasswordChange";
+import Modal from "@/components/reusable/Modal";
 
 const List = () => {
   const {
@@ -28,6 +29,10 @@ const List = () => {
     setPages,
     currentPage,
     setCurrentPage,
+    deleteModal,
+    setDeleteModal,
+    deleteModalContent,
+    deleteAction,
   } = users();
 
   const { data, isLoading, error } = useUsers(currentPage);
@@ -59,6 +64,15 @@ const List = () => {
           userItem={userItem}
           state={passwordModal}
           setState={setPasswordModal}
+        />
+      )}
+      {deleteModal && (
+        <Modal
+          state={deleteModal}
+          setState={setDeleteModal}
+          content={deleteModalContent}
+          action={deleteAction}
+          id={userItem?.id}
         />
       )}
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">

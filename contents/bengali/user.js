@@ -51,3 +51,5 @@ export const userModal = {
 };
 
 export const userTableHeader = ["পরিচয় নং", "নাম", "পদবী", "তারিখ"];
+
+
