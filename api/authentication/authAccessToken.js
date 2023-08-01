@@ -1,6 +1,6 @@
 export const authAccessToken = () => {
-    if (typeof window !== 'undefined') {
-      return sessionStorage.getItem('access_token') || null;
-    }
-    return false;
-  };
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("access_token") || null;
+  }
+  return false;
+};

@@ -8,8 +8,8 @@ const Item = ({ item }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const logout = () => {
-    sessionStorage.removeItem("access_token");
-    sessionStorage.removeItem("info");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("info");
     window.location.replace("/login");
   };
 
