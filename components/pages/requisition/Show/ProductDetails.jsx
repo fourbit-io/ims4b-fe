@@ -40,13 +40,13 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
           <h3 className="text-gray-600 text-2xl font-semibold px-4 my-6">
             {productHeader}
           </h3>
-          <Actions id={id} status={status}/>
+          <Actions id={id} status={status} />
         </div>
       </div>
       <div className="flex items-center justify-between">
         <div className="px-4 flex gap-2 items-center">
           <span className="font-extrabold text-gray-600">{createdBy} :</span>
-          <span>{createdByUser?.userName}</span>
+          <span>{createdByUser?.name ?? createdByUser?.userName}</span>
         </div>
         <div className="px-4 flex gap-2 items-center">
           <span className="font-extrabold text-gray-600">{date} : </span>
@@ -56,7 +56,7 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
       <div className="flex items-center justify-between">
         <div className="px-4 flex gap-2 items-center">
           <span className="font-extrabold text-gray-600">{assignedTo} : </span>
-          <span>{assginedUser?.userName}</span>
+          <span>{assginedUser?.name ?? assginedUser?.userName}</span>
         </div>
         <div className="px-4 flex gap-2 items-center">
           <span className="font-extrabold text-gray-600">
@@ -68,15 +68,17 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
 
       <div className="flex items-center justify-between">
         <div className="px-4 flex gap-2 items-center">
-        <span className="font-extrabold text-gray-600">{approvedBy} : </span>
-        <span>{approvedByUser?.userName}</span>
+          <span className="font-extrabold text-gray-600">{approvedBy} : </span>
+          <span>{approvedByUser?.name ?? approvedByUser?.userName}</span>
         </div>
         <div className="px-2">
-        <button className="bg-orange-600 text-white px-2 py-1 rounded-md w-[150px] hover:bg-orange-500" onClick={() => setShowReport(true)}>{buttons?.report}</button>
+          <button
+            className="bg-orange-600 text-white px-2 py-1 rounded-md w-[150px] hover:bg-orange-500"
+            onClick={() => setShowReport(true)}>
+            {buttons?.report}
+          </button>
         </div>
-        
       </div>
-      
 
       <div className="grid grid-cols-5 px-4 mt-4 border divide-x-2  text-center">
         <div>
@@ -109,7 +111,9 @@ const ProductDetails = ({ data, showRequisition, buttons, setShowReport }) => {
             <p className="text-gray-600">{convertNumber(item?.quantity)}</p>
           </div>
           <div>
-            <p className="text-gray-600">{convertNumber(item?.product?.quantity)}</p>
+            <p className="text-gray-600">
+              {convertNumber(item?.product?.quantity)}
+            </p>
           </div>
           <div>
             <p className="text-gray-600">{item?.product?.unit}</p>

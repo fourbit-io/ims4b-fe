@@ -18,14 +18,14 @@ const Sidebar = ({ active, setActive, items }) => {
       )}
       <Logo active={active} />
       <Items items={items} active={active} />
-      <div>
+      {/* <div>
         <a href="https://www.fourbit.io/" target="_blank">
           <img
             src="/images/fourbit-logo.png"
             className="w-14 opacity-60 hover:opacity-100 cursor-pointer"
           />
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };
