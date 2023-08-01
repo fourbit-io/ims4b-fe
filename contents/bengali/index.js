@@ -53,11 +53,12 @@ import {
 } from "./purchase";
 import { buttonText } from "./modal";
 import { tableText, paginationText } from "./table";
-import { convertedNumber, buttons } from "./global";
+import { convertedNumber, buttons, apiMessages } from "./global";
 
 export {
   convertedNumber,
   buttons,
+  apiMessages,
   buttonText,
   tableText,
   paginationText,

@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.29.19",
     "axios": "^1.4.0",
+    "cogo-toast": "^4.2.3",
     "next": "13.4.5",
     "react": "18.2.0",
     "react-csv": "^2.2.2",
