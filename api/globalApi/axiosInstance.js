@@ -11,7 +11,7 @@ const axiosInstance = axios.create(urlConfig());
 axiosInstance.interceptors.request.use((config) => {
   let token =
     typeof window !== undefined
-      ? window.sessionStorage.getItem("access_token")
+      ? window.localStorage.getItem("access_token")
       : undefined;
   config.headers["Authorization"] = "Bearer " + token;
   return config;

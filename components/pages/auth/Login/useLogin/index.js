@@ -15,8 +15,8 @@ export const useSignInUserData = () => {
   return useMutation(signInUser, {
     onSuccess: (data) => {
       const res = data?.data?.data;
-      sessionStorage.setItem("access_token", res?.access_token);
-      sessionStorage.setItem("info", JSON.stringify(res?.info));
+      localStorage.setItem("access_token", res?.access_token);
+      localStorage.setItem("info", JSON.stringify(res?.info));
 
       // queryClient.invalidateQueries(["layout-authentication"]);
 
