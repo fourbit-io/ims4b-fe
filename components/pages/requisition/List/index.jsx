@@ -33,16 +33,19 @@ const List = () => {
 
   const { data, isLoading, error } = useRequisitions(currentPage);
 
-
   useEffect(() => {
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {
         id: dataValue?.id,
         reqId: convertNumber(dataValue?.id),
         date: convertDate(dataValue?.createdAt),
-        createdBy: dataValue?.createdByUser?.userName,
-        assignedTo: dataValue?.assginedUser?.userName,
-        approvedBy: dataValue?.approvedByUser?.userName,
+        createdBy:
+          dataValue?.createdByUser?.name ?? dataValue?.createdByUser?.userName,
+        assignedTo:
+          dataValue?.assginedUser?.name ?? dataValue?.assginedUser?.userName,
+        approvedBy:
+          dataValue?.approvedByUser?.name ??
+          dataValue?.approvedByUser?.userName,
         status: dataValue?.status,
       };
       return values;
@@ -57,7 +60,7 @@ const List = () => {
 
   return (
     <>
-    <Head>
+      <Head>
         <title>{pageTitle}</title>
       </Head>
       {deleteModal && (
@@ -86,9 +89,7 @@ const List = () => {
             </div>
           )}
         </div>
-        <StatusHandler
-          isLoading={isLoading || dltIsLoading}
-          error={error}>
+        <StatusHandler isLoading={isLoading || dltIsLoading} error={error}>
           <Table
             tableHeaders={tableHeaders}
             tableItems={requisitionLists}

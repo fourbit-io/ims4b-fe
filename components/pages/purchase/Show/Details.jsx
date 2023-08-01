@@ -93,7 +93,7 @@ const Details = ({ data }) => {
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{createdBy}</p>
           <hr />
-          <p> {data?.createdByUser?.userName}</p>
+          <p> {data?.createdByUser?.name ?? data?.createdByUser?.userName}</p>
         </div>
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{date}</p>

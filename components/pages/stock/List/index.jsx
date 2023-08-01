@@ -41,20 +41,21 @@ const List = () => {
   const { data, isLoading, error } = useStocks(currentPage);
 
   useEffect(() => {
-    
     const dataValues = data?.data?.data?.map((dataValue) => {
       const values = {
         id: dataValue?.id,
         stockId: convertNumber(dataValue?.id),
-        quantity: dataValue?.incrementQuantity ? convertNumber(dataValue?.quantity) : "("+convertNumber(dataValue?.quantity)+")",
+        quantity: dataValue?.incrementQuantity
+          ? convertNumber(dataValue?.quantity)
+          : "(" + convertNumber(dataValue?.quantity) + ")",
         type: dataValue?.incrementQuantity ? newStockType : damagedStockType,
         status: dataValue?.status,
         productName: dataValue?.product?.name,
         productCode: dataValue?.product?.slug,
         productUnit: dataValue?.product?.unit,
-        user: dataValue?.user?.userName,
+        user: dataValue?.user?.name ?? dataValue?.user?.userName,
         date: dataValue?.date ? convertDate(dataValue?.date) : "-",
-      }
+      };
       return values;
     });
 
@@ -67,7 +68,7 @@ const List = () => {
 
   return (
     <>
-    <Head>
+      <Head>
         <title>{pageTitle}</title>
       </Head>
       {deleteModal && (
@@ -96,7 +97,7 @@ const List = () => {
             </h3>
           </div>
           <div className="mt-3 md:mt-0 flex gap-2 items-center">
-          <button
+            <button
               onClick={() => router.push("/stocks/damaged")}
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-red-600 rounded-lg hover:bg-red-500 active:bg-red-700 md:text-sm">
               {damagedStock?.pageTitle}
@@ -108,7 +109,9 @@ const List = () => {
             </button>
           </div>
         </div>
-        <StatusHandler isLoading={isLoading || dltIsLoading || aprvIsLoading} error={error}>
+        <StatusHandler
+          isLoading={isLoading || dltIsLoading || aprvIsLoading}
+          error={error}>
           <Table
             tableHeaders={tableHeaders}
             tableItems={stockLists}

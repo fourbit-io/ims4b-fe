@@ -41,7 +41,7 @@ const List = () => {
         remark: dataValue?.remark,
         description: dataValue?.description,
         date: convertDate(dataValue?.date),
-        createdBy: dataValue?.createdByUser?.userName,
+        createdBy: dataValue?.createdByUser?.name ?? dataValue?.createdByUser?.userName,
       };
       return values;
     });

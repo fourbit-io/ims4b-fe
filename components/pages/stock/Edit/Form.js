@@ -62,6 +62,7 @@ const Form = ({ productData, productLoading, stockData, id }) => {
                 {...register("quantity", {
                   required: false,
                   valueAsNumber: true,
+                  validate: (value) => value > 0,
                 })}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
               />
