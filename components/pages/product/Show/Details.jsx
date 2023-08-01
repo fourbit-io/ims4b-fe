@@ -88,7 +88,7 @@ const Details = ({ data }) => {
                       }`}
                     />
                     <p>
-                        {item?.user?.userName} 
+                        {item?.user?.name ?? item?.user?.userName} 
                       <span className="font-bold">
                       {" "} {idx === 0 ? convertDate(data?.date)  : convertDate(item?.updatedAt) }{" "}
                       </span>
