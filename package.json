@@ -1,6 +1,7 @@
 {
   "name": "inventory-front-end",
-  "version": "0.1.0",
+  "author": "Fourbit Front End Team",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
