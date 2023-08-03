@@ -21,6 +21,10 @@ export const products = () => {
     "slug",
     "quantity",
     "unit",
+    "vendorName",
+    "vendorAddress",
+    "vendorBillNumber",
+    "vendorInfo",
     "details",
     "date",
     "actions",
@@ -51,16 +55,16 @@ export const products = () => {
         <button
           className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
           onClick={() => redirectEditPage(row?.id)}>
-          <HiPencilAlt/>
+          <HiPencilAlt />
           {buttons?.edit}
         </button>
       )}
       <button
-          className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
-          onClick={() => redirectShowPage(row?.id)}>
-          <BiShow/>
-          {buttons?.show}
-        </button>
+        className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
+        onClick={() => redirectShowPage(row?.id)}>
+        <BiShow />
+        {buttons?.show}
+      </button>
       {role === "SUPERADMIN" && (
         <button
           className="flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer"
@@ -68,7 +72,7 @@ export const products = () => {
             setDeleteModal(true);
             setProductItem(row);
           }}>
-          <BsTrash/>
+          <BsTrash />
           {buttons?.delete}
         </button>
       )}
