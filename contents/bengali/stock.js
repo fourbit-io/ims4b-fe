@@ -1,34 +1,36 @@
 export const newStock = {
-  pageTitle: "নতুন স্টক",
+  pageTitle: "নতুন পণ্য অনুরোধ",
   productAddBtn: "যোগ করুন",
 };
 
 export const damagedStock = {
-  pageTitle: "বাতিল স্টক",
+  pageTitle: "বাতিল পণ্য অনুরোধ",
   productAddBtn: "যোগ করুন",
 };
 
 export const stocksTable = {
-  pageTitle: "স্টকের তালিকা",
-  newStockType: "নতুন স্টক",
-  damagedStockType: "বাতিল স্টক",
+  pageTitle: "পণ্য অনুরোধের তালিকা",
+  newStockType: "নতুন পণ্য",
+  damagedStockType: "বাতিল পণ্য",
 };
 
 export const stockModal = {
-  deleteModalContent: "আপনি কি এই স্টক টি লিস্ট থেকে মুছে ফেলতে চান?",
-  approveModalContent: "আপনি কি এই স্টক টি পাস্ করতে চান?",
+  deleteModalContent: "আপনি কি এই পণ্য অনুরোধ টি লিস্ট থেকে মুছে ফেলতে চান?",
+  approveModalContent: "আপনি কি এই পণ্য অনুরোধ টি পাস্ করতে চান?",
+  rejectModalContent: "আপনি কি এই পণ্য অনুরোধ টি বাতিল করতে চান?",
 };
 
 export const stockTableHeader = [
   "আইডি",
+  "তারিখ",
   "প্রোডাক্টের নাম",
   "কোড",
   "পরিমান",
   "একক",
   "স্টক টাইপ",
   "স্ট্যাটাস",
+  "স্ট্যাটাস তারিখ",
   "অনুরোধে",
-  "তারিখ",
 ];
 
 export const stockReportTableHeader = [
@@ -56,8 +58,8 @@ export const selectedProductsContent = {
 };
 
 export const editStock = {
-  pageTitle: "স্টক সংশোধন করুন",
-  formTitle: "স্টক সংশোধন করুন",
+  pageTitle: "অনুরোধ সংশোধন করুন",
+  formTitle: "অনুরোধ সংশোধন করুন",
   productName: "প্রোডাক্টের নাম",
   productQty: "পরিমান",
   submitBtn: "সংশোধন করুন",
@@ -65,7 +67,7 @@ export const editStock = {
 };
 
 export const showStock = {
-  pageTitle: "স্টকের বিস্তারিত দেখুন ",
+  pageTitle: "পণ্য অনুরোধের বিস্তারিত দেখুন ",
   productName: "প্রোডাক্টের নাম",
   productCode: "প্রোডাক্ট কোড",
   productQty: "পরিমান",

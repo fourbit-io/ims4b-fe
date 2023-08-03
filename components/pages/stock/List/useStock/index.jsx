@@ -70,3 +70,27 @@ export const useApproveStock = () => {
     },
   });
 };
+
+const rejectStock = async (id) => {
+  return await axiosInstance.patch(`/v1/stock/rejected/${id}`);
+};
+
+export const useRejectStock = () => {
+  const queryClient = useQueryClient();
+  return useMutation(rejectStock, {
+    onSuccess: () => {
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
+      return queryClient.invalidateQueries(["stock-lists"]);
+    },
+    onError: (data) => {
+      console.log({ data });
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
+    },
+  });
+};

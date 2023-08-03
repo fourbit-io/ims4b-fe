@@ -55,13 +55,13 @@ export const sidebarDatas = () => {
       icon: <RxDashboard className="text-[20px]" />,
     },
     {
-      name: "প্রোডাক্ট",
+      name: "স্টক",
       url: "/products",
       subDatas: [],
       icon: <BsPaperclip className="text-[20px]" />,
     },
     {
-      name: "স্টক",
+      name: "পণ্য অনুরোধ",
       url: "/stocks",
       subDatas: [],
       icon: <AiOutlineFileAdd className="text-[20px]" />,
@@ -106,13 +106,13 @@ export const sidebarDatas = () => {
       icon: <AiOutlineUser className="text-[20px]" />,
     },
     {
-      name: "প্রোডাক্ট",
+      name: "স্টক",
       url: "/products",
       subDatas: [],
       icon: <BsPaperclip className="text-[20px]" />,
     },
     {
-      name: "স্টক",
+      name: "পণ্য অনুরোধ",
       url: "/stocks",
       subDatas: [],
       icon: <AiOutlineFileAdd className="text-[20px]" />,
@@ -134,11 +134,11 @@ export const sidebarDatas = () => {
       url: "/report",
       subDatas: [
         {
-          name: "প্রোডাক্ট",
+          name: "স্টক",
           url: "/report/product",
         },
         {
-          name: "স্টক",
+          name: "পণ্য অনুরোধ",
           url: "/report/stock",
         },
         {

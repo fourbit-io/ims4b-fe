@@ -17,6 +17,7 @@ export const buttons = {
   delete: "মুছে ফেলুন",
   approve: "অনুমোদন করুন",
   assign: "বরাদ্দ করুন",
+  reject: "বাতিল করুন",
   release: "বিতরণ করুন",
   receive: "প্রাপ্তিস্বীকার করুন",
   loading: "অপেক্ষা করুন",
