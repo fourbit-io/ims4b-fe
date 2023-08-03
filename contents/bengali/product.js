@@ -68,8 +68,8 @@ export const productReportTableHeader = [
   "স্টক যোগের পরিমান",
   "স্টক সরানের তারিখ",
   "স্টক সরানের পরিমান",
-  "রেফারেন্স",
   "ব্যালান্স",
+  "রেফারেন্স",
 ];
 
 export const productFilter = {
