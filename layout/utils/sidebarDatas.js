@@ -134,11 +134,11 @@ export const sidebarDatas = () => {
       url: "/report",
       subDatas: [
         {
-          name: "স্টক",
+          name: "স্টক রিপোর্ট",
           url: "/report/product",
         },
         {
-          name: "পণ্য অনুরোধ",
+          name: "স্টক",
           url: "/report/stock",
         },
         {

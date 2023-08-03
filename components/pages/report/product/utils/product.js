@@ -15,8 +15,8 @@ export const products = () => {
     "stockInQty",
     "stockOutDate",
     "stockOutQty",
-    "ref",
     "balance",
+    "ref",
   ];
   const { pageTitle } = productsTable;
 

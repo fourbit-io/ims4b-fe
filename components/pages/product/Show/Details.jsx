@@ -11,6 +11,10 @@ const Details = ({ data }) => {
     productCode,
     productQty,
     productUnit,
+    vendorName,
+    vendorAddress,
+    vendorBillNumber,
+    vendorInfo,
     productDetails,
     stockHistoryTitle,
     prodStockTitle,
@@ -27,12 +31,13 @@ const Details = ({ data }) => {
         </h3>
         <hr />
       </div>
-      <div className="grid grid-cols-5 px-4 my-10 divide-x-2  text-center">
+      <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
         <div className="p-2">
-          <p className="font-extrabold text-gray-600">{productName}</p>
+          <p className="font-extrabold text-gray-600">{date}</p>
           <hr />
-          <p> {data?.name}</p>
+          <p> {convertDate(data?.date)}</p>
         </div>
+
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{productCode}</p>
           <hr />
@@ -41,31 +46,50 @@ const Details = ({ data }) => {
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{productQty}</p>
           <hr />
-          <p>
-            {" "}
-            {convertNumber(data?.quantity)}
-          </p>
+          <p> {convertNumber(data?.quantity)}</p>
         </div>
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{productUnit}</p>
           <hr />
-          <p>
-            {" "}
-             {data?.unit}
-          </p>
-        </div>
-        <div className="p-2">
-          <p className="font-extrabold text-gray-600">{date}</p>
-          <hr />
-          <p> {convertDate(data?.date)}</p>
+          <p> {data?.unit}</p>
         </div>
       </div>
+      <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productName}</p>
+          <hr />
+          <p> {data?.name}</p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{vendorName}</p>
+          <hr />
+          <p> {data?.vendorName}</p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{vendorAddress}</p>
+          <hr />
+          <p> {data?.vendorAddress}</p>
+        </div>
+        <div className="p-2">
+          <p className="font-extrabold text-gray-600">{vendorBillNumber}</p>
+          <hr />
+          <p> {convertNumber(data?.vendorBillNumber)}</p>
+        </div>
+      </div>
+      <div className="px-4">
+        <div className="font-extrabold text-gray-600 underline">
+          {vendorInfo} :{" "}
+        </div>
+        <div className="px-0">{data?.vendorInfo}</div>
+      </div>
+
       <div className="px-4">
         <div className="font-extrabold text-gray-600 underline">
           {productDetails} :{" "}
         </div>
         <div className="px-0">{data?.details}</div>
       </div>
+
 
       <div className="mt-10 space-y-4">
         <h3 className="text-gray-600 text-2xl font-semibold px-4">
@@ -88,13 +112,16 @@ const Details = ({ data }) => {
                       }`}
                     />
                     <p>
-                        {item?.user?.name ?? item?.user?.userName} 
+                      {item?.user?.name ?? item?.user?.userName}
                       <span className="font-bold">
-                      {" "} {idx === 0 ? convertDate(data?.date)  : convertDate(item?.updatedAt) }{" "}
+                        {" "}
+                        {idx === 0
+                          ? convertDate(data?.date)
+                          : convertDate(item?.updatedAt)}{" "}
                       </span>
                       {dateSub}
                       <span className="font-bold">
-                      {" "}
+                        {" "}
                         {idx !== 0 && convertNumber(item?.quantityChange)}{" "}
                         {idx !== 0 && data?.unit} {data?.name}{" "}
                       </span>

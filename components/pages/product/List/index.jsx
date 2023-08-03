@@ -40,6 +40,10 @@ const List = () => {
         slug: dataValue?.slug,
         quantity: convertNumber(dataValue?.quantity),
         unit: dataValue?.unit,
+        vendorName: dataValue?.vendorName,
+        vendorAddress: dataValue?.vendorAddress,
+        vendorBillNumber: dataValue?.vendorBillNumber,
+        vendorInfo: dataValue?.vendorInfo,
         details: dataValue?.details,
         date: convertDate(dataValue?.date),
       };
