@@ -1,6 +1,6 @@
 import { BsCheckLg } from "react-icons/bs";
 import { ImExit } from "react-icons/im";
-import { MdOutlineAssignmentInd } from "react-icons/md";
+import { MdOutlineAssignmentInd, MdOutlineCancel } from "react-icons/md";
 import { RiFolderReceivedLine } from "react-icons/ri";
 import { requisitionModal, buttons } from "@/contents/bengali";
 import { userInfo } from "@/api/authentication/userInfo";
@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import {
   useApproveRequisition,
   useReceiveRequisition,
+  useRejectRequisition,
   useReleaseRequisition,
 } from "../useShowRequisition";
 import { useState } from "react";
@@ -17,16 +18,20 @@ const { role } = userInfo();
 const Actions = ({ id, status }) => {
   const router = useRouter();
 
-  const { approveModalContent, releaseModalContent, receiveModalContent } =
+  const { approveModalContent, rejectModalContent, releaseModalContent, receiveModalContent } =
     requisitionModal;
   const [requisitionId, setRequisitionId] = useState();
 
   const [approveModal, setApproveModal] = useState(false);
+  const [rejectModal, setRejectModal] = useState(false);
   const [releaseModal, setReleaseModal] = useState(false);
   const [recevieModal, setReceiveModal] = useState(false);
 
   const { mutate: approveRequisition, isLoading: aprvIsLoading } =
     useApproveRequisition();
+
+    const { mutate: rejectRequisition, isLoading: rjctIsLoading } =
+    useRejectRequisition();
 
   const { mutate: releaseRequisition, isLoading: rlsIsLoading } =
     useReleaseRequisition();
@@ -36,6 +41,9 @@ const Actions = ({ id, status }) => {
 
   const approveAction = (id) => {
     approveRequisition(id);
+  };
+  const rejectAction = (id) => {
+    rejectRequisition(id);
   };
   const releaseAction = (id) => {
     releaseRequisition(id);
@@ -55,6 +63,15 @@ const Actions = ({ id, status }) => {
           setState={setApproveModal}
           content={approveModalContent}
           action={approveAction}
+          id={requisitionId}
+        />
+      )}
+      {rejectModal && (
+        <Modal
+          state={rejectModal}
+          setState={setRejectModal}
+          content={rejectModalContent}
+          action={rejectAction}
           id={requisitionId}
         />
       )}
@@ -120,6 +137,24 @@ const Actions = ({ id, status }) => {
                 }}>
                 <BsCheckLg />
                 {aprvIsLoading ? buttons?.loading : buttons?.approve}
+              </button>
+            )}
+            {(status === "PENDING" ||
+              status === "MODIFIED" ||
+              status === "ASSIGNED") && (
+                <button
+                disabled={rjctIsLoading}
+                className={`flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md  ${
+                  rjctIsLoading
+                    ? "bg-gray-600 text-white hover:bg-gray-500 cursor-not-allowed"
+                    : "bg-red-600 text-white hover:bg-red-500 cursor-pointer"
+                }`}
+                onClick={() => {
+                  setRejectModal(true);
+                  setRequisitionId(id);
+                }}>
+                <MdOutlineCancel />
+                {buttons?.reject}
               </button>
             )}
           </>
