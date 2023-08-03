@@ -26,6 +26,11 @@ const List = () => {
     approveModalContent,
     approveAction,
     aprvIsLoading,
+    rejectModal,
+    setRejectModal,
+    rejectModalContent,
+    rejectAction,
+    rjctIsLoading,
     deleteModal,
     setDeleteModal,
     deleteModalContent,
@@ -45,16 +50,17 @@ const List = () => {
       const values = {
         id: dataValue?.id,
         stockId: convertNumber(dataValue?.id),
+        date: dataValue?.date ? convertDate(dataValue?.date) : "-",
         quantity: dataValue?.incrementQuantity
           ? convertNumber(dataValue?.quantity)
           : "(" + convertNumber(dataValue?.quantity) + ")",
         type: dataValue?.incrementQuantity ? newStockType : damagedStockType,
         status: dataValue?.status,
+        statusDate: dataValue?.status === 'APPROVED' || dataValue?.status === 'REJECTED' ? convertDate(dataValue?.updatedAt) : "-",
         productName: dataValue?.product?.name,
         productCode: dataValue?.product?.slug,
         productUnit: dataValue?.product?.unit,
         user: dataValue?.user?.name ?? dataValue?.user?.userName,
-        date: dataValue?.date ? convertDate(dataValue?.date) : "-",
       };
       return values;
     });
@@ -89,6 +95,15 @@ const List = () => {
           id={stockItem?.id}
         />
       )}
+      {rejectModal && (
+        <Modal
+          state={rejectModal}
+          setState={setRejectModal}
+          content={rejectModalContent}
+          action={rejectAction}
+          id={stockItem?.id}
+        />
+      )}
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
@@ -110,7 +125,7 @@ const List = () => {
           </div>
         </div>
         <StatusHandler
-          isLoading={isLoading || dltIsLoading || aprvIsLoading}
+          isLoading={isLoading || dltIsLoading || aprvIsLoading || rjctIsLoading}
           error={error}>
           <Table
             tableHeaders={tableHeaders}

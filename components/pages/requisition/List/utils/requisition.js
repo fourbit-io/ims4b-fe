@@ -52,9 +52,9 @@ export const requisitions = () => {
 
   const renderActions = (row) => (
     <div className="flex items-center gap-2 justify-center">
-      {(role === "MANAGER" || role === "SUPERADMIN") && (
+      {( role === "SHOPKEEPER" || role === "MANAGER" || role === "SUPERADMIN") && (
         <>
-          {(row?.status === "PENDING" || row?.status === "MODIFIED") && (
+          {(row?.status === "PENDING" || row?.status === "MODIFIED"  || row?.status === "ASSIGNED") && (
               <button
                 className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
                 onClick={() => redirectEditPage(row?.id)}>

@@ -5,6 +5,7 @@ import { convertNumber, convertDate } from "@/lib";
 import { tableHeaders } from "@/contents/bengali";
 
 const ShopkeeperDashboard = ({ dashboard, dashboardContent }) => {
+  console.log(dashboard?.assignedRequisitio ?? 0);
   const {
     reqTableColumns,
     reqTableHeader,
@@ -46,7 +47,7 @@ const ShopkeeperDashboard = ({ dashboard, dashboardContent }) => {
         <ul className="grid grid-cols-4 gap-4 items-center">
           <li className="w-full text-center bg-primary-500 px-12 py-4 rounded-lg sm:w-auto">
             <h4 className="text-4xl text-white font-semibold">
-              {convertNumber(dashboard?.assignedRequisitionCount) ??
+              {dashboard?.assignedRequisitionCount ? convertNumber(dashboard?.assignedRequisitionCount) :
                 convertNumber(0)}
             </h4>
             <p className="mt-3 text-gray-100 font-medium">
@@ -55,7 +56,7 @@ const ShopkeeperDashboard = ({ dashboard, dashboardContent }) => {
           </li>
           <li className="w-full text-center bg-primary-500 px-12 py-4 rounded-lg sm:w-auto">
             <h4 className="text-4xl text-white font-semibold">
-              {convertNumber(dashboard?.releasedRequisitionCount) ??
+              {dashboard?.releasedRequisitionCount ? convertNumber(dashboard?.releasedRequisitionCount) :
                 convertNumber(0)}
             </h4>
             <p className="mt-3 text-gray-100 font-medium">
@@ -64,7 +65,7 @@ const ShopkeeperDashboard = ({ dashboard, dashboardContent }) => {
           </li>
           <li className="w-full text-center bg-primary-500 px-12 py-4 rounded-lg sm:w-auto">
             <h4 className="text-4xl text-white font-semibold">
-              {convertNumber(dashboard?.createdStockCount) ?? convertNumber(0)}
+              {dashboard?.createdStockCount ? convertNumber(dashboard?.createdStockCount) : convertNumber(0)}
             </h4>
             <p className="mt-3 text-gray-100 font-medium">
               {dashboardContent?.stockCreated}
@@ -72,7 +73,7 @@ const ShopkeeperDashboard = ({ dashboard, dashboardContent }) => {
           </li>
           <li className="w-full text-center bg-primary-500 px-12 py-4 rounded-lg sm:w-auto">
             <h4 className="text-4xl text-white font-semibold">
-              {convertNumber(dashboard?.approvedStockCount) ?? convertNumber(0)}
+              {dashboard?.approvedStockCount ? convertNumber(dashboard?.approvedStockCount) : convertNumber(0)}
             </h4>
             <p className="mt-3 text-gray-100 font-medium">
               {dashboardContent?.stockApproved}

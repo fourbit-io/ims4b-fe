@@ -44,6 +44,29 @@ export const useApproveRequisition = () => {
   });
 };
 
+const rejectRequisition = async (id) => {
+  return await axiosInstance.patch(`/v1/requisition/rejected/${id}`);
+};
+
+export const useRejectRequisition = () => {
+  return useMutation(rejectRequisition, {
+    onSuccess: (data) => {
+      cogoToast.success(apiMessages?.success?.body, {
+        position: "top-right",
+        heading: apiMessages?.success?.header,
+      });
+      window.location.reload();
+    },
+    onError: (data) => {
+      console.log({ data });
+      cogoToast.error(apiMessages?.error?.body, {
+        position: "top-right",
+        heading: apiMessages?.error?.header,
+      });
+    },
+  });
+};
+
 const releaseRequisition = async (id) => {
   return await axiosInstance.patch(`/v1/requisition/released/${id}`);
 };
