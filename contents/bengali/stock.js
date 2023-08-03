@@ -17,18 +17,20 @@ export const stocksTable = {
 export const stockModal = {
   deleteModalContent: "আপনি কি এই পণ্য অনুরোধ টি লিস্ট থেকে মুছে ফেলতে চান?",
   approveModalContent: "আপনি কি এই পণ্য অনুরোধ টি পাস্ করতে চান?",
+  rejectModalContent: "আপনি কি এই পণ্য অনুরোধ টি বাতিল করতে চান?",
 };
 
 export const stockTableHeader = [
   "আইডি",
+  "তারিখ",
   "প্রোডাক্টের নাম",
   "কোড",
   "পরিমান",
   "একক",
   "স্টক টাইপ",
   "স্ট্যাটাস",
+  "স্ট্যাটাস তারিখ",
   "অনুরোধে",
-  "তারিখ",
 ];
 
 export const stockReportTableHeader = [

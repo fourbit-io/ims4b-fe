@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { HiPencilAlt } from "react-icons/hi";
 import { BsTrash, BsCheckLg } from "react-icons/bs";
+import { MdOutlineCancel } from "react-icons/md";
 import { useState } from "react";
 import {
   stockTableHeader as tableHeaders,
@@ -8,7 +9,7 @@ import {
   stocksTable,
   buttons,
 } from "@/contents/bengali";
-import { useApproveStock, useDeleteStock } from "../useStock";
+import { useApproveStock, useDeleteStock, useRejectStock } from "../useStock";
 import { userInfo } from "@/api/authentication/userInfo";
 
 export const stocks = () => {
@@ -16,22 +17,24 @@ export const stocks = () => {
   const router = useRouter();
   const tableColumns = [
     "stockId",
+    "date",
     "productName",
     "productCode",
     "quantity",
     "productUnit",
     "type",
     "status",
+    "statusDate",
     "user",
-    "date",
     "actions",
   ];
   const { pageTitle, newStockType, damagedStockType } = stocksTable;
-  const { deleteModalContent, approveModalContent } = stockModal;
+  const { deleteModalContent, approveModalContent, rejectModalContent } = stockModal;
 
   const [stockLists, setStockLists] = useState([]);
   const [deleteModal, setDeleteModal] = useState(false);
   const [approveModal, setApproveModal] = useState(false);
+  const [rejectModal, setRejectModal] = useState(false);
   const [stockItem, setStockItem] = useState();
 
   const [pages, setPages] = useState(1);
@@ -40,6 +43,8 @@ export const stocks = () => {
   const { mutate: deleteStock, isLoading: dltIsLoading } = useDeleteStock();
 
   const { mutate: approveStock, isLoading: aprvIsLoading } = useApproveStock();
+
+  const { mutate: rejectStock, isLoading: rjctIsLoading } = useRejectStock();
 
   const redirectEditPage = (id) => {
     router.push(`/stocks/edit/${id}`);
@@ -61,6 +66,17 @@ export const stocks = () => {
         }}>
         <BsCheckLg />
         {buttons?.approve}
+      </button>
+      <button
+        className={`flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md bg-red-600 text-white hover:bg-red-500 cursor-pointer ${
+          row?.status === "PENDING" ? "block" : "hidden"
+        }`}
+        onClick={() => {
+          setRejectModal(true);
+          setStockItem(row);
+        }}>
+        <MdOutlineCancel />
+        {buttons?.reject}
       </button>
       {row?.status === "PENDING" && (
         <button
@@ -96,6 +112,10 @@ export const stocks = () => {
     approveStock(id);
   };
 
+  const rejectAction = (id) => {
+    rejectStock(id);
+  };
+
   return {
     router,
     tableColumns,
@@ -111,6 +131,13 @@ export const stocks = () => {
     approveModalContent,
     approveAction,
     aprvIsLoading,
+
+    rejectModal,
+    setRejectModal,
+    rejectModalContent,
+    rejectAction,
+    rjctIsLoading,
+
     deleteModal,
     setDeleteModal,
     deleteModalContent,
