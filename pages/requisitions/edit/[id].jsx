@@ -1,5 +1,5 @@
 import EditRequisition from "@/components/pages/requisition/Edit";
-import withStorekeeper from "@/lib/hoc/withStorekeeper";
+import withStorekeeper from "@/lib/hoc/withStoreKeeper";
 
 const EditPage = () => {
   return <EditRequisition />;
