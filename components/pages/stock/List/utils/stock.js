@@ -62,12 +62,15 @@ export const stocks = () => {
         <BsCheckLg />
         {buttons?.approve}
       </button>
-      <button
-        className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
-        onClick={() => redirectEditPage(row?.id)}>
-        <HiPencilAlt />
-        {buttons?.edit}
-      </button>
+      {row?.status === "PENDING" && (
+        <button
+          className="flex items-center gap-1 w-[100px] md:w-auto border px-2 py-1 rounded-md bg-orange-600 text-white hover:bg-orange-500 cursor-pointer"
+          onClick={() => redirectEditPage(row?.id)}>
+          <HiPencilAlt />
+          {buttons?.edit}
+        </button>
+      )}
+
       {/* <BiShow
         className="w-7 h-7 border p-1 rounded-md bg-primary-600 text-white hover:bg-primary-500 cursor-pointer"
         onClick={() => redirectShowPage(row?.id)}
