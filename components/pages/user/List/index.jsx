@@ -5,7 +5,7 @@ import { useUsers } from "./useUser";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import { users } from "./utils/users";
 import Pagination from "@/components/reusable/Pagination";
-import { convertNumber, convertDate } from "@/lib";
+import { convertNumber, convertDate, convertRole } from "@/lib";
 import Head from "next/head";
 import PasswordChange from "../PasswordChange";
 import Modal from "@/components/reusable/Modal";
@@ -48,7 +48,7 @@ const List = () => {
         uId: convertNumber(dataValue?.id),
         name: dataValue?.name,
         userName: dataValue?.userName,
-        role: dataValue?.role,
+        role: convertRole(dataValue?.role),
         date: convertDate(dataValue?.createdAt),
       };
       return values;

@@ -1,20 +1,20 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Router } from "next/router";
+import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loader from "../components/reusable/Loader";
 import "../styles/globals.css";
 import Layout from "../layout";
-import LoginPage from "./login";
 import { store } from "../store";
 import { Provider } from "react-redux";
 import Head from "next/head";
+import {authAccessToken} from "../api/authentication/authAccessToken"
 
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
   const [globalLoader, setGlobalLoader] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
-
+  const router = useRouter();
   useEffect(() => {
     setAccessToken(localStorage.getItem("access_token"));
     Router.events.on("routeChangeStart", () => {
@@ -22,6 +22,12 @@ function MyApp({ Component, pageProps }) {
     });
     Router.events.on("routeChangeComplete", () => setGlobalLoader(false));
     Router.events.on("routeChangeError", () => setGlobalLoader(false));
+    if( authAccessToken() && router?.pathname === "/login"){
+      router.push("/");
+    }
+    if(!authAccessToken()){
+      router.push("/login");
+    }
   }, []);
   return (
     <>
@@ -30,15 +36,11 @@ function MyApp({ Component, pageProps }) {
           <link rel="icon" href="/images/ims-logo.png" sizes="any" />
         </Head>
         {globalLoader && <Loader />}
-        {accessToken !== null ? (
-          <Provider store={store}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </Provider>
-        ) : (
-          <LoginPage />
-        )}
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
       </QueryClientProvider>
     </>
   );
