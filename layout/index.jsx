@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 
 const Layout = ({ children }) => {
   const [active, setActive] = useState(false);
+  console.log({ children });
   return (
     <>
       {children?.type?.name === "LoginPage" ? (
