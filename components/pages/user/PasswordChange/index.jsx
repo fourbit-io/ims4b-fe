@@ -3,12 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useChangePassword } from "./usePasswordChange";
 
-const PasswordChange = ({
-  userItem,
-  state,
-  setState,
-  pswIsLoading,
-}) => {
+const PasswordChange = ({ userItem, state, setState, pswIsLoading }) => {
   const { register, handleSubmit, reset, setValue } = useForm();
   const {
     formTitle,
@@ -83,11 +78,11 @@ const PasswordChange = ({
                 </fieldset>
               </div>
               <div className="items-center gap-2 mt-3 sm:flex">
-                  <button
-                    disabled={pswIsLoading}
-                    className="w-full mt-2 p-2.5 flex-1 text-white bg-primary-600 rounded-md outline-none ring-offset-2 ring-primary-600 focus:ring-2 hover:bg-primary-500">
-                    {pswIsLoading ? loadingSubmitBtn : submitBtn}
-                  </button>
+                <button
+                  disabled={pswIsLoading}
+                  className="w-full mt-2 p-2.5 flex-1 text-white bg-primary-600 rounded-md outline-none ring-offset-2 ring-primary-600 focus:ring-2 hover:bg-primary-500">
+                  {pswIsLoading ? loadingSubmitBtn : submitBtn}
+                </button>
                 <button
                   className="w-full mt-2 p-2.5 flex-1 text-gray-800 rounded-md outline-none border hover:bg-red-600 hover:text-white"
                   onClick={() => setState(false)}>
