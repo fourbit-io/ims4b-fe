@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useEditUser } from "./useEditUser";
 
-const EditUser = ({ userItem, state, setState, pswIsLoading }) => {
+const EditUser = ({ userItem, state, setState }) => {
   const { register, handleSubmit, reset, setValue } = useForm();
   const {
     formTitle,
@@ -51,7 +51,6 @@ const EditUser = ({ userItem, state, setState, pswIsLoading }) => {
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
               <div>
                 <label className="font-medium">{userName}</label>
-                <fieldset disabled>
                   <input
                     type="text"
                     placeholder={userName}
@@ -63,7 +62,6 @@ const EditUser = ({ userItem, state, setState, pswIsLoading }) => {
                     type="hidden"
                     {...register("userId", { required: true })}
                   />
-                </fieldset>
               </div>
               <div>
                 <label className="font-medium">{name} *</label>

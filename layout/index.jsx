@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { sidebarDatas } from "./utils/sidebarDatas";
+import dynamic from "next/dynamic";
 
 const Layout = ({ children }) => {
   const [active, setActive] = useState(false);
@@ -28,4 +29,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default dynamic(() => Promise.resolve(Layout), { ssr: false });
