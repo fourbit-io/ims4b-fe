@@ -6,7 +6,6 @@ import StatusHandler from "@/components/reusable/StatusHandler";
 import { stocks } from "./utils/stock";
 import { convertNumber } from "@/lib/convertToBen";
 import Head from "next/head";
-import { CSVLink } from "react-csv";
 import Filter from "./Filter";
 import { useReactToPrint } from "react-to-print";
 
