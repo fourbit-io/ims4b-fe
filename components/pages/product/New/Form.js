@@ -11,7 +11,16 @@ const Form = () => {
     productUnit,
     productUnit1,
     productUnit2,
+    productUnit3,
+    productUnit4,
+    productUnit5,
+    productUnit6,
+    productUnit7,
     productQty,
+    vendorName,
+    vendorAddress,
+    vendorBillNumber,
+    vendorInfo,
     productDetails,
     submitBtn,
     loadingSubmitBtn,
@@ -51,10 +60,15 @@ const Form = () => {
             <label className="font-medium">{productUnit}</label>
             <select
               {...register("unit")}
-              defaultValue="unit"
+              defaultValue={productUnit1}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg">
-              <option value="unit">{productUnit1}</option>
-              <option value="piece">{productUnit2}</option>
+              <option value={productUnit1}>{productUnit1}</option>
+              <option value={productUnit2}>{productUnit2}</option>
+              <option value={productUnit3}>{productUnit3}</option>
+              <option value={productUnit4}>{productUnit4}</option>
+              <option value={productUnit5}>{productUnit5}</option>
+              <option value={productUnit6}>{productUnit6}</option>
+              <option value={productUnit7}>{productUnit7}</option>
             </select>
           </div>
           <div>
@@ -72,10 +86,45 @@ const Form = () => {
             <label className="font-medium">{date}</label>
             <input
               type="date"
-              defaultValue={new Date().toISOString().split('T')[0]}
+              defaultValue={new Date().toISOString().split("T")[0]}
               {...register("date")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
+          </div>
+          <div>
+            <label className="font-medium">{vendorName}</label>
+            <input
+              type="text"
+              placeholder={vendorName}
+              {...register("vendorName", { required: false })}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorAddress}</label>
+            <input
+              type="text"
+              placeholder={vendorAddress}
+              {...register("vendorAddress", { required: false })}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorBillNumber}</label>
+            <input
+              type="text"
+              placeholder={vendorBillNumber}
+              {...register("vendorBillNumber", { required: false })}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorInfo}</label>
+            <textarea
+              rows={5}
+              placeholder={vendorInfo}
+              {...register("vendorInfo")}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
           </div>
           <div>
             <label className="font-medium">{productDetails}</label>

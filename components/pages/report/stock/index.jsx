@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { buttons } from "@/contents/bengali";
 import Table from "@/components/reusable/Table";
 import { useStocks } from "./useStock";
@@ -8,6 +8,7 @@ import { convertNumber } from "@/lib/convertToBen";
 import Head from "next/head";
 import { CSVLink } from "react-csv";
 import Filter from "./Filter";
+import { useReactToPrint } from "react-to-print";
 
 const StockReport = () => {
   const {
@@ -39,6 +40,12 @@ const StockReport = () => {
     setStockLists(dataValues);
   }, [data]);
 
+  //Print functions
+  const tableRef = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => tableRef.current,
+  });
+
   return (
     <>
       <Head>
@@ -53,20 +60,11 @@ const StockReport = () => {
           </div>
           {stockLists?.length > 0 && (
             <div className="mt-3 md:mt-0 flex gap-2 items-center">
-              <CSVLink
-                data={stockLists}
-                headers={printHeader}
-                filename={"stock.csv"}
-                style={{
-                  backgroundColor: "green",
-                  color: "white",
-                  padding: 5,
-                  borderRadius: 5,
-                  cursor: "pointer",
-                  padding: "5px 10px 5px 10px",
-                }}>
+              <button
+                className="text-center bg-primary-600 text-white hover:bg-primary-500 rounded-md px-2 py-1"
+                onClick={handlePrint}>
                 {buttons?.download}
-              </CSVLink>
+              </button>
             </div>
           )}
         </div>
@@ -77,11 +75,13 @@ const StockReport = () => {
             setFilter={setFilter}
             refetch={refetch}
           />
-          <Table
-            tableHeaders={tableHeaders}
-            tableItems={stockLists}
-            tableColumns={tableColumns}
-          />
+          <div ref={tableRef} className="px-2">
+            <Table
+              tableHeaders={tableHeaders}
+              tableItems={stockLists}
+              tableColumns={tableColumns}
+            />
+          </div>
         </StatusHandler>
       </div>
     </>
