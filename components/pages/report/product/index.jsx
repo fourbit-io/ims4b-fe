@@ -39,10 +39,7 @@ const ProductReport = () => {
           ? convertDate(dataValue?.stockOutDate)
           : "-",
         stockOutQty: convertNumber(dataValue?.stockOutQuantity ?? 0),
-        refId: dataValue?.stockOutReference,
-        ref: dataValue?.stockOutReference
-          ? convertNumber(dataValue?.stockOutReference)
-          : "-",
+        ref: dataValue?.createdBy?.name ?? "-",
         balance: dataValue?.balance
           ? convertNumber(dataValue?.balance)
           : convertNumber(0),
