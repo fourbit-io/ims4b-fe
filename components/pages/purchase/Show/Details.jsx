@@ -1,12 +1,12 @@
 import React from "react";
-import { showPurchase } from "@/contents/bengali";
+import { showPurchase, buttons } from "@/contents/bengali";
 import { convertDate, convertNumber } from "@/lib";
 import { useChangePurchaseData } from "./useShowPurchase";
 import { userInfo } from "@/api/authentication/userInfo";
 
 const { role } = userInfo();
 
-const Details = ({ data }) => {
+const Details = ({ data, setShowReport}) => {
   const { mutate: approveMutate, isLoading: approveLoading } =
     useChangePurchaseData();
   const { mutate: rejectMutate, isLoading: rejectLoading } =
@@ -43,6 +43,9 @@ const Details = ({ data }) => {
           <h3 className="text-gray-600 text-2xl font-semibold px-4">
             {pageTitle}
           </h3>
+          <div className="px-2">
+         
+        </div>
           { role !== "SHOPKEEPER" &&
             <div className="flex-1 px-2 flex gap-4 items-center justify-end">
             {data?.status !== "REJECTED" && (
@@ -71,6 +74,11 @@ const Details = ({ data }) => {
             
           </div>
           }
+          <button
+            className="bg-orange-600 text-white px-2 py-1 rounded-md w-[150px] hover:bg-orange-500"
+            onClick={() => setShowReport(true)}>
+            {buttons?.report}
+          </button>
         </div>
         <hr />
       </div>
