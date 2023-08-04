@@ -6,6 +6,7 @@ import Head from "next/head";
 import { usePurchase } from "./useShowPurchase";
 import StatusHandler from "@/components/reusable/StatusHandler";
 import Details from "./Details";
+import ShowReport from "./ShowReport";
 
 import { AiFillCaretLeft } from "react-icons/ai";
 import { useEffect, useState } from "react";
@@ -40,7 +41,7 @@ const PurchaseShow = () => {
               {buttons?.previousPage}
             </button>
           </div>
-          <Details data={purchase} />
+          <ShowReport data={purchase} />
         </>
       ) : (
         <StatusHandler isLoading={isLoading} error={error}>
