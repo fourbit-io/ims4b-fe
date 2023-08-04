@@ -20,11 +20,11 @@ const Table = ({ tableHeaders, tableItems, tableColumns, getActions }) => {
             <tr key={idx}>
               {tableColumns?.map((colItem, colIdx) => (
                 colItem !== "actions" ?
-                <td className="pr-6 py-4 whitespace-nowrap text-ellipsis max-w-[100px] overflow-hidden" key={colIdx}>
+                <td className="pr-6 py-4 whitespace-nowrap text-ellipsis max-w-[200px] overflow-hidden" key={colIdx}>
                   {item[colItem] ?? "-"}
                 </td>
                 :
-                <td key={colIdx}>
+                <td key={colIdx} className="whitespace-nowrap text-ellipsis max-w-auto overflow-hidden" >
                 {getActions && getActions?.(item)}
                 </td>
               ))}
