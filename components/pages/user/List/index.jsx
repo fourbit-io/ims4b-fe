@@ -48,7 +48,8 @@ const List = () => {
         uId: convertNumber(dataValue?.id),
         name: dataValue?.name,
         userName: dataValue?.userName,
-        role: convertRole(dataValue?.role),
+        roleTrans: convertRole(dataValue?.role),
+        role: dataValue?.role,
         date: convertDate(dataValue?.createdAt),
       };
       return values;
