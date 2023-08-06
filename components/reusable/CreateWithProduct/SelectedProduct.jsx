@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectedProductsContent } from "@/contents/bengali";
 import { remove, qtyCount, removeAll } from "@/slices/productSlice";
 
-const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
+const SelectedProduct = ({ mutate, isLoading, remarkValue, vendorValue }) => {
   const {
     pageTitle,
     emptyProdContent,
@@ -18,6 +18,11 @@ const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
     productQty,
     totalItm,
     totalQt,
+    dateCt,
+    vendorNameCt,
+    vendorAddressCt,
+    vendorBillNumberCt,
+    vendorInfoCt,
     note,
     optional,
     submitBtn,
@@ -32,6 +37,11 @@ const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
   const dispatch = useDispatch();
 
   const [remark, setRemark] = useState("");
+  const [date, setDate] = useState(new Date().toISOString());
+  const [vendorName, setVendorName] = useState("");
+  const [vendorAddress, setVendorAddress] = useState("");
+  const [vendorBillNumber, setVendorBillNumber] = useState("");
+  const [vendorInfo, setVendorInfo] = useState("");
 
   const removeProduct = (id) => {
     dispatch(remove(id));
@@ -47,18 +57,20 @@ const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
   };
 
   const handleSubmit = () => {
-    if (remarkValue) {
-      mutate({ requisitionProducts: selectedProducts, remark });
-    } else {
-      mutate(selectedProducts);
-    }
+    // if (remarkValue) {
+    //   mutate({ requisitionProducts: selectedProducts, remark });
+    // } else {
+    //   mutate({ requisitionProducts: selectedProducts, date, vendorName, vendorAddress, vendorBillNumber, vendorInfo });
+    // }
+    console.log({ requisitionProducts: selectedProducts, date, vendorName, vendorAddress, vendorBillNumber, vendorInfo })
   };
+
   return (
     <div className="px-4">
       <div className="bg-gray-50 p-2 rounded-md">
         <h3 className="p-3 text-gray-600">{pageTitle}</h3>
         {selectedProducts?.length > 0 ? (
-          <div>
+          <div className="h-[300px] overflow-scroll">
             <div className="grid grid-cols-3 gap-2 px-2 text-gray-400">
               <div>{productName}</div>
               <div>{productCode}</div>
@@ -123,6 +135,54 @@ const SelectedProduct = ({ mutate, isLoading, remarkValue }) => {
             onChange={(e) => setRemark(e.target.value)}
             value={remark}
             className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
+        </div>
+      )}
+      {vendorValue && (
+        <div className="space-y-2 my-2">
+          <div>
+            <label className="font-medium">{dateCt}</label>
+            <input
+              type="date"
+              onChange={(e) => setDate(new Date(e.target.value).toISOString())}
+              defaultValue={new Date().toISOString().split("T")[0]}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorNameCt}</label>
+            <input
+              type="text"
+              onChange={(e) => setVendorName(e.target.value)}
+              placeholder={vendorNameCt}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorAddressCt}</label>
+            <input
+              type="text"
+              onChange={(e) => setVendorAddress(e.target.value)}
+              placeholder={vendorAddressCt}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorBillNumberCt}</label>
+            <input
+              type="text"
+              onChange={(e) => setVendorBillNumber(e.target.value)}
+              placeholder={vendorBillNumberCt}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
+          <div>
+            <label className="font-medium">{vendorInfoCt}</label>
+            <textarea
+              rows={5}
+              onChange={(e) => setVendorInfo(e.target.value)}
+              placeholder={vendorInfoCt}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
+          </div>
         </div>
       )}
 

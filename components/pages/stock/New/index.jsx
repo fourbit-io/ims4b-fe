@@ -21,7 +21,7 @@ const NewStock = () => {
         previousPages={previousPages}
         currentPage={newStock?.pageTitle}
       />
-      <CreateWithProduct mutate={mutate} isLoading={isLoading} />
+      <CreateWithProduct mutate={mutate} isLoading={isLoading} vendorValue={true} />
     </>
   );
 };
