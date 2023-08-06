@@ -31,6 +31,10 @@ export const stockTableHeader = [
   "স্ট্যাটাস",
   "স্ট্যাটাস তারিখ",
   "অনুরোধে",
+  "সরবরাহকারী",
+  "সরবরাহকারীর ঠিকানা",
+  "বিল নাম্বার",
+  "সরবরাহকারীর তথ্য",
 ];
 
 export const stockReportTableHeader = [
@@ -67,6 +71,11 @@ export const editStock = {
   formTitle: "অনুরোধ সংশোধন করুন",
   productName: "প্রোডাক্টের নাম",
   productQty: "পরিমান",
+  date: "তারিখ",
+  vendorName: "সরবরাহকারী",
+  vendorAddress: "সরবরাহকারীর ঠিকানা",
+  vendorBillNumber: "বিল নাম্বার",
+  vendorInfo: "সরবরাহকারীর তথ্য",
   submitBtn: "সংশোধন করুন",
   loadingSubmitBtn: "অপেক্ষা করুন",
 };

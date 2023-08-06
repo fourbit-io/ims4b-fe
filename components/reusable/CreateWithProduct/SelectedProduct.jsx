@@ -57,12 +57,18 @@ const SelectedProduct = ({ mutate, isLoading, remarkValue, vendorValue }) => {
   };
 
   const handleSubmit = () => {
-    // if (remarkValue) {
-    //   mutate({ requisitionProducts: selectedProducts, remark });
-    // } else {
-    //   mutate({ requisitionProducts: selectedProducts, date, vendorName, vendorAddress, vendorBillNumber, vendorInfo });
-    // }
-    console.log({ requisitionProducts: selectedProducts, date, vendorName, vendorAddress, vendorBillNumber, vendorInfo })
+    if (remarkValue) {
+      mutate({ requisitionProducts: selectedProducts, remark });
+    } else {
+      mutate({
+        stocks: selectedProducts,
+        date,
+        vendorName,
+        vendorAddress,
+        vendorBillNumber,
+        vendorInfo,
+      });
+    }
   };
 
   return (

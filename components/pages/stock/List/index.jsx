@@ -65,6 +65,10 @@ const List = () => {
         productCode: dataValue?.product?.slug,
         productUnit: dataValue?.product?.unit,
         user: dataValue?.user?.name ?? dataValue?.user?.userName,
+        vendorName: dataValue?.vendorName,
+        vendorAddress: dataValue?.vendorAddress,
+        vendorBillNumber: dataValue?.vendorBillNumber,
+        vendorInfo: dataValue?.vendorInfo,
       };
       return values;
     });
