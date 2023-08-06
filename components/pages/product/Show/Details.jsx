@@ -31,13 +31,13 @@ const Details = ({ data }) => {
         </h3>
         <hr />
       </div>
-      <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
-        <div className="p-2">
-          <p className="font-extrabold text-gray-600">{date}</p>
+      <div className="grid grid-cols-3 md:grid-cols-5 px-4 my-10 divide-x-2  text-center">
+        
+      <div className="p-2">
+          <p className="font-extrabold text-gray-600">{productName}</p>
           <hr />
-          <p> {convertDate(data?.date)}</p>
+          <p> {data?.name}</p>
         </div>
-
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{productCode}</p>
           <hr />
@@ -53,13 +53,15 @@ const Details = ({ data }) => {
           <hr />
           <p> {data?.unit}</p>
         </div>
-      </div>
-      <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
         <div className="p-2">
-          <p className="font-extrabold text-gray-600">{productName}</p>
+          <p className="font-extrabold text-gray-600">{date}</p>
           <hr />
-          <p> {data?.name}</p>
+          <p> {convertDate(data?.date)}</p>
         </div>
+      </div>
+      {/* <div className="grid grid-cols-4 px-4 my-10 divide-x-2  text-center">
+        
+        
         <div className="p-2">
           <p className="font-extrabold text-gray-600">{vendorName}</p>
           <hr />
@@ -75,13 +77,13 @@ const Details = ({ data }) => {
           <hr />
           <p> {convertNumber(data?.vendorBillNumber)}</p>
         </div>
-      </div>
-      <div className="px-4">
+      </div> */}
+      {/* <div className="px-4">
         <div className="font-extrabold text-gray-600 underline">
           {vendorInfo} :{" "}
         </div>
         <div className="px-0">{data?.vendorInfo}</div>
-      </div>
+      </div> */}
 
       <div className="px-4">
         <div className="font-extrabold text-gray-600 underline">
