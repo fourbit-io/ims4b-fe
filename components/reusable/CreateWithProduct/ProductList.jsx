@@ -36,7 +36,7 @@ const ProductList = ({incQty}) => {
         productId: id,
         name,
         code: slug,
-        quantity: 0,
+        quantity: 1,
         date: new Date().toISOString(),
         incrementQuantity: incQty ?? true,
       })
