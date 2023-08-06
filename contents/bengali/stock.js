@@ -21,7 +21,8 @@ export const stockModal = {
 };
 
 export const stockTableHeader = [
-  "আইডি",
+  "সিরিয়াল নং",
+  "স্টক আইডি",
   "তারিখ",
   "প্রোডাক্টের নাম",
   "কোড",

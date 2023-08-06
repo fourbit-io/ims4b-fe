@@ -13,8 +13,8 @@ const Logo = ({ active }) => {
             />
           </div>
           <div className="text-gray-600">
-            <p className="text-md font-bold">ইনভেন্টরি ও রিকুইজিশন সিস্টেম</p>
-            <p className="text-xs">কলকারখানা ও প্রতিষ্ঠান পরিদর্শন অধিদপ্তর</p>
+            <p className="text-sm md:text-md font-bold">ইনভেন্টরি ও রিকুইজিশন সিস্টেম</p>
+            <p className="text-[10px] md:text-xs">কলকারখানা ও প্রতিষ্ঠান পরিদর্শন অধিদপ্তর</p>
           </div>
         </div>
       </div>

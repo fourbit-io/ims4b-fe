@@ -19,6 +19,7 @@ const { role } = userInfo();
 export const requisitions = () => {
   const router = useRouter();
   const tableColumns = [
+    "sl",
     "reqId",
     "date",
     "createdBy",
