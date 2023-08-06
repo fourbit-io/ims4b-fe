@@ -4,12 +4,14 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { sidebarDatas } from "./utils/sidebarDatas";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const [active, setActive] = useState(false);
+  const router = useRouter();
   return (
     <>
-      {children?.type?.name === "LoginPage" ? (
+      {router?.pathname === "/login" ? (
         children
       ) : (
         <div className="flex w-full">
