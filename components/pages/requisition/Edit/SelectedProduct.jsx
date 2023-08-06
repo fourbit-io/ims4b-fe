@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import {
-  AiOutlineFileSearch,
-  AiOutlineClose,
-  AiOutlinePlus,
-  AiOutlineMinus,
-} from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProductsContent } from "@/contents/bengali";
-import { remove, qtyCount, removeAll, setRemark } from "../../../../slices/productSlice";
+import { remove, qtyCount, removeAll, setRemark } from "@/slices/productSlice";
 import { useUpdateRequisitionData } from "./useEditRequisition";
+import Loader from "@/components/reusable/Loader";
 
-const SelectedProduct = ({id}) => {
+const SelectedProduct = ({ id }) => {
   const {
     pageTitle,
     emptyProdContent,
@@ -26,7 +21,6 @@ const SelectedProduct = ({id}) => {
     cancelBtn,
   } = selectedProductsContent;
 
-
   const selectedProducts = useSelector((state) => state.product.productData);
   const remark = useSelector((state) => state.product.remark);
 
@@ -34,10 +28,7 @@ const SelectedProduct = ({id}) => {
   const totalQty = useSelector((state) => state.product.totalQty);
   const dispatch = useDispatch();
 
-
   const { mutate, isLoading, isError, error } = useUpdateRequisitionData();
-
-
   const removeProduct = (id) => {
     dispatch(remove(id));
   };
@@ -48,12 +39,11 @@ const SelectedProduct = ({id}) => {
 
   const handleCancelAll = () => {
     dispatch(removeAll());
-  }
-
+  };
 
   const handleSubmit = () => {
-    mutate({id, requisitionProducts:selectedProducts, remark});
-  }
+    mutate({ id, requisitionProducts: selectedProducts, remark });
+  };
   return (
     <div className="px-4">
       <div className="bg-gray-50 p-2 rounded-md">
@@ -93,14 +83,7 @@ const SelectedProduct = ({id}) => {
             ))}
           </div>
         ) : (
-          <div className="h-[300px] flex items-center justify-center">
-            <div>
-              <AiOutlineFileSearch className="text-[100px] text-gray-300 m-auto" />
-              <span className="text-gray-400 text-sm m-auto">
-                {emptyProdContent}
-              </span>
-            </div>
-          </div>
+          <Loader className="w-full h-[400px] flex justify-center items-center" />
         )}
 
         <hr className="text-gray-600" />
@@ -125,10 +108,17 @@ const SelectedProduct = ({id}) => {
           className="w-full bg-gray-50 border-2 border-gray-200 rounded-sm px-3 py-2"></textarea>
       </div>
       <div className="flex items-center gap-4 py-2">
-        <button onClick={handleCancelAll} className="px-2 py-1 bg-red-400 text-white rounded-md">
+        <button
+          onClick={handleCancelAll}
+          className="px-2 py-1 bg-red-400 text-white rounded-md">
           {cancelBtn}
         </button>
-        <button disabled={isLoading} onClick={handleSubmit} className={`px-2 py-1 ${isLoading ? 'bg-gray-400' : 'bg-primary-600'}  text-white rounded-md`}>
+        <button
+          disabled={isLoading}
+          onClick={handleSubmit}
+          className={`px-2 py-1 ${
+            isLoading ? "bg-gray-400" : "bg-primary-600"
+          }  text-white rounded-md`}>
           {isLoading ? submitBtnLoading : submitBtn}
         </button>
       </div>
