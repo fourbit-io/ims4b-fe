@@ -1,6 +1,6 @@
 export const newProduct = {
-  pageTitle: "নতুন স্টক",
-  formTitle: "নতুন স্টক",
+  pageTitle: "নতুন পণ্য",
+  formTitle: "নতুন পণ্য",
   date: "তারিখ",
   productName: "প্রোডাক্টের নাম",
   productUnit: "একক",
@@ -22,8 +22,8 @@ export const newProduct = {
 };
 
 export const editProduct = {
-  pageTitle: "স্টক সংশোধন করুন",
-  formTitle: "স্টক সংশোধন করুন",
+  pageTitle: "পণ্য সংশোধন করুন",
+  formTitle: "পণ্য সংশোধন করুন",
   date: "তারিখ",
   productName: "প্রোডাক্টের নাম",
   productUnit: "একক",
@@ -45,7 +45,7 @@ export const editProduct = {
 };
 
 export const showProduct = {
-  pageTitle: "স্টক বিস্তারিত দেখুন ",
+  pageTitle: "পণ্যের বিস্তারিত দেখুন ",
   date: "তারিখ",
   productName: "প্রোডাক্টের নাম",
   productCode: "প্রোডাক্ট কোড",
@@ -64,19 +64,19 @@ export const showProduct = {
   vendorInfo: "সরবরাহকারীর তথ্য",
   productDetails: "বিবিধ",
   stockHistoryTitle: "স্টকের বিস্তারিত দেখুন ",
-  prodStockTitle: "স্টক তৈরী করা হয়েছে",
-  stockUpdateTitle: "স্টক আপডেট করা হয়েছে",
+  prodStockTitle: "পণ্য তৈরী করা হয়েছে",
+  stockUpdateTitle: "পণ্য আপডেট করা হয়েছে",
   dateSub: "তারিখে",
   stockAddHistorySub: "স্টক এ যোগ করেছেন।",
   stockRemoveHistorySub: "স্টক থেকে সরিয়ে ফেলেছেন।",
 };
 
 export const productsTable = {
-  pageTitle: "স্টকের তালিকা",
+  pageTitle: "পণ্যের তালিকা",
 };
 
 export const productModal = {
-  deleteModalContent: "আপনি কি এই স্টক টি লিস্ট থেকে মুছে ফেলতে চান?",
+  deleteModalContent: "আপনি কি এই পণ্য টি লিস্ট থেকে মুছে ফেলতে চান?",
 };
 
 export const productTableHeader = [
@@ -84,10 +84,10 @@ export const productTableHeader = [
   "প্রোডাক্ট কোড",
   "পরিমান",
   "ইউনিট",
-  "সরবরাহকারী",
-  "সরবরাহকারীর ঠিকানা",
-  "বিল নাম্বার",
-  "সরবরাহকারীর তথ্য",
+  // "সরবরাহকারী",
+  // "সরবরাহকারীর ঠিকানা",
+  // "বিল নাম্বার",
+  // "সরবরাহকারীর তথ্য",
   "বিবিধ",
   "তারিখ",
 ];

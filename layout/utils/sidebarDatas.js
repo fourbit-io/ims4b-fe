@@ -55,7 +55,7 @@ export const sidebarDatas = () => {
       icon: <RxDashboard className="text-[20px]" />,
     },
     {
-      name: "স্টক",
+      name: "পণ্য",
       url: "/products",
       subDatas: [],
       icon: <BsPaperclip className="text-[20px]" />,
@@ -106,7 +106,7 @@ export const sidebarDatas = () => {
       icon: <AiOutlineUser className="text-[20px]" />,
     },
     {
-      name: "স্টক",
+      name: "পণ্য",
       url: "/products",
       subDatas: [],
       icon: <BsPaperclip className="text-[20px]" />,
@@ -138,7 +138,7 @@ export const sidebarDatas = () => {
           url: "/report/product",
         },
         {
-          name: "স্টক",
+          name: "পণ্য",
           url: "/report/stock",
         },
         {

@@ -21,7 +21,7 @@ const DamagedStock = () => {
         previousPages={previousPages}
         currentPage={damagedStock?.pageTitle}
       />
-      <CreateWithProduct incQty={false} mutate={mutate} isLoading={isLoading}/>
+      <CreateWithProduct incQty={false} mutate={mutate} isLoading={isLoading} vendorValue={true} />
     </>
   );
 };

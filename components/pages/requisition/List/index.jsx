@@ -8,6 +8,8 @@ import Pagination from "@/components/reusable/Pagination";
 import { requisitions } from "./utils/requisition";
 import { convertNumber, convertDate } from "@/lib";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { removeAll } from "@/slices/productSlice";
 
 const List = () => {
   const {
@@ -30,6 +32,8 @@ const List = () => {
     setCurrentPage,
     role,
   } = requisitions();
+
+  const dispatch = useDispatch();
 
   const { data, isLoading, error } = useRequisitions(currentPage);
 
@@ -82,7 +86,10 @@ const List = () => {
           {(role === "USER" || role === "MANAGER" || role === "SUPERADMIN") && (
             <div className="mt-3 md:mt-0">
               <button
-                onClick={() => router.push("/requisitions/new")}
+                onClick={() => {
+                  dispatch(removeAll());
+                  router.push("/requisitions/new");
+                }}
                 className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
                 {newRequisition?.pageTitle}
               </button>

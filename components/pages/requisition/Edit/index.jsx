@@ -42,6 +42,8 @@ const EditRequisition = () => {
       dispatch(setRemark(data?.data?.data?.remark)));
   }, [data]);
 
+  
+
   return (
     <>
       <Head>
