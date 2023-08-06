@@ -26,6 +26,10 @@ export const stocks = () => {
     "status",
     "statusDate",
     "user",
+    "vendorName",
+    "vendorAddress",
+    "vendorBillNumber",
+    "vendorInfo",
     "actions",
   ];
   const { pageTitle, newStockType, damagedStockType } = stocksTable;

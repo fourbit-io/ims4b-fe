@@ -5,8 +5,18 @@ import { useEditStockData } from "./useEditStock";
 import StatusHandler from "@/components/reusable/StatusHandler";
 
 const Form = ({ productData, productLoading, stockData, id }) => {
-  const { formTitle, productName, productQty, submitBtn, loadingSubmitBtn } =
-    editStock;
+  const {
+    formTitle,
+    productName,
+    productQty,
+    date,
+    vendorName,
+    vendorAddress,
+    vendorBillNumber,
+    vendorInfo,
+    submitBtn,
+    loadingSubmitBtn,
+  } = editStock;
 
   const [productLists, setProductLists] = useState([]);
 
@@ -15,6 +25,16 @@ const Form = ({ productData, productLoading, stockData, id }) => {
     setValue("productId", stockData?.productId);
     setValue("quantity", stockData?.quantity);
     setValue("incrementQuantity", stockData?.incrementQuantity);
+    setValue(
+      "date",
+      stockData?.date
+        ? new Date(stockData?.date).toISOString().split("T")[0]
+        : new Date().toISOString().split("T")[0]
+    );
+    setValue("vendorName", stockData?.vendorName);
+    setValue("vendorAddress", stockData?.vendorAddress);
+    setValue("vendorBillNumber", stockData?.vendorBillNumber);
+    setValue("vendorInfo", stockData?.vendorInfo);
   }, [stockData, productData]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -22,7 +42,8 @@ const Form = ({ productData, productLoading, stockData, id }) => {
   const { mutate, isLoading, isError, error } = useEditStockData();
 
   const onSubmit = (data) => {
-    mutate({ ...data, id });
+    const { date, ...rest } = data;
+    mutate({ ...rest, date: new Date(date).toISOString(), id });
     reset();
   };
 
@@ -68,6 +89,49 @@ const Form = ({ productData, productLoading, stockData, id }) => {
               />
             </div>
             <input {...register("incrementQuantity")} type="hidden" />
+            <div>
+              <label className="font-medium">{date}</label>
+              <input
+                type="date"
+                {...register("date")}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">{vendorName}</label>
+              <input
+                type="text"
+                placeholder={vendorName}
+                {...register("vendorName", { required: false })}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">{vendorAddress}</label>
+              <input
+                type="text"
+                placeholder={vendorAddress}
+                {...register("vendorAddress", { required: false })}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">{vendorBillNumber}</label>
+              <input
+                type="text"
+                placeholder={vendorBillNumber}
+                {...register("vendorBillNumber", { required: false })}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">{vendorInfo}</label>
+              <textarea
+                rows={5}
+                placeholder={vendorInfo}
+                {...register("vendorInfo")}
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
+            </div>
             <button
               disabled={isLoading}
               className={`w-full px-4 py-2 text-white font-medium bg-primary-600 hover:bg-primary-500 active:bg-primary-600 rounded-lg duration-150 ${

@@ -16,7 +16,7 @@ const { role } = userInfo();
 
 export const users = () => {
   const router = useRouter();
-  const tableColumns = ["uId", "name", "userName", "role", "date", "actions"];
+  const tableColumns = [ "uId", "employeeId", "name", "userName", "roleTrans", "date", "actions"];
   const { pageTitle } = usersTable;
   const { deleteModalContent } = userModal;
 

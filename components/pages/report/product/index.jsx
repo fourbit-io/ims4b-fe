@@ -7,6 +7,7 @@ import { products } from "./utils/product";
 import { convertNumber, convertDate } from "@/lib/convertToBen";
 import Head from "next/head";
 import Filter from "./Filter";
+import { CSVLink } from "react-csv";
 
 import { useReactToPrint } from "react-to-print";
 
@@ -72,8 +73,22 @@ const ProductReport = () => {
               <button
                 className="text-center bg-primary-600 text-white hover:bg-primary-500 rounded-md px-2 py-1"
                 onClick={handlePrint}>
-                {buttons?.download}
+                {buttons?.pdfDownload}
               </button>
+              <CSVLink
+                data={productLists}
+                headers={printHeader}
+                filename={"product.csv"}
+                style={{
+                  backgroundColor: "green",
+                  color: "white",
+                  padding: 5,
+                  borderRadius: 5,
+                  cursor: "pointer",
+                  padding: "5px 10px 5px 10px",
+                }}>
+                {buttons?.download}
+              </CSVLink>
             </div>
           )}
         </div>

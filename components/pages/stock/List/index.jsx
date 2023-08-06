@@ -8,6 +8,8 @@ import Modal from "@/components/reusable/Modal";
 import Pagination from "../../../reusable/Pagination";
 import { convertDate, convertNumber } from "../../../../lib/convertToBen";
 import Head from "next/head";
+import { useDispatch } from "react-redux";
+import { removeAll } from "@/slices/productSlice";
 
 const List = () => {
   const {
@@ -43,6 +45,8 @@ const List = () => {
     role,
   } = stocks();
 
+  const dispatch = useDispatch();
+
   const { data, isLoading, error } = useStocks(currentPage);
 
   useEffect(() => {
@@ -61,6 +65,10 @@ const List = () => {
         productCode: dataValue?.product?.slug,
         productUnit: dataValue?.product?.unit,
         user: dataValue?.user?.name ?? dataValue?.user?.userName,
+        vendorName: dataValue?.vendorName,
+        vendorAddress: dataValue?.vendorAddress,
+        vendorBillNumber: dataValue?.vendorBillNumber,
+        vendorInfo: dataValue?.vendorInfo,
       };
       return values;
     });
@@ -113,12 +121,18 @@ const List = () => {
           </div>
           <div className="mt-3 md:mt-0 flex gap-2 items-center">
             <button
-              onClick={() => router.push("/stocks/damaged")}
+              onClick={() =>{
+                  dispatch(removeAll());
+                  router.push("/stocks/damaged");
+                }}
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-red-600 rounded-lg hover:bg-red-500 active:bg-red-700 md:text-sm">
               {damagedStock?.pageTitle}
             </button>
             <button
-              onClick={() => router.push("/stocks/new")}
+              onClick={() =>{
+                  dispatch(removeAll());
+                  router.push("/stocks/new");
+                }}
               className="inline-block px-4 py-2 text-white duration-150 font-medium bg-primary-600 rounded-lg hover:bg-primary-500 active:bg-primary-700 md:text-sm">
               {newStock?.pageTitle}
             </button>

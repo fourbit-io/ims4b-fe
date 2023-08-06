@@ -24,7 +24,7 @@ export const productSlice = createSlice({
         currentProduct.quantity += 1;
         state.totalQty += 1;
       }
-      if (type === "dec" && currentProduct.quantity > 0) {
+      if (type === "dec" && currentProduct.quantity > 1) {
         currentProduct.quantity -= 1;
         state.totalQty -= 1;
       }

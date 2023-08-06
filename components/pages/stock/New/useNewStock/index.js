@@ -7,7 +7,7 @@ import { apiMessages } from "@/contents/bengali";
 import cogoToast from "cogo-toast";
 
 const addStock = async (stocks) => {
-  return await axiosInstance.post("/v1/stock/multiple", { stocks });
+  return await axiosInstance.post("/v1/stock/multiple",  stocks );
 };
 
 export const useNewStockData = () => {

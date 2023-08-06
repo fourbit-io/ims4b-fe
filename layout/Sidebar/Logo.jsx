@@ -12,10 +12,10 @@ const Logo = ({ active }) => {
               src="/images/ims-logo.png"
             />
           </div>
-          <h1 className="text-sm text-gray-600">
-            ইনভেন্টরি ও রিকুইজিশন সিস্টেম কলকারখানা ও প্রতিষ্ঠান পরিদর্শন
-            অধিদপ্তর (ডাইফ)
-          </h1>
+          <div className="text-gray-600">
+            <p className="text-md font-bold">ইনভেন্টরি ও রিকুইজিশন সিস্টেম</p>
+            <p className="text-xs">কলকারখানা ও প্রতিষ্ঠান পরিদর্শন অধিদপ্তর</p>
+          </div>
         </div>
       </div>
     </div>

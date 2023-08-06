@@ -36,10 +36,10 @@ const Form = ({ productData, id }) => {
         ? new Date(productData?.date).toISOString().split("T")[0]
         : new Date().toISOString().split("T")[0]
     );
-    setValue("vendorName", productData?.vendorName);
-    setValue("vendorAddress", productData?.vendorAddress);
-    setValue("vendorBillNumber", productData?.vendorBillNumber);
-    setValue("vendorInfo", productData?.vendorInfo);
+    // setValue("vendorName", productData?.vendorName);
+    // setValue("vendorAddress", productData?.vendorAddress);
+    // setValue("vendorBillNumber", productData?.vendorBillNumber);
+    // setValue("vendorInfo", productData?.vendorInfo);
   }, [productData]);
 
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -95,7 +95,7 @@ const Form = ({ productData, id }) => {
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
             />
           </div>
-          <div>
+          {/* <div>
             <label className="font-medium">{vendorName}</label>
             <input
               type="text"
@@ -129,7 +129,7 @@ const Form = ({ productData, id }) => {
               placeholder={vendorInfo}
               {...register("vendorInfo")}
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"></textarea>
-          </div>
+          </div> */}
           <div>
             <label className="font-medium">{productDetails}</label>
             <textarea
