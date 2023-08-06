@@ -46,6 +46,7 @@ const List = () => {
       const values = {
         id: dataValue?.id,
         uId: convertNumber(dataValue?.id),
+        employeeId: dataValue?.employeeId,
         name: dataValue?.name,
         userName: dataValue?.userName,
         roleTrans: convertRole(dataValue?.role),

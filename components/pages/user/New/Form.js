@@ -6,6 +6,7 @@ import { useNewUserData } from "./useNewUser";
 const Form = () => {
   const {
     formTitle,
+    userId,
     name,
     userName,
     userPassword,
@@ -37,6 +38,15 @@ const Form = () => {
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
+        <div>
+            <label className="font-medium">{userId}</label>
+            <input
+              type="text"
+              placeholder={userId}
+              {...register("employeeId", { required: false })}
+              className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-primary-600 shadow-sm rounded-lg"
+            />
+          </div>
           <div>
             <label className="font-medium">{userName} *</label>
             <input
