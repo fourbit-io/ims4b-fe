@@ -17,7 +17,7 @@ const Pagination = ({ pages, setPages, currentPage, setCurrentPage }) => {
       {
         pages !== 0 ? 
 
-    <div className="max-w-screen-xl mx-auto mt-12 px-4 text-gray-600 md:px-8">
+    <div className="w-full mx-auto mt-12 px-4 text-gray-600 md:px-8">
       <div className="hidden justify-center sm:flex" aria-label="Pagination">
         <ul className="flex items-center gap-4">
           <li
