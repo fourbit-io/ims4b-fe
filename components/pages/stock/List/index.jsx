@@ -50,8 +50,9 @@ const List = () => {
   const { data, isLoading, error } = useStocks(currentPage);
 
   useEffect(() => {
-    const dataValues = data?.data?.data?.map((dataValue) => {
+    const dataValues = data?.data?.data?.map((dataValue, idx) => {
       const values = {
+        sl: convertNumber(idx +1),
         id: dataValue?.id,
         stockId: convertNumber(dataValue?.id),
         date: dataValue?.date ? convertDate(dataValue?.date) : "-",

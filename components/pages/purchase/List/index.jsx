@@ -32,8 +32,9 @@ const List = () => {
   const { data, isLoading, error } = usePurchases(currentPage);
 
   useEffect(() => {
-    const dataValues = data?.data?.data?.map((dataValue) => {
+    const dataValues = data?.data?.data?.map((dataValue, idx) => {
       const values = {
+        sl: convertNumber(idx + 1),
         id: dataValue?.id,
         poId: convertNumber(dataValue?.id),
         title: dataValue?.title,

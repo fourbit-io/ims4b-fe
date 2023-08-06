@@ -33,8 +33,9 @@ const List = () => {
   const { data, isLoading, error } = useProducts(currentPage);
 
   useEffect(() => {
-    const dataValues = data?.data?.data?.map((dataValue) => {
+    const dataValues = data?.data?.data?.map((dataValue, idx) => {
       const values = {
+        sl: convertNumber(idx + 1),
         id: dataValue?.id,
         name: dataValue?.name,
         slug: dataValue?.slug,

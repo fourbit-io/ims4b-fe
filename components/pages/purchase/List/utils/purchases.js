@@ -17,6 +17,7 @@ const { role } = userInfo();
 export const purchases = () => {
   const router = useRouter();
   const tableColumns = [
+    "sl",
     "poId",
     "title",
     "status",

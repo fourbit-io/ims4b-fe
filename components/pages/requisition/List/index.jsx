@@ -38,8 +38,9 @@ const List = () => {
   const { data, isLoading, error } = useRequisitions(currentPage);
 
   useEffect(() => {
-    const dataValues = data?.data?.data?.map((dataValue) => {
+    const dataValues = data?.data?.data?.map((dataValue, idx) => {
       const values = {
+        sl: convertNumber(idx + 1),
         id: dataValue?.id,
         reqId: convertNumber(dataValue?.id),
         date: convertDate(dataValue?.createdAt),

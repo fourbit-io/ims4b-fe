@@ -43,6 +43,7 @@ export const purchaseModal = {
 };
 
 export const purchaseTableHeader = [
+  "সিরিয়াল নং",
   "আইডি",
   "টাইটেল",
   "স্ট্যাটাস",

@@ -16,6 +16,7 @@ export const stocks = () => {
   const { role } = userInfo();
   const router = useRouter();
   const tableColumns = [
+    "sl",
     "stockId",
     "date",
     "productName",
