@@ -1,10 +1,17 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 const Logo = ({ active }) => {
+  const router = useRouter();
+  const returnToHome = () => {
+    router.push("/");
+  };
   return (
     <div className="w-full px-2">
       <div className={`${active ? "block" : "lg:block hidden"}`}>
-        <div className="flex flex-col text-center gap-2 w-full overflow-hidden pl-0">
+        <div
+          className="flex flex-col text-center gap-2 w-full overflow-hidden pl-0 cursor-pointer"
+          onClick={returnToHome}>
           <div className="w-full flex justify-center">
             <img
               key={"dashboardImage"}
