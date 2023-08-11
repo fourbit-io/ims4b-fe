@@ -55,7 +55,7 @@ const ManagerDashboard = ({ dashboard, dashboardContent }) => {
   return (
     <>
       <div className="my-10">
-        <ul className="grid grid-cols-4 gap-4 items-center">
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
           <li className="w-full text-center bg-primary-500 px-12 py-4 rounded-lg sm:w-auto">
             <h4 className="text-4xl text-white font-semibold">
               {convertNumber(dashboard?.pendingRequisitionCount) ??

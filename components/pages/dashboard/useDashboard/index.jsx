@@ -4,9 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 const getDashboard = async (params) => {
   const { role, currentPage } = params;
   return await axiosInstance.get(
-    `v1/dashboard/role-base?role=${
-      role === "SHOPKEEPER" ? "STOREKEEPER" : role
-    }&page=${currentPage}&limit=5&sortBy=createdAt&sortOrder=desc`
+    `v1/dashboard/role-base?role=${role}&page=${currentPage}&limit=5&sortBy=createdAt&sortOrder=desc`
   );
 };
 

@@ -80,6 +80,7 @@ export const productModal = {
 };
 
 export const productTableHeader = [
+  "সিরিয়াল নং",
   "প্রোডাক্টের নাম",
   "প্রোডাক্ট কোড",
   "পরিমান",

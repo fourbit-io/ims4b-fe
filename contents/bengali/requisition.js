@@ -16,6 +16,7 @@ export const requisitionModal = {
 };
 
 export const requisitionTableHeader = [
+  "সিরিয়াল নং",
   "আইডি",
   "তারিখ",
   "আবেদনকারি",

@@ -18,8 +18,12 @@ const { role } = userInfo();
 const Actions = ({ id, status }) => {
   const router = useRouter();
 
-  const { approveModalContent, rejectModalContent, releaseModalContent, receiveModalContent } =
-    requisitionModal;
+  const {
+    approveModalContent,
+    rejectModalContent,
+    releaseModalContent,
+    receiveModalContent,
+  } = requisitionModal;
   const [requisitionId, setRequisitionId] = useState();
 
   const [approveModal, setApproveModal] = useState(false);
@@ -30,7 +34,7 @@ const Actions = ({ id, status }) => {
   const { mutate: approveRequisition, isLoading: aprvIsLoading } =
     useApproveRequisition();
 
-    const { mutate: rejectRequisition, isLoading: rjctIsLoading } =
+  const { mutate: rejectRequisition, isLoading: rjctIsLoading } =
     useRejectRequisition();
 
   const { mutate: releaseRequisition, isLoading: rlsIsLoading } =
@@ -95,7 +99,7 @@ const Actions = ({ id, status }) => {
       )}
       <div className="flex-1 px-2 flex gap-4 items-center justify-end">
         {(role === "SHOPKEEPER" || role === "SUPERADMIN") &&
-          status === "APPROVED" && (
+          (status === "ASSIGNED" || status === "APPROVED") && (
             <button
               disabled={rlsIsLoading}
               className={`flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md  ${
@@ -123,7 +127,7 @@ const Actions = ({ id, status }) => {
                 {buttons?.assign}
               </button>
             )}
-            {status === "ASSIGNED" && (
+            {/* {status === "ASSIGNED" && (
               <button
                 disabled={aprvIsLoading}
                 className={`flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md  ${
@@ -138,11 +142,11 @@ const Actions = ({ id, status }) => {
                 <BsCheckLg />
                 {aprvIsLoading ? buttons?.loading : buttons?.approve}
               </button>
-            )}
+            )} */}
             {(status === "PENDING" ||
               status === "MODIFIED" ||
               status === "ASSIGNED") && (
-                <button
+              <button
                 disabled={rjctIsLoading}
                 className={`flex items-center gap-1 w-[100px] md:w-auto  border px-2 py-1 rounded-md  ${
                   rjctIsLoading

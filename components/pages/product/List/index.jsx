@@ -33,8 +33,9 @@ const List = () => {
   const { data, isLoading, error } = useProducts(currentPage);
 
   useEffect(() => {
-    const dataValues = data?.data?.data?.map((dataValue) => {
+    const dataValues = data?.data?.data?.map((dataValue, idx) => {
       const values = {
+        sl: convertNumber(idx + 1),
         id: dataValue?.id,
         name: dataValue?.name,
         slug: dataValue?.slug,
@@ -70,7 +71,7 @@ const List = () => {
           id={productItem?.id}
         />
       )}
-      <div className="max-w-screen-xl mx-auto p-4 md:p-8">
+      <div className="w-full mx-auto p-4 md:p-8">
         <div className="items-start justify-between md:flex">
           <div className="max-w-lg">
             <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
