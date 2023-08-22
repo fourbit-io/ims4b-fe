@@ -31,7 +31,7 @@ const RequisitionReport = () => {
       dataValue?.requisitionProduct?.map((item) => {
         values = {
           eId: convertNumber(dataValue?.createdByUser?.id),
-          eName: dataValue?.createdByUser?.userName,
+          eName: dataValue?.createdByUser?.name,
           pId: convertNumber(item?.product?.id),
           pName: item?.product?.name,
           reqDate: convertDate(dataValue?.createdAt),
