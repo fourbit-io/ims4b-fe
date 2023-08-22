@@ -102,6 +102,10 @@ export const productReportTableHeader = [
   "স্টক সরানের পরিমান",
   "ব্যালান্স",
   "রেফারেন্স",
+  "সরবরাহকারী",
+  "সরবরাহকারীর ঠিকানা",
+  "বিল নাম্বার",
+  "সরবরাহকারীর তথ্য",
 ];
 
 export const productFilter = {
