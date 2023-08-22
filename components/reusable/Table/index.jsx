@@ -24,7 +24,7 @@ const Table = ({ tableHeaders, tableItems, tableColumns, getActions, hScroll }) 
         <thead className="text-gray-600 font-medium border-b">
           <tr>
             {tableHeaders?.map((item, idx) => (
-              <th className="py-3 pr-6" key={idx}>
+              <th className="py-3 pr-3" key={idx}>
                 {item}
               </th>
             ))}
