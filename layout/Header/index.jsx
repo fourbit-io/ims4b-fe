@@ -2,7 +2,7 @@ import { userInfo } from "../../api/authentication/userInfo";
 import MenuBar from "./MenuBar";
 
 const Header = ({ active, setActive }) => {
-  const { userName } = userInfo();
+  const { userName, name } = userInfo();
   return (
     <div className="sticky top-0 z-50 w-full bg-white py-3 shadow ">
       <div className="relative mx-auto flex w-full items-center justify-between">
@@ -15,12 +15,12 @@ const Header = ({ active, setActive }) => {
               <span className="absolute -bottom-0.5 right-1 w-3 h-3 rounded-full border border-white bg-green-500"></span>
 
               <p className="w-full h-full flex justify-center items-center font-bold text-gray-400 text-4xl uppercase border-2 border-gray-400 rounded-full bg-secondary-main">
-                {userName ? userName[0] : "N"}
+                {name ? name[0] : "N"}
               </p>
             </div>
             <div>
               <span className="block text-gray-700 text-sm font-medium">
-                {userName ?? "N/A"}
+                {name ?? "N/A"}
               </span>
             </div>
           </div>
