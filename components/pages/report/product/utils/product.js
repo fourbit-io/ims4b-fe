@@ -17,6 +17,10 @@ export const products = () => {
     "stockOutQty",
     "balance",
     "ref",
+    "vendorName",
+    "vendorAddress",
+    "vendorBillNumber",
+    "vendorInfo",
   ];
   const { pageTitle } = productsTable;
 

@@ -77,7 +77,7 @@ const FormTemplate = ({ id, activity, userName, items, remark }) => {
           <div className="border-2 divide-x-2 grid grid-cols-2">
             <div className="p-2">
               <p className="mb-6">চাহিদাপত্র দাখিলকারীর স্বাক্ষর</p>
-              <p>নামঃ</p>
+              <p>নামঃ {userName}</p>
             </div>
             <div className="p-2">
               <p className="mb-6">সুপারিশকারী কর্মকর্তার স্বাক্ষর</p>

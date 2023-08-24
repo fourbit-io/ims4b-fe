@@ -43,6 +43,10 @@ const ProductReport = () => {
         balance: dataValue?.balance
           ? convertNumber(dataValue?.balance)
           : convertNumber(0),
+        vendorName: dataValue?.vendorName,
+        vendorAddress: dataValue?.vendorAddress,
+        vendorBillNumber: dataValue?.vendorBillNumber,
+        vendorInfo: dataValue?.vendorInfo,
       };
 
       return values;
@@ -104,6 +108,7 @@ const ProductReport = () => {
               tableHeaders={tableHeaders}
               tableItems={productLists}
               tableColumns={tableColumns}
+              // hScroll={true}
             />
           </div>
         </StatusHandler>

@@ -94,6 +94,7 @@ const StockReport = () => {
               tableHeaders={tableHeaders}
               tableItems={stockLists}
               tableColumns={tableColumns}
+              
             />
           </div>
         </StatusHandler>
