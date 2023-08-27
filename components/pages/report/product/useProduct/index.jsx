@@ -3,9 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 
 const getProducts = async (filter) => {
   const { pId, pName, startDate, endDate } = filter;
-  return await axiosInstance.get(
-    `v1/product/report/details?productId=${pId}&productName=${pName}&startDate=${startDate}&endDate=${endDate}&sortOrder=desc`
-  );
+  return await axiosInstance.post(`v1/product/report/details`, {
+    productId: pId,
+    productName: pName,
+    startDate: startDate,
+    endDate: endDate,
+    sortOrder: "desc",
+  });
 };
 
 export const useProducts = (filter) => {

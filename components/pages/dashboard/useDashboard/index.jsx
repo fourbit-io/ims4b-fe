@@ -11,7 +11,16 @@ const getDashboard = async (params) => {
 export const useDashboard = (params) => {
   const { data, isLoading, isError, error, isSuccess } = useQuery(
     ["dashboard", params],
-    () => getDashboard(params)
+    () => getDashboard(params),
+    {
+      onError: (error) => {
+        if (error?.response?.request?.timeout > 0) {
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("info");
+          window.location.replace("/login");
+        }
+      },
+    }
   );
   return {
     data,

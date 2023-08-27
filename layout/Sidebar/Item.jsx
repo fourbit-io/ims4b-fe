@@ -7,7 +7,7 @@ const Item = ({ item }) => {
   const pathname = "/" + router?.pathname.split("/")[1];
   const [dropdown, setDropdown] = useState(false);
 
-  const logout = () => {
+   const logout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("info");
     window.location.replace("/login");
