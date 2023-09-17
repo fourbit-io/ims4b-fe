@@ -3,9 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 
 const getStocks = async (filter) => {
   const { pid, pName, qtyOrder, startDate, endDate } = filter;
-  return await axiosInstance.get(
-    `/v2/stock/report/details?productId=${pid}&productName=${pName}&stockQuantity=${qtyOrder}&startDate=${startDate}&endDate=${endDate}`
-  );
+  return await axiosInstance.post(
+    `/v2/stock/report/details`
+    , {
+      productId: pid,
+      productName: pName,
+      stockQuantity: qtyOrder,
+      startDate: startDate,
+      endDate: endDate,
+      sortOrder: "desc",
+    }
+    );
 };
 
 export const useStocks = (filter) => {
